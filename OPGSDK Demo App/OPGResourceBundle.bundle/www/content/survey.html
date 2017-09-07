@@ -1,0 +1,69 @@
+<div class="smallfont upgradeNotify" id="refershNotify">
+	<img src="images/refresh-button.png" alt="refershNotify"/>&nbsp;<span data-lang="refreshNotify" class="extrasmallfont"></span>
+</div>
+<ul class="pageHeader smallfont" id="surveyHeader">
+	 <!--<li data-attr="new"><span class="surveyCount largefont"></span>&nbsp;</span><span data-lang="surveyNew"></span></li>
+	<li data-attr="existing"><span class="surveyCount largefont"></span>&nbsp;<span data-lang="surveyExisting"></span></li>
+	<li data-attr="incomplete"><span class="surveyCount largefont"></span>&nbsp;<span data-lang="surveyIncomplete"></span></li>-->
+	<li data-attr="incomplete">
+	<span data-lang="surveys" class="pageName largefont"></span>
+	<span data-lang="Upload_survey_results" id="uploadSuccessTxt"></span>
+	<span class="surveyUploadCount largefont" id="surveyUploadCount"></span>
+	    <div class="custom-select">
+         <div class='normalfont resultList' id="uploadAll"><input type='checkbox' name='upload_all' id='upload_all' /><label for='upload_all'><span data-lang="upload_all"></span></label></div>
+         <ul></ul>
+         <div class='normalfont resultList' id='uplaodNow'><span data-lang='upload_now'></span></div>
+        </div>
+	</li>
+	<!--<li data-attr="complete"><span class="surveyCount largefont"></span>&nbsp;<span data-lang="surveyComplete"></span></li>-->
+</ul>
+<div class="surveyListDiv wrapper" id="listwrapper">
+	<div class="scroller">
+		<div id="pullDown" class="">
+			<span class="pullDownIcon"></span><span class="pullDownLabel" data-lang="pullToRefresh"></span>
+		</div>
+		<ul class="new"></ul>
+		<ul class="existing"></ul>
+		<ul class="incomplete" ></ul>
+		<ul class="geofencingSurvey" ></ul>
+		<ul class="complete"></ul>
+		<div class="noData"><br/><br/><br/><br/><br/><span data-lang="noData"></span></div>
+       </div>
+</div>
+<div class="selectedSurveywrapo">
+	<div class="selectedSurveyScroll wrapper">
+		<div class="scroller">
+			<div class="surveyImagewrapo headImgWrapo"></div>
+			<div class="surveyDetailsWrapo">
+				<div class="surveyBar smallfont"><span class="surveyAvailabity">Online</span><span class="launchedTime">3 hours</span></div>
+				<div class="surveyText normalfont"></div>	
+				<ul class="otherDetails smallfont">
+                    <li style="display:none;">
+                        <div><img src="images/geofence.png"><span data-lang="LocationSurvey"></span></div>
+                        <div><span data-lang="yes"></span></div>
+                    </li>
+		  			<li>
+		  				<div><span data-lang="estimatedTime"></span></div>
+		  				<div class="estimatedTime"></div>
+		  			</li><li>
+		  				<div><span data-lang="occurance"></span></div>
+		  				<div class="occurance"></div>
+		  			</li><li>
+		  				<div><span data-lang="deadline"></span></div>
+		  				<div class="deadline"></div>
+		  			</li>
+		  		</ul>
+			</div>
+		</div>
+	</div>
+	<div class="pageFooter">
+		<div class="navButton backButton">
+			<span data-lang="back"></span>
+		</div>
+		<div class="navButton submitButton">
+			<span data-lang="startSurvey"></span>
+		</div>
+	</div>
+</div>
+
+

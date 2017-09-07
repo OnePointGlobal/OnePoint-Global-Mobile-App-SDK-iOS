@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Tell Me</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+	<link rel="stylesheet" type="text/css" href="css/theme.css">
+	<link rel="stylesheet" type="text/css" href="css/font.css">
+
+
+	<script src = "js/library/jquery-2.1.0.min.js" ></script>
+	<script src="js/library/touche.min.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src = "js/commonScripts/platform_specific.js" ></script>
+	<script src = "js/commonScripts/cordovaFunction.js"></script>
+	<script src = "js/commonScripts/languageScript.js"></script>
+	<script src="js/commonScripts/themeScript.js"></script>
+	<script src="js/commonScripts/utilityFunctions.js"></script>
+    <script src="js/commonScripts/iosOnly.js"></script>
+	<script src="js/commonScripts/app.js"></script>
+	<script src="js/landingPage.js"></script>
+
+</head>
+<body>
+	<div class="bodyWrapper">
+		<div class="spinner">
+		  <div class="dot1"></div>
+		  <div class="dot2"></div>
+		</div>
+		<!--<span class="loadingNotify" data-lang="pleaseWait"></span>
+		<div class="loader">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>-->
+	</div>
+	<div class="body_container">
+		<div class="body_content editPanel choosePanelWrapo" style="display:block;opacity:0">	
+			<div class="welcome largefont"><span data-lang="welcome">Hi</span>&nbsp;</div><br/>
+			<div class="largefont"><span data-lang="panelMember"></span></div><br/>
+			 <div class="largefont"><span data-lang="selectPanel"></span></div><br/>	
+			<div class="message normalfont"></div>
+			<select id="panelList" data-lang="selectPanelDefault" class="normalfont">
+				<option value="" selected disabled></option>
+			</select>
+			<br/>
+			<div class="editBtnwrapo"><div class="submitBtn button largefont"><span data-lang="submit"></span></div></div>
+		</div>
+	</div>
+</body>
+</html>
