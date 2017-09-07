@@ -37,7 +37,7 @@
     if ([obj.isSuccess intValue]==1 && error==nil)
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:@"Authentication Successful"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
@@ -54,7 +54,7 @@
     else
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:obj.statusMessage
                                      preferredStyle:UIAlertControllerStyleAlert];
         

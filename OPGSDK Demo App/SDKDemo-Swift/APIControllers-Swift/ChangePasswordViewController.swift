@@ -44,7 +44,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         }
         if (obj.isSuccess.boolValue == true)
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Password Changed Successfully", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Password Changed Successfully", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
@@ -53,7 +53,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Password Change Failed", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Password Change Failed", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)

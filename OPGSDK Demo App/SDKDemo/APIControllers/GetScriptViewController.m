@@ -35,7 +35,7 @@
 //    if ([obj.isSuccess intValue]==1)
 //    {
 //        UIAlertController * alert = [UIAlertController
-//                                     alertControllerWithTitle:@"OPGSDKv1.0"
+//                                     alertControllerWithTitle:@"OPGSDK"
 //                                     message:@"Script Download Successful!"
 //                                     preferredStyle:UIAlertControllerStyleAlert];
 //        
@@ -52,7 +52,7 @@
 //    else
 //    {
 //        UIAlertController * alert = [UIAlertController
-//                                     alertControllerWithTitle:@"OPGSDKv1.0"
+//                                     alertControllerWithTitle:@"OPGSDK"
 //                                     message:obj.statusMessage
 //                                     preferredStyle:UIAlertControllerStyleAlert];
 //        

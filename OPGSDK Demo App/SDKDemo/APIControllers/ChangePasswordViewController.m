@@ -38,7 +38,7 @@
     if ([obj.isSuccess boolValue]==TRUE)
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:@"Password Changed Successfully!"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
@@ -55,7 +55,7 @@
     else
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:obj.statusMessage
                                      preferredStyle:UIAlertControllerStyleAlert];
         

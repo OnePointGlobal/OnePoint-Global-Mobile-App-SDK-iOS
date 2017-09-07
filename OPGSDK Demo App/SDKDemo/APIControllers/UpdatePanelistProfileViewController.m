@@ -145,7 +145,7 @@
     if (didUpdate)
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:@"Panelist Profile Updated Successfully!"
                                      preferredStyle:UIAlertControllerStyleAlert];
         
@@ -162,7 +162,7 @@
     else
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:@"Panelist Profile Update Failed"
                                      preferredStyle:UIAlertControllerStyleAlert];
         

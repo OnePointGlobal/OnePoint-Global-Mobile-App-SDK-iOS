@@ -43,7 +43,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate
         
         if (obj?.isSuccess.int32Value==1)
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Mail Sent Successfully", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Mail Sent Successfully", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
@@ -52,7 +52,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Mail Sending Failed", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Mail Sending Failed", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)

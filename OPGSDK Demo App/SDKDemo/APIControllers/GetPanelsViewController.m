@@ -49,7 +49,7 @@
     if (self.panelsArray.count<=0)
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:@"No Panels!"
                                      preferredStyle:UIAlertControllerStyleAlert];
         

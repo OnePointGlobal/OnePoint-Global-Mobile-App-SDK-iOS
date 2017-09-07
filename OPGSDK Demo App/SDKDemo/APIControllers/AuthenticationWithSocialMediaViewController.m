@@ -65,7 +65,7 @@
 -(void)showAlert : (NSString*)alertMessage
 {
     UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:alertMessage
                                      preferredStyle:UIAlertControllerStyleAlert];
         

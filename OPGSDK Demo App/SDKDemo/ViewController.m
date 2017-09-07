@@ -37,7 +37,7 @@
     if ([obj.isSuccess intValue]==0)
     {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"OPGSDKv1.0"
+                                     alertControllerWithTitle:@"OPGSDK"
                                      message:obj.statusMessage
                                      preferredStyle:UIAlertControllerStyleAlert];
         

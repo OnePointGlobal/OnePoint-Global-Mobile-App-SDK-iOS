@@ -41,7 +41,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate
         
         if obj!.isSuccess.int32Value==1
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Authentication Successful", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Authentication Successful", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
@@ -50,7 +50,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate
         }
         else
         {
-            let alertController = UIAlertController(title: "OPGSDKv1.0", message: "Authentication Failed", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "OPGSDK", message: "Authentication Failed", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(defaultAction)
