@@ -33,12 +33,12 @@ class UploadMediaViewController: UIViewController,UIImagePickerControllerDelegat
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?)
+   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
-         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         print("documentsPath: \(documentsPath)")
 
-        let image:UIImage = (editingInfo![UIImagePickerControllerOriginalImage] as? UIImage)!
+        let image:UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let photoURL          = NSURL(fileURLWithPath: documentDirectory)
 
@@ -63,7 +63,7 @@ class UploadMediaViewController: UIViewController,UIImagePickerControllerDelegat
             print("Upload Media Media Failed")         /* @"Error Occured. Contact Support!" */
             
         }
-        print("Uploaded media ID is \(mediaID)" )
+        print("Uploaded media ID is \(String(describing: mediaID))" )
         self.dismiss(animated: true, completion: nil);
         self.showAlert()
     }
