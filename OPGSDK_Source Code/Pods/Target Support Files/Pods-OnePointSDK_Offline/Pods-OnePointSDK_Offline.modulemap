@@ -1,0 +1,6 @@
+framework module Pods_OnePointSDK_Offline {
+  umbrella header "Pods-OnePointSDK_Offline-umbrella.h"
+
+  export *
+  module * { export * }
+}

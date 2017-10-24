@@ -1,0 +1,21 @@
+PODS:
+  - OPGRuntime (0.1.0)
+
+DEPENDENCIES:
+  - OPGRuntime (from `https://github.com/OnePointGlobal/OPGRuntime.git`)
+
+EXTERNAL SOURCES:
+  OPGRuntime:
+    :git: https://github.com/OnePointGlobal/OPGRuntime.git
+
+CHECKOUT OPTIONS:
+  OPGRuntime:
+    :commit: 64b7d7088d802d708f478fb0c99c15bb50d4af13
+    :git: https://github.com/OnePointGlobal/OPGRuntime.git
+
+SPEC CHECKSUMS:
+  OPGRuntime: 2649b324a66a7f99fd8741ca713370e77010de48
+
+PODFILE CHECKSUM: 81d86d41267efc36cd338baf5b3d57ec53f7ecbe
+
+COCOAPODS: 1.3.1

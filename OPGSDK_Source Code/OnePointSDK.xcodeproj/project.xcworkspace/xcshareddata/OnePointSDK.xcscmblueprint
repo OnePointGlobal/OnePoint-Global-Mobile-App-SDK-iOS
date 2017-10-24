@@ -1,0 +1,45 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4d37e2cc-3ff1-4978-9a0a-28d175ad4462",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "459424e7-35d0-4a19-8520-017c2efc924a" : {
+
+    },
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : {
+
+    },
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "459424e7-35d0-4a19-8520-017c2efc924a" : 0,
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : 9223372036854775807,
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0E01B42C-B6DE-4F5C-89EB-60E9A5053636",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "459424e7-35d0-4a19-8520-017c2efc924a" : "OnePointSDK\/",
+    "5926df91-cdb9-418b-8d64-d955e8c9ddbf" : "iphoneruntimeframework\/",
+    "4d37e2cc-3ff1-4978-9a0a-28d175ad4462" : "iosopgsdk\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "OnePointSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "OnePointSDK.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosonepointsdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "459424e7-35d0-4a19-8520-017c2efc924a"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iosopgsdk",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4d37e2cc-3ff1-4978-9a0a-28d175ad4462"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/onepoint.svn.cloudforge.com\/iphoneruntimeframework",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5926df91-cdb9-418b-8d64-d955e8c9ddbf"
+    }
+  ]
+}

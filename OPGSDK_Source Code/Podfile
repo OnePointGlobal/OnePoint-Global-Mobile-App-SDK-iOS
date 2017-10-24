@@ -1,0 +1,10 @@
+
+platform :ios, '8.0'
+
+
+target 'OnePointSDK_Offline' do
+   use_frameworks!
+
+  pod 'OPGRuntime', :git => 'https://github.com/OnePointGlobal/OPGRuntime.git'
+
+end

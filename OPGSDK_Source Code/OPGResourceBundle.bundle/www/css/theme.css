@@ -1,0 +1,93 @@
+.header{
+    background-color: #ff9231;
+	color: #fff;
+}
+
+.menuButton div{background-color: #fff;}
+
+.button{
+	background: #FF6D27;
+	color: #fff;
+	opacity:0.9;
+}
+.button:active{	
+	background: #0A5694;
+}
+
+.loggedStatus.online {
+	background-color: green;
+}
+
+/*.notification {
+	background: #374760;
+}
+
+.notification:after{
+	border-color: #374760 transparent;
+}
+
+.notification{color: white;}*/
+
+.loggedClass{background-color: #374760;color:#fff;}
+
+.navigation{
+	background-color: #374760;
+	color:#fff;
+}
+
+.navigation li.active{
+	color: #fff;
+	background-color: #2A3950;
+	border-left-color: #FF6D27;
+}
+
+.navigation li.links {
+	color: #8994ab;
+}
+
+.navPoint{
+	background: #6a7c98;
+}
+
+.pageHeader li.active{
+	color: #FF6D27;
+	border-top-color: #ff6d27;
+}
+
+.surveyListDiv li .takeSurvey:before{
+	border-color: #FF6D27 #FF6D27 #FF6D27 transparent;
+}
+
+.surveyListDiv li .takeSurvey div{
+	background-color: #FF6D27;
+}
+
+.submitButton:before{
+	background: #FE6519;
+	/*background-image: -webkit-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -moz-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -ms-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -o-linear-gradient(top, #FF7534, #FE6519);
+	background-image: linear-gradient(top, #FF7534, #FE6519);*/
+}
+
+.submitButton:after {
+	background: #FE6519;
+	/*background-image: -webkit-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -moz-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -ms-linear-gradient(top, #FF7534, #FE6519);
+	background-image: -o-linear-gradient(top, #FF7534, #FE6519);
+	background-image: linear-gradient(top, #FF7534, #FE6519);*/
+}
+#surveyBgDisable{
+    background-color: #ededed;
+    opacity: 0.6;
+}
+
+.surveyListDiv li#surveyBgDisable div > div.takeSurvey:before{
+    border-color: #ccc #ccc #ccc transparent !important;
+}
+.surveyListDiv li#surveyBgDisable div > div.takeSurvey div{
+    background-color: #ccc !important;
+    color:#ededed;
+}

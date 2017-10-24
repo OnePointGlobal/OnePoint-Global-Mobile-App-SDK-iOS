@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Classes>
+    <Base name="void" descriptor="V" />
+    <Base name="Signed Byte" descriptor="B" />
+    <Base name="Unicode Character" descriptor="C" />
+    <Base name="double-precision floating-point value" descriptor="D" />
+    <Base name="single-precision floating-point value" descriptor="F" />
+    <Base name="integer" descriptor="I" />
+    <Base name="long integer" descriptor="J" />
+    <Base name="an instance of class classname" descriptor="L" />
+    <Base name="signed short" descriptor="S" />
+    <Base name="true or false" descriptor="Z" />
+    <Base name="one array dimension" descriptor="[" />
+    
+    <!--
+     Basic Setup
+     -->
+    <Alias name="object" value="OnePoint/Variant" />
+    <Alias name="string" value="OnePoint/String" />
+    <Alias name="array" value="OnePoint/Array" />
+    <Alias name="@init" value="&lt;init&gt;" />
+    
+    <!--
+     Top Level object
+     -->
+    <Class name="object" reference="OnePoint.Runtime.Common,OnePoint.Variant">
+        <Method name="@init" descriptor="()V" touched="true" />
+    </Class>
+    
+    <Class name="array" reference="OnePoint.Runtime.Common,OnePoint.DynamicArray">
+        <Method name="@init" descriptor="()V" touched="true" />
+    </Class>
+    
+    <Class name="string">
+        <Method name="@init" descriptor="()V" touched="true" />
+        <Method name="Add" descriptor="(Lobject;)Lobject;" />
+        <Method name="GetValue" descriptor="()Lstring;" />
+    </Class>
+    
+    <Class name="OnePoint/Field" reference="OnePoint.Runtime.Common,OnePoint.Field">
+        <Method name="@init" descriptor="(Lstring;)V" touched="true" />
+    </Class>
+    
+    <Class name="OnePoint/Library">
+        <Method name="Left" descriptor="(Lobject;Lobject;)Lobject;" />
+        <Method name="Len" descriptor="(Lobject;)Lobject;" />
+        <Method name="Mid" descriptor="(Lobject;*3)Lobject;" />
+        <Method name="Validate" descriptor="(Lobject;*4)Lobject;" />
+        <Method name="CLong" descriptor="(Lobject;Lobject;)Lobject;" />
+        <Method name="SetRandomSeed" descriptor="(Lobject;)Lobject;" />
+        <Method name="SetRandomSeed" descriptor="(Lobject;Lobject;)V" />
+        <Method name="__null" descriptor="()Lobject;" />
+        <Method name="Now" descriptor="()Lobject;" />
+        <Method name="CDouble" descriptor="(Lobject;)Lobject;" />
+        <Method name="CText" descriptor="(Lobject;)Lobject;" />
+        <Method name="Day" descriptor="(Lobject;)Lobject;" />
+        <Method name="Month" descriptor="(Lobject;)Lobject;" />
+        <Method name="Year" descriptor="(Lobject;)Lobject;" />
+        <Method name="CDate" descriptor="(Lobject;)Lobject;" />
+        <Method name="DateNow" descriptor="()Lobject;" />
+        <Method name="TimeNow" descriptor="()Lobject;" />
+        <Method name="TimeOnly" descriptor="(Lobject;)Lobject;" />
+        <Method name="GetRandomSeed" descriptor="()Lobject;" />
+        <Method name="Right" descriptor="(Lobject;Lobject;)Lobject;" />
+        <Method name="LCase" descriptor="(Lobject;)Lobject;" />
+        <Method name="IIf" descriptor="(Lobject;Lobject;Lobject;)Lobject;" />
+        <Method name="CBoolean" descriptor="(Lobject;)Lobject;" />
+        <Method name="Rnd" descriptor="(Lobject;Lobject;)Lobject;" />
+        <Method name="Replace" descriptor="(Lobject;Lobject;Lobject;)Lobject;" />
+        <Method name="CLong" descriptor="(Lobject;)Lobject;" />
+        <Method name="IsEmpty" descriptor="(Lobject;)Lobject;" />
+        <Method name="DateDiff" descriptor="(Lobject;*3)Lobject;" />
+        <Method name="Split" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="Find" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="RTrim" descriptor="(Lobject;)Lobject;" />
+        <Method name="LTrim" descriptor="(Lobject;)Lobject;" />
+        <Method name="Trim" descriptor="(Lobject;)Lobject;" />
+        <Method name="UCase" descriptor="(Lobject;)Lobject;" />
+        <Method name="ContainsSome" descriptor="(Lobject;*3)Lobject;" />
+        <Method name="ContainsAny" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="GetAnswer" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="CCategorical" descriptor="(Lobject;)Lobject;" />
+        <Method name="Format" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="Dump" descriptor="(Lobject;)Lobject;" />
+        <Method name="DisplayCache" descriptor="(Lobject;)Lobject;" />
+        <Method name="DisplayCache" descriptor="(Lobject;*2)Lobject;" />
+        <Method name="Print" descriptor="(Lobject;)Lobject;" />
+        <Method name="DateOnly" descriptor="(Lobject;)Lobject;" />
+        <Method name="CreateObject" descriptor="(Lobject;)Lobject;" />
+        <Method name="UTCToLocalTime" descriptor="(Lobject;)Lobject;" />
+        <Method name="LocalToUTCTime" descriptor="(Lobject;)Lobject;" />
+        <Method name="Round" descriptor="(Lobject;)Lobject;" />
+        <Method name="AnswerCount" descriptor="(Lobject;)Lobject;" />
+        <Method name="Int" descriptor="(Lobject;)Lobject;" />
+        <Method name="UBound" descriptor="(Lobject;)Lobject;" />
+        <Method name="DefinedCategories" descriptor="(Lobject;)Lobject;" />
+    </Class>
+    
+    <Class name="OnePoint/Expression">
+        <Method name="Execute" descriptor="(Lobject;)V" touched="true" />
+        <Method name="New" descriptor="(Lobject;Lobject;)V" touched="true" />
+        <Method name="Field" descriptor="(Lobject;Lobject;)V" touched="true" />
+        <Method name="Assign" descriptor="(Lobject;Lobject;)V" touched="true" />
+        <Method name="Condition" descriptor="(Lobject;)I" touched="true" />
+        <Method name="New" descriptor="(Lobject;)V" touched="true" />
+        <Method name="Enumerator" descriptor="(Lobject;)Lobject;" touched="true" />
+        <Method name="OnError" descriptor="(Lobject;)V" touched="true" />
+        <Method name="SetObject" descriptor="(Lobject;)V" touched="true" />
+    </Class>
+    
+    <!--
+     MetaData Super Class Template
+     -->
+    <Class name="OnePoint/MetaData">
+        <Method name="@init" descriptor="()V" touched="true" />
+    </Class>
+    
+    <!--
+     MetaData Class Template
+     -->
+    <Class name="MetaData" descriptor="OnePoint/MetaData">
+        <Method name="@init" descriptor="()V" touched="true" />
+        <Field name="__symbolTable" descriptor="Lobject;" touched="true" />
+    </Class>
+    
+    <String name="Code" value="code" />
+    
+    <Constants>
+        <Constant name="NavigationTypes" type="Enumerator" />
+        <Constant name="GridStyleTypes" type="Enumerator" />
+        <Constant name="BorderStyles" type="Enumerator" />
+        <Constant name="CategoryStyleTypes" type="Enumerator" />
+        <Constant name="TerminateStatus" type="Enumerator" />
+        <Constant name="Signals" type="Enumerator" />
+        <Constant name="ElementAlignments" type="Enumerator" />
+        <Constant name="ControlTypes" type="Enumerator" />
+        <Constant name="QuestionTypes" type="Enumerator" />
+        <Constant name="DataTypeConstants" type="Enumerator" />
+        <Constant name="CategoryTypes" type="Enumerator" />
+        <Constant name="VerticalAlignments" type="Enumerator" />
+        <Constant name="Alignments" type="Enumerator" />
+        <Constant name="OrderConstants" type="Enumerator" />
+        <Constant name="VerticalAlignments" type="Enumerator" />
+        <Constant name="InterviewStatus" type="Enumerator" />
+        <Constant name="OrientationConstants" type="Enumerator" />
+        <Constant name="Orientations" type="Enumerator" />
+        <Constant name="InterviewAction" type="Enumerator" />
+        
+        <Constant name="LabelStyleTypes" type="Structure" />
+        <Constant name="FontEffects" type="Structure" />
+        <Constant name="QuestionStyleTypes" type="Structure" />
+        
+    </Constants>
+</Classes>

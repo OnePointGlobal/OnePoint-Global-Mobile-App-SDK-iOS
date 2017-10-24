@@ -1,0 +1,170 @@
+
+<div class="profilewrapo">
+	<div class="wrapper">
+		<div class="profileContent scroller">
+			<div class="profileHeader headImgWrapo">
+				<div class="profile_image">
+					<div class="pic">
+						<img src="images/profile.png"/>
+					</div>
+				</div>
+
+				<div class="profileDetails">
+					<ul>
+						<li class="FullName extralargefont">&nbsp;</li>
+					</ul>
+				</div>
+			</div>
+			<ul class="otherDetails normalfont">
+				<li>
+					<div>
+						<span data-lang="gender"></span>
+					</div>
+					<div class="gender"></div>
+				</li>
+				<li>
+					<div>
+						<span data-lang="maritalStatus"></span>
+					</div>
+					<div class="maritalStatus"></div>
+				</li>
+				<li>
+					<div>
+						<span data-lang="DOB"></span>
+					</div>
+					<div class="DOB"></div>
+				</li>
+				<li>
+					<div>
+						<span data-lang="Email"></span>
+					</div>
+					<div class="Email"></div>
+				</li>
+				<li>
+					<div>
+						<span data-lang="MobileNumber"></span>
+					</div>
+					<div class="MobileNumber"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="pageFooter">
+		<div class="editProfileBtn button">
+			<span data-lang="editProfile"></span>
+		</div>
+	</div>
+</div>
+
+<div class="editProfilewrapo">
+	<div class="wrapper">
+		<div class="editProfileFormWrapper scroller">
+			<div class="editProfileHeader">
+				<div class="heading largefont">
+					<span data-lang="editProfile"></span>
+				</div>
+			</div>
+
+			<div class="uploadPhoto">
+				<div class="pic">
+					<img src="images/profile.png" alt="Profile" />
+				</div>
+				<span data-lang="editPhoto"></span>
+			</div>
+			<div class="message"></div>
+			<ul>
+				<li><input type="text" id="FirstName" placeholder="First Name"
+					value="" required="true" class="noInteger"  data-lang="FirstNamePH" />
+				<div class="validateImg">
+					<div class='valid'><img src='images/right.png'/></div>
+					<div class='invalid'><img src='images/wrong.png'/></div>
+				</div></li>
+
+				<li><input type="text" id="LastName" placeholder="Last Name"
+					value="" required="true" class="noInteger"  data-lang="LastNamePH" />
+				<div class="validateImg">
+					<div class='valid'><img src='images/right.png'/></div>
+					<div class='invalid'><img src='images/wrong.png'/></div>
+				</div></li>
+
+				<li><select id="gender" required="true" data-lang="genderPH">
+						<option value="" selected disabled="disabled"></option>
+
+						<option value="1"></option>
+
+						<option value="2"></option>
+				</select>
+					<div class="validateImg">
+					<div class='valid'><img src='images/right.png'/></div>
+					<div class='invalid'><img src='images/wrong.png'/></div>
+				</div></li>
+
+				<li><select id="maritalStatus" required="true"
+					data-lang="maritalStatusPH">
+						<option value="" selected disabled="disabled"></option>
+
+						<option value="1"></option>
+
+						<option value="2"></option>
+
+						<option value="3"></option>
+
+						<option value="4"></option>
+				</select>
+				<div class="validateImg">
+					<div class='valid'><img src='images/right.png'/></div>
+					<div class='invalid'><img src='images/wrong.png'/></div>
+				</div></li>
+
+				<li><input type="text" id="DOB" placeholder="Date of Birth"
+					value="" required="true" data-lang="DOBPH" readonly/>
+				<div class="validateImg">
+					<div class='valid'><img src='images/right.png'/></div>
+					<div class='invalid'><img src='images/wrong.png'/></div>
+				</div></li>
+			</ul>
+		</div>
+	</div>
+	<div class="pageFooter">
+		<div class="editProfile cancelBtn button">
+			<span data-lang="cancel"></span>
+		</div>
+
+		<div class="editProfile submitBtn button">
+			<span data-lang="submit"></span>
+		</div>
+	</div>
+    <div class="optionWrapper">
+    <div class="uploadWrapper">
+    	<div class="uploadDiv normalfont">
+			<div class="heading largefont">
+				<span data-lang="uploading"></span>
+			</div>
+			<div class="option">
+				<div class="opt"></div>
+			</div>
+		</div>
+    </div>
+    <div class="mediaWrapper">
+		<div class="mediaSelect normalfont">
+			<div class="heading largefont">
+				<span data-lang="select"></span>
+			</div>
+
+			<div class="option" data-attr="gallery">
+				<img src="images/gallery-icon.png" height="auto" width="auto" /><span
+					data-lang="galleryOption"></span>
+			</div>
+
+			<div class="option" data-attr="camera">
+				<img src="images/camera-icon.png" height="auto" width="auto" /><span
+					data-lang="cameraOption"></span>
+			</div>
+			
+			<div class="option" data-attr="remove">
+				<img src="images/remove-icon.png" height="auto" width="auto" /><span
+					data-lang="removePhoto"></span>
+			</div>
+		</div>
+	</div>
+</div>

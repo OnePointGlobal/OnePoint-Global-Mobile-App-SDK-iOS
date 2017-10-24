@@ -1,0 +1,43 @@
+.header {
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background: url('images/logo.png') #f79137 no-repeat center;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.ui-page{
+	margin-top: 60px;
+}
+
+.ui-slider .ui-btn {
+    background-color: #8994ab;
+    background-image: linear-gradient(#8994ab,#8994ab);
+    border-color: #8994ab;
+}
+
+
+.ui-slider .ui-slider-input {
+    color: #f79137;
+}
+
+.ui-slider .ui-btn:hover {
+    background-color: #f79137;
+    background-image: linear-gradient(#8994ab,#8994ab);
+    border-color: #dde2e8;
+}
+
+.ui-slider .ui-btn-active {
+    background-color: #f79137;
+    background-image: linear-gradient(#f79137, #f79137);
+    border-color: #dde2e8;
+}
+video{
+    width:100%;
+}
+audio{
+    width:100%;
+}
