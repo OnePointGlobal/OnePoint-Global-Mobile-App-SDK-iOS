@@ -123,7 +123,6 @@
 		78758DA61F98B64600CFB680 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484BBBE1CABD89200E63B0A /* SystemConfiguration.framework */; };
 		78758DA71F98B64600CFB680 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484BBB81CABD75A00E63B0A /* CoreFoundation.framework */; };
 		78758DA81F98B64600CFB680 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9484BBB61CABD75000E63B0A /* Foundation.framework */; };
-		78758DA91F98B64600CFB680 /* Pods_OnePointSDK_Offline.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB70A2DDE9655F523E211CBD /* Pods_OnePointSDK_Offline.framework */; };
 		78758DAC1F98B64600CFB680 /* NSString+OPGAESCrypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9446CE2B1CEB29BF005A8E2E /* NSString+OPGAESCrypt.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		78758DAD1F98B64600CFB680 /* OPGSBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 9446CE351CEB29BF005A8E2E /* OPGSBJsonParser.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		78758DAE1F98B64600CFB680 /* NSString+OPGMD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 9446CE2D1CEB29BF005A8E2E /* NSString+OPGMD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -403,7 +402,7 @@
 		78C05A801E39FD1B007DC79D /* OPGBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C05A6D1E39FB9E007DC79D /* OPGBaseController.m */; };
 		78C05A811E39FD3F007DC79D /* OPGUploadResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C05A751E39FBF8007DC79D /* OPGUploadResult.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		78C05A821E39FD44007DC79D /* OPGUploadResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C05A761E39FBF8007DC79D /* OPGUploadResult.m */; };
-		78C1E3C81E824D3F0091F289 /* OPGScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 787ADC1E1D4F24B600F76D35 /* OPGScript.h */; };
+		78C1E3C81E824D3F0091F289 /* OPGScript.h in Headers */ = {isa = PBXBuildFile; fileRef = 787ADC1E1D4F24B600F76D35 /* OPGScript.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		78C1E3C91E824D450091F289 /* OPGScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 787ADC1F1D4F24B600F76D35 /* OPGScript.m */; };
 		78EE231C1D506ADE00DE417C /* OPGDownloadMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 78EE231A1D506ADE00DE417C /* OPGDownloadMedia.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		78EE231D1D506ADE00DE417C /* OPGDownloadMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EE231B1D506ADE00DE417C /* OPGDownloadMedia.m */; };
@@ -658,8 +657,6 @@
 /* Begin PBXFileReference section */
 		13FBDA261EEE6B9600B949F4 /* OPGGeoFence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGGeoFence.h; sourceTree = "<group>"; };
 		13FBDA271EEE6B9600B949F4 /* OPGGeoFence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGGeoFence.m; sourceTree = "<group>"; };
-		331B6495E252DC1922201F5E /* Pods-OnePointSDK_Offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePointSDK_Offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline.release.xcconfig"; sourceTree = "<group>"; };
-		5D35EB8715635B20D2D164C4 /* Pods-OnePointSDK_Offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePointSDK_Offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline.debug.xcconfig"; sourceTree = "<group>"; };
 		784F7BC81D93A8DA004B3F7B /* GeoFencingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFencingTest.m; sourceTree = "<group>"; };
 		785CB10A1D9E65B0004BFB48 /* OPGPanellistProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGPanellistProfile.h; sourceTree = "<group>"; };
 		785CB10B1D9E65B0004BFB48 /* OPGPanellistProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGPanellistProfile.m; sourceTree = "<group>"; };
@@ -716,6 +713,7 @@
 		78F8AED81EF10A71005939D3 /* OPGGeofenceSurvey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGGeofenceSurvey.m; sourceTree = "<group>"; };
 		78FC33221EF2932100030DAE /* OPGResourceBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OPGResourceBundle.bundle; sourceTree = "<group>"; };
 		892BDCCD6DD7FEA7E2C4288D /* libPods-OnePointSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnePointSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C9AC298B4E548C6E889AA13 /* Pods-OnePointSDK_Offline.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePointSDK_Offline.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline.debug.xcconfig"; sourceTree = "<group>"; };
 		941D26A51D3CAE10000BA1E2 /* PKMultipartInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKMultipartInputStream.h; sourceTree = "<group>"; };
 		941D26A61D3CAE10000BA1E2 /* PKMultipartInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKMultipartInputStream.m; sourceTree = "<group>"; };
 		9446CE221CEB29BF005A8E2E /* OPGCryptoTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGCryptoTransform.h; sourceTree = "<group>"; };
@@ -861,6 +859,7 @@
 		94E529931CAE50AB00941B04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		94F2E5921D38B23F00B1D3C0 /* OPGDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPGDevice.h; sourceTree = "<group>"; };
 		94F2E5931D38B23F00B1D3C0 /* OPGDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPGDevice.m; sourceTree = "<group>"; };
+		CFECEFE5E3FFFB6BAFDC61DA /* Pods-OnePointSDK_Offline.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnePointSDK_Offline.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline.release.xcconfig"; sourceTree = "<group>"; };
 		FB70A2DDE9655F523E211CBD /* Pods_OnePointSDK_Offline.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnePointSDK_Offline.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -887,7 +886,6 @@
 				78758DA61F98B64600CFB680 /* SystemConfiguration.framework in Frameworks */,
 				78758DA71F98B64600CFB680 /* CoreFoundation.framework in Frameworks */,
 				78758DA81F98B64600CFB680 /* Foundation.framework in Frameworks */,
-				78758DA91F98B64600CFB680 /* Pods_OnePointSDK_Offline.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1369,8 +1367,8 @@
 		BB55A03C20EE375765FC2867 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5D35EB8715635B20D2D164C4 /* Pods-OnePointSDK_Offline.debug.xcconfig */,
-				331B6495E252DC1922201F5E /* Pods-OnePointSDK_Offline.release.xcconfig */,
+				8C9AC298B4E548C6E889AA13 /* Pods-OnePointSDK_Offline.debug.xcconfig */,
+				CFECEFE5E3FFFB6BAFDC61DA /* Pods-OnePointSDK_Offline.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1647,12 +1645,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78758DFE1F98B64600CFB680 /* Build configuration list for PBXNativeTarget "OnePointSDK_OfflineLib" */;
 			buildPhases = (
-				78758D4B1F98B64600CFB680 /* [CP] Check Pods Manifest.lock */,
 				78758D4C1F98B64600CFB680 /* Sources */,
 				78758D971F98B64600CFB680 /* Frameworks */,
 				78758DAA1F98B64600CFB680 /* CopyFiles */,
 				78758DAB1F98B64600CFB680 /* Headers */,
-				78758DFD1F98B64600CFB680 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1725,7 +1721,7 @@
 		94957A981CABA2C8005502B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = OnePointGlobal;
 				TargetAttributes = {
 					94957A9F1CABA2C8005502B8 = {
@@ -1769,39 +1765,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		1859E9671A78D45F1C2EFC96 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		78758D4B1F98B64600CFB680 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OnePointSDK_Offline-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		78758DFD1F98B64600CFB680 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2176,10 +2139,11 @@
 /* Begin XCBuildConfiguration section */
 		78758DFF1F98B64600CFB680 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D35EB8715635B20D2D164C4 /* Pods-OnePointSDK_Offline.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/include/**",
@@ -2205,10 +2169,11 @@
 		};
 		78758E001F98B64600CFB680 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 331B6495E252DC1922201F5E /* Pods-OnePointSDK_Offline.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SOURCE_ROOT)/include/**",
@@ -2234,7 +2199,7 @@
 		};
 		78C05A5C1E39F8E7007DC79D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D35EB8715635B20D2D164C4 /* Pods-OnePointSDK_Offline.debug.xcconfig */;
+			baseConfigurationReference = 8C9AC298B4E548C6E889AA13 /* Pods-OnePointSDK_Offline.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
@@ -2254,7 +2219,7 @@
 		};
 		78C05A5D1E39F8E7007DC79D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 331B6495E252DC1922201F5E /* Pods-OnePointSDK_Offline.release.xcconfig */;
+			baseConfigurationReference = CFECEFE5E3FFFB6BAFDC61DA /* Pods-OnePointSDK_Offline.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
@@ -2280,14 +2245,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2327,14 +2298,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2364,12 +2341,14 @@
 		94957AAA1CABA2C8005502B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SOURCE_ROOT)/include/**",
-					/usr/include/libxml2,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -2392,12 +2371,14 @@
 		94957AAB1CABA2C8005502B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Doug Morris (YLXPV9BU78)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Doug Morris (YLXPV9BU78)";
+				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(SOURCE_ROOT)/include/**",
-					/usr/include/libxml2,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
