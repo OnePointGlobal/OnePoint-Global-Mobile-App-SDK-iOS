@@ -186,7 +186,7 @@
                 r;
             var i = function(e, t) {
                 n = e ? "Barcode Entered is : " + e : "No barcode entered";
-                t.barcodeElm.html(n);
+                t.barcodeElm.text(n);
                 var val = e?e:"";
                 t.element.attr("value", val);
             };
