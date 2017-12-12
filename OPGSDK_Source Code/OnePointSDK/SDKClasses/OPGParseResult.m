@@ -112,6 +112,10 @@
                 geoFencing.createdDate = [dict valueForKey:@"CreatedDate"];
                 geoFencing.lastUpdatedDate = [dict valueForKey:@"LastUpdatedDate"];
                 geoFencing.range = [dict valueForKey:@"Range"];
+
+                geoFencing.isEnter = [[dict valueForKey:@"EnterEvent"] intValue] == 0 ? [NSNumber numberWithBool:NO] : [NSNumber numberWithBool:YES];
+                geoFencing.isExit = [[dict valueForKey:@"ExitEvent"] intValue] == 0 ? [NSNumber numberWithBool:NO] : [NSNumber numberWithBool:YES];
+                geoFencing.timeInterval = [dict valueForKey:@"EventTime"];
                 [surveyList addObject:geoFencing];
             }
         }

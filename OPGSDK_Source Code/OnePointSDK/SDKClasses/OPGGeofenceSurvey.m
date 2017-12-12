@@ -9,7 +9,7 @@
 #import "OPGGeofenceSurvey.h"
 
 @implementation OPGGeofenceSurvey
-@synthesize surveyName,surveyID,surveyReference,createdDate,latitude,longitude,lastUpdatedDate,geocode,range,address,addressID,isDeleted,distance;
+@synthesize surveyName,surveyID,surveyReference,createdDate,latitude,longitude,lastUpdatedDate,geocode,range,address,addressID,isDeleted,distance, isEnter, isExit, timeInterval;
 
 -(NSString *)description{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -91,6 +91,27 @@
     else{
         [dict setObject:@"" forKey:@"distance"];
     }
+
+    if (isEnter !=nil) {
+        [dict setObject:isEnter forKey:@"isEnter"];
+    }
+    else{
+        [dict setObject:@"" forKey:@"isEnter"];
+    }
+
+    if (isExit !=nil) {
+        [dict setObject:isExit forKey:@"isExit"];
+    }
+    else{
+        [dict setObject:@"" forKey:@"isExit"];
+    }
+
+    if (timeInterval !=nil) {
+        [dict setObject:timeInterval forKey:@"timeInterval"];
+    }
+    else{
+        [dict setObject:@"" forKey:@"timeInterval"];
+    }
     
     return [dict description];
 }
@@ -111,6 +132,10 @@
     [encoder encodeObject:self.addressID forKey:@"addressID"];
     [encoder encodeObject:self.isDeleted forKey:@"isDeleted"];
     [encoder encodeObject:self.distance forKey:@"distance"];
+
+    [encoder encodeObject:self.isEnter forKey:@"isEnter"];
+    [encoder encodeObject:self.isExit forKey:@"isExit"];
+    [encoder encodeObject:self.timeInterval forKey:@"timeInterval"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -128,7 +153,11 @@
         self.address = [decoder decodeObjectForKey:@"address"];
         self.addressID = [decoder decodeObjectForKey:@"addressID"];
         self.isDeleted = [decoder decodeObjectForKey:@"isDeleted"];
-         self.distance = [decoder decodeObjectForKey:@"distance"];
+        self.distance = [decoder decodeObjectForKey:@"distance"];
+
+        self.isEnter = [decoder decodeObjectForKey:@"isEnter"];
+        self.isExit = [decoder decodeObjectForKey:@"isExit"];
+        self.timeInterval = [decoder decodeObjectForKey:@"timeInterval"];
     }
     return self;
 }
