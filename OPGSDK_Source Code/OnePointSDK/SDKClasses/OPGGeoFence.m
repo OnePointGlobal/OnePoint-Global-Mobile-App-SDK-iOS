@@ -238,7 +238,6 @@ static OPGGeoFence *_sharedMySingleton = nil;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-     NSLog(@"❎ Just an exit event %@", region.identifier);
     self.locatonTimestamp = nil;
     self.currentRegion = nil;       // denotify when user comes out of region
 
@@ -260,14 +259,12 @@ static OPGGeoFence *_sharedMySingleton = nil;
     if (locations.count > 0) {
         NSDate *now = [NSDate new];
         NSTimeInterval interval = (self.locatonTimestamp != nil) ? [now timeIntervalSinceDate:self.locatonTimestamp] : 0;
-        NSLog(@"❎ didUpdateLocations called and time interval is %f", interval);
         OPGGeofenceSurvey *surveyRegion = [self runThroughAddress:self.currentRegion.identifier];
         double scheduledSurveyTimeInterval = [surveyRegion.timeInterval doubleValue] * 60;    // minutes to seconds
 
         //it will pass this condition when the time limit is elapsed
         if (interval != 0 && interval >= scheduledSurveyTimeInterval)
         {
-            NSLog(@"❎ Time interval %f min is elapsed", [surveyRegion.timeInterval doubleValue]);
             self.didPassTimeIntervalInTheRegion = YES;
             //do your region checking here
             if (self.currentRegion != nil) {
@@ -294,7 +291,6 @@ static OPGGeoFence *_sharedMySingleton = nil;
             if (self.locatonTimestamp == nil) {
                 // Note the time of entry into location
                 self.locatonTimestamp = [NSDate new];
-                NSLog(@"❎ Location time stamp recorded %@", self.locatonTimestamp);
             }
             if (self.currentRegion == nil) {
                 // Already inside
@@ -309,7 +305,6 @@ static OPGGeoFence *_sharedMySingleton = nil;
             if (geoSurvey.timeInterval==0) {
                 // It is just an entry event so trigger delegate immediately
                 [self.fencingDelegate didEnterSurveyRegion:geoSurvey];
-                NSLog(@"❎ Just an entry event %@", geoSurvey.address);
             }
             else if (geoSurvey.timeInterval > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isEnter intValue] == 1) {
                 // It is time based geofencing
@@ -318,7 +313,6 @@ static OPGGeoFence *_sharedMySingleton = nil;
                 self.didPassTimeIntervalInTheRegion = NO;
                 self.locatonTimestamp = nil;
                 self.currentRegion = nil;
-                NSLog(@"❎ Entry and Wait event %@", geoSurvey.address);
             }
         }
     }
