@@ -29,6 +29,7 @@
 #import "OPGConstants.h"
 #import "NSString+OPGAESCrypt.h"
 #import "OPGRuntimePlugin.h"
+#import "OPGSBJsonParser.h"
 
 
 
@@ -86,6 +87,87 @@
 @synthesize wwwFolderName, startPage, initialized, openURL, baseUserAgent,surveyReference,queryDict;
 @synthesize commandDelegate = _commandDelegate;
 @synthesize commandQueue = _commandQueue;
+
+-(void)copyResourceBundleFiles:(NSString *)bundlePath {
+    
+    NSString *cacheDirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *sourcePath = [bundlePath stringByAppendingPathComponent:@"www"];
+    NSArray* resContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:nil];
+    for (NSString* obj in resContents){
+        NSError* error;
+        if (![obj isEqualToString:@"images"]&&![obj isEqualToString:@"img"]) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:[cacheDirPath stringByAppendingPathComponent:obj]]) {
+                // copy only if the resource files do not exist
+                [[NSFileManager defaultManager] removeItemAtPath:[cacheDirPath stringByAppendingPathComponent:obj] error:&error];
+            }
+            [[NSFileManager defaultManager] copyItemAtPath:[sourcePath stringByAppendingPathComponent:obj] toPath:[cacheDirPath stringByAppendingPathComponent:obj]error:&error];
+            
+        }
+    }
+    sourcePath = [bundlePath stringByAppendingPathComponent:@"Interview"];
+    resContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sourcePath error:nil];
+    
+    for (NSString* obj in resContents){
+        NSError* error;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[cacheDirPath stringByAppendingPathComponent:obj]]) {
+            // copy only if the resource files do not exist
+            [[NSFileManager defaultManager] removeItemAtPath:[cacheDirPath stringByAppendingPathComponent:obj] error:&error];
+        }
+        [[NSFileManager defaultManager] copyItemAtPath:[sourcePath stringByAppendingPathComponent:obj] toPath:[cacheDirPath stringByAppendingPathComponent:obj]error:&error];
+    }
+}
+
+-(NSNumber *)getAssetsVersion:(NSString *)path {
+    if (![path isEqualToString:@""] || path != nil) {
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        OPGSBJsonParser *parser = [[OPGSBJsonParser alloc] init];
+        NSDictionary *json = (NSDictionary *)[parser objectWithString:str];
+        int resources_version = [[json objectForKey:@"resources_version"] intValue];
+        NSLog(@"resources_version %d",resources_version);
+        return [NSNumber numberWithInt:resources_version];
+        
+    }
+    return [NSNumber numberWithInt:0];
+}
+
+-(NSNumber *)checkFileExists {
+    @try {
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *bundlePath = [bundle pathForResource:@"OPGResourceBundle" ofType:@"bundle"];
+        NSString *resourceFilePath = [bundlePath stringByAppendingPathComponent:@"resources_version.json"];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath: resourceFilePath]) {
+            return [NSNumber numberWithBool:NO];
+        }
+        else {
+            NSString *cacheDirPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+            NSError* error;
+            NSString *cacheResourceFilePath = [cacheDirPath stringByAppendingPathComponent:@"resources_version.json"];
+            if ([[NSFileManager defaultManager] fileExistsAtPath: cacheResourceFilePath]) {
+                NSNumber *cacheResFileVersion = [self getAssetsVersion:cacheResourceFilePath];
+                NSNumber *resFileVersion = [self getAssetsVersion:resourceFilePath];
+                if ([cacheResFileVersion intValue] == [resFileVersion intValue]) {
+                    return [NSNumber numberWithBool:NO];
+                }
+                else{
+                    [[NSFileManager defaultManager] removeItemAtPath:cacheResourceFilePath error:&error];
+                    [[NSFileManager defaultManager] copyItemAtPath:resourceFilePath toPath:cacheResourceFilePath error:&error];
+                    [self copyResourceBundleFiles:bundlePath];
+                    return [NSNumber numberWithBool:YES];
+                }
+            }
+            else {
+                [[NSFileManager defaultManager] copyItemAtPath:resourceFilePath toPath:cacheResourceFilePath error:&error];
+                [self copyResourceBundleFiles:bundlePath];
+                return [NSNumber numberWithBool:NO];
+            }
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception - %@",exception);
+    }
+}
 
 - (NSString *)loadSurveyLink:(NSString *)surveyRef withDictionary:(NSDictionary *)values{
     
@@ -152,8 +234,15 @@
 //Offline Survey
 -(void)loadOfflineSurvey:(NSString*)scriptPath surveyName:(NSString*)surveyName surveyID:(NSNumber*)surveyID panelID:(NSNumber*)panelID panellistID:(NSNumber*)panellistID
 {
-        [self initWebView];
-        [self start:scriptPath surveyName:surveyName surveyID:surveyID panelID:panelID panellistID:panellistID];
+    [self initWebView];
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        NSNumber *num = [self checkFileExists];
+        NSLog(@"checkFileExists %d",num);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self start:scriptPath surveyName:surveyName surveyID:surveyID panelID:panelID panellistID:panellistID];
+        });
+     });
 }
 
 -(void)successCallBack:(NSString*)jsCallbackValue withcallbackId:(NSString*)callbackID{
