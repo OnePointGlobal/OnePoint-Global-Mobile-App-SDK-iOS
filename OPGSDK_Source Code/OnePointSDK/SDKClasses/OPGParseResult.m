@@ -45,7 +45,7 @@
 }
 
 #pragma mark - Parse Methods
-- (NSMutableArray*)parseSurveys:(NSArray*)responseList error:(NSError **)error {
+- (NSMutableArray*)parseSurveys:(NSArray*)responseList isLiteSDK:(BOOL)isLiteSDK error:(NSError **)error {
     NSMutableArray* _surveyList = [[NSMutableArray alloc] init];
 
     if(responseList == nil)
@@ -87,7 +87,17 @@
         survey.deadline = [[responseList objectAtIndex:i] valueForKey:@"DeadLine"];
         survey.status = @"New";                                 //hardcoded default status
         survey.isOfflineDownloaded = [NSNumber numberWithInt:0]; //hardcoded default value
-        [_surveyList addObject:survey];
+
+        if (isLiteSDK) {
+            // Add only online surveys for lite SDK
+            if([survey.isOffline integerValue] == 0) {
+                [_surveyList addObject:survey];
+            }
+        }
+        else {
+            // Add all surveys for full SDK
+            [_surveyList addObject:survey];
+        }
     }
     return _surveyList;
 }

@@ -490,7 +490,7 @@ static BOOL isResourceFound;
             responseList = [networkManager performRequest:request withError:error];
         }
     }
-    NSArray* surveyList = [parseManager parseSurveys:responseList error:error];
+    NSArray* surveyList = [parseManager parseSurveys:responseList isLiteSDK:NO error:error];
     return surveyList;
 }
 
@@ -514,7 +514,7 @@ static BOOL isResourceFound;
             responseList = [networkManager performRequest:request withError:error];
         }
     }
-    NSArray* surveyList = [parseManager parseSurveys:responseList error:error];
+    NSArray* surveyList = [parseManager parseSurveys:responseList isLiteSDK:NO error:error];
     return surveyList;
 }
 
