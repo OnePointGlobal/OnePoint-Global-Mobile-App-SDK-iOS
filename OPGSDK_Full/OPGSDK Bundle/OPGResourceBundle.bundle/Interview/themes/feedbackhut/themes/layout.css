@@ -1,0 +1,37 @@
+.header {
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background: url('images/fhlogosmall.png') #ffffff no-repeat center;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.ui-page{
+	margin-top: 60px;
+}
+
+.ui-slider .ui-btn {
+    background-color: #ffffff;
+    background-image: linear-gradient(#a0a0a0,#a0a0a0);
+    border-color: #dedcdc;
+}
+
+
+.ui-slider .ui-slider-input {
+    color: #fbba20;
+}
+
+.ui-slider .ui-btn:hover {
+    background-color: #a0a0a0;
+    background-image: linear-gradient(#a0a0a0,#a0a0a0);
+    border-color: #a0a0a0;
+}
+
+.ui-slider .ui-btn-active {
+    background-color: #a0a0a0;
+    background-image: linear-gradient(#fbba20, #fbba20);
+    border-color: #a0a0a0;
+}			

@@ -1,0 +1,66 @@
+﻿<Page SavePoint="UnSupported" Version="0.1" Project="test" LabelType="Label" RoutingContext="Mobile"
+      SessionToken="46b9af0f-7782-45e5-ace8-212449cf5932" EstimatedPages="0" EstimatedProgress="0" Renderer="OPGPlayer">
+  <Title>
+    <Style ElementAlign="Default"></Style><Text>QLONG6</Text>
+  </Title>
+  <Question QuestionName="QLONG6" QuestionFullName="QLONG6" QuestionDataType="Long">
+    <Style ElementAlign="Default">
+      <Control Type="SingleLineEdit" />
+    </Style>
+    <Label>
+      <Style ElementAlign="Default"></Style>
+      <Text>QLONG6: A LONG variable. Whole number. Range: 1 to 10. Additional categories: dk, ref, na.</Text>
+    </Label>
+    <Codes>
+      <Category Name="DK" IsExclusive="true" IsDK="true">
+        <Style ElementAlign="Default">
+          <Control Type="SingleLineEdit" />
+        </Style>
+        <Label>
+          <Style ElementAlign="Default"></Style><Text>Don't know</Text>
+        </Label>
+      </Category>
+      <Category Name="REF" IsExclusive="true" IsRef="true">
+        <Style ElementAlign="Default">
+          <Control Type="SingleLineEdit" />
+        </Style>
+        <Label>
+          <Style ElementAlign="Default"></Style><Text>Refused</Text>
+        </Label>
+      </Category>
+      <Category Name="NA" IsExclusive="true" IsNA="true">
+        <Style ElementAlign="Default">
+          <Control Type="SingleLineEdit" />
+        </Style>
+        <Label>
+          <Style ElementAlign="Default"></Style><Text>No answer</Text>
+        </Label>
+      </Category>
+    </Codes>
+    <Validation MinValue="1" MaxValue="10" />
+  </Question>
+  <Navigation Type="Prev">
+    <Style ElementAlign="Default">
+      <Control Type="Button" />
+    </Style>
+    <Label>
+      <Style ElementAlign="Default"></Style><Text>Previous</Text>
+    </Label>
+  </Navigation>
+  <Navigation Type="Next">
+    <Style ElementAlign="Default">
+      <Control Type="Button" />
+    </Style>
+    <Label>
+      <Style ElementAlign="Default"></Style><Text>Next</Text>
+    </Label>
+  </Navigation>
+  <Navigation Type="Stop">
+    <Style ElementAlign="Default">
+      <Control Type="Button" />
+    </Style>
+    <Label>
+      <Style ElementAlign="Default"></Style><Text>Stop</Text>
+    </Label>
+  </Navigation>
+</Page>

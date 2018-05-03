@@ -1,0 +1,81 @@
+.header {
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background: url('images/nielsen_logo.png') #e5e5e5 no-repeat center;
+	border-bottom: 1px solid #85C63F;
+}
+
+.ui-page{
+	margin-top: 60px;
+}
+
+.ui-slider .ui-btn {
+    background-color: #85C63F;
+    background-image: linear-gradient(#9a9a9d,#9a9a9d);
+    border-color: #dedcdc;
+}
+
+
+.ui-slider .ui-slider-input {
+    color: #85C63F;
+}
+
+.ui-slider .ui-btn:hover {
+    background-color: #9a9a9d;
+    background-image: linear-gradient(#9a9a9d,#9a9a9d);
+    border-color: #9a9a9d;
+}
+
+.ui-slider .ui-btn-active {
+    background-color: #9a9a9d;
+    background-image: linear-gradient(#85C63F, #85C63F);
+    border-color: #9a9a9d;
+}			
+.progressCount{
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    width: 15% !important;
+    margin: 0 15%;
+}
+#progressDisplay {
+    display: inline-block;
+    border-radius: 5px;
+    width: 40% !important;
+    background-color: rgba(255,255,255,0.4) !important;
+}
+#progressDisplay > div{
+    width: 10%;
+    border-width: 1px;
+    border-color: #bbb;
+    border-style: solid;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    height: 5px;
+}	
+table{
+    display:block !important;
+}
+.ui-btn{
+    text-align:left;
+    text-overflow:inherit;
+    white-space: pre-wrap;
+     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+     white-space: -pre-wrap;      /* Opera 4-6 */
+     white-space: -o-pre-wrap;    /* Opera 7 */
+     word-wrap: break-word;    
+}
+table .ui-btn:hover{
+	 background-color:#e5e5e5 !important ;
+	 color:#000 !important;
+}
+table .ui-btn.ui-focus{
+    background-color:#e5e5e5 !important ;
+}
+#footer{
+	margin-bottom:20px;
+}

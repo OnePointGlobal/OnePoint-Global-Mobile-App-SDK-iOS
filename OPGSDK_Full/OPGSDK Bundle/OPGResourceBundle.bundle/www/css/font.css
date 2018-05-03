@@ -1,0 +1,110 @@
+body{
+	font-family: 'Droid Sans', sans-serif;
+	line-height: 1.5;
+}
+
+@media only screen and (min-width : 769px) {
+
+	.extrasmallfont{
+		font-size: 14px;
+	}
+
+	.smallfont{
+		font-size: 16px;
+	}
+
+	.normalfont{
+		font-size: 18px;
+	}
+
+	.largefont{
+		font-size: 22px;
+	}
+
+	.extralargefont{
+		font-size: 26px;
+	}
+
+	.button{
+		font-size: 22px;
+	}
+
+	.message{
+		font-size:18px;
+	}
+
+	.takeSurvey{
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width : 768px) {
+
+	.extrasmallfont{
+		font-size: 12px;
+	}
+
+	.smallfont{
+		font-size: 14px;
+	}
+
+	.normalfont{
+		font-size: 16px;
+	}
+
+	.largefont{
+		font-size: 20px;
+	}
+
+	.extralargefont{
+		font-size: 24px;
+	}
+
+	.button{
+		font-size: 20px;
+	}
+
+	.message{
+		font-size:16px;
+	}
+
+	.takeSurvey{
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width : 480px) {
+	.extrasmallfont{
+		font-size: 10px;
+	}
+
+	.smallfont{
+		font-size: 12px;
+	}
+
+	.normalfont{
+		font-size: 14px;
+	}
+
+	.largefont{
+		font-size: 18px;
+	}
+
+	.extralargefont{
+		font-size: 22px;
+	}
+
+	.button{
+		font-size: 16px;
+	}
+
+	.message{
+		font-size: 12px;
+	}
+
+	.takeSurvey{
+		font-size: 12px;
+	}
+
+}
+

@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title></title>
+    <style type="text/css">
+      <!--
+      body {font-size: 10pt; color: #000066; font-family: Verdana,Arial; background-color: #94bee7;}
+      .mrBannerText {font-weight: bold;}
+      .mrEdit {font-family:Verdana,Arial; font-size:10pt; color:#000066}
+      .mrDropDown {font-family:Verdana,Arial; font-size:10pt; color:#000066}
+      .mrListBox {font-family:Verdana,Arial; font-size:10pt; color:#000066}
+      .mrErrorText {font-weight: bold; color:#ff0000;}
+      .mrPrev {font-size: 10pt; COLOR: #000066; font-family: Verdana,Arial;}
+      .mrNext {font-size: 10pt; COLOR: #000066; font-family: Verdana,Arial;}
+      .Dimensions {font-size: 12pt; font-weight: bold;}
+      -->
+    </style>
+  </head>
+  <body>
+    <mrPage IncludeElementIDs="true" GridTemplate="DefaultGridTemplate.xml" />
+    <table>
+      <tr>
+        <td>
+          <center>
+            <p class="Dimensions">Data Collection Interviewer Server</p>
+          </center>
+        </td>
+        <td width="15"></td>
+        <td width="1" bgcolor="#000066"></td>
+        <td valign="top" width="100%">
+          <div style="height:15; width:300; border-width: 1; border-color: black; border-style: solid; background-color: #FFFFFF">
+            <mrProgressBar Color="#000066" ShowCounts="AsValues" />
+          </div>
+          <mrBannerText>mrBannerText</mrBannerText>
+          <br />
+          <mrData>Questions here</mrData>
+          <br />
+          <mrNavButton Name="Prev">Previous</mrNavButton>
+          <mrNavButton Name="Next">Next</mrNavButton>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

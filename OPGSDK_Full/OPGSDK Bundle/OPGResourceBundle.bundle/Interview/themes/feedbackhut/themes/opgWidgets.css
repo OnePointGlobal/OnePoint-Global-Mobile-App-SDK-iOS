@@ -1,0 +1,184 @@
+/****Styles for star rating******/
+
+.opg-smiley {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    top:0px;
+    border:1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    background-color: rgb(225, 225, 218);
+}
+.opg-smiley.happy{
+    right:10px;
+}
+.opg-smiley.sad{
+    left:65px;
+}
+.opg-smiley .eye {
+    height: 3px;
+    width: 3px;
+    background-color:#66686b;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    position: absolute;
+    top: 10px;
+}
+.opg-smiley .left-eye{left: 6px;}
+.opg-smiley .right-eye {right: 6px;}
+.opg-smiley .mouth{
+    position: absolute;
+    left: 6px;
+    width: 13px;
+    height: 5px;
+}
+.opg-smiley.happy .mouth{
+    -webkit-border-bottom-right-radius: 30px;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-bottomright: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.opg-smiley.sad .mouth{
+    -webkit-border-top-right-radius: 30px;
+    -webkit-border-top-left-radius: 30px;
+    -moz-border-radius-topright: 30px;
+    -moz-border-radius-topleft: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+.opg-smiley .mouth.down {
+    background-color: #66686b;
+    top: 16px;
+}
+.opg-smiley .mouth.up {
+    background-color: rgb(225, 225, 218);
+    z-index: 1;
+}
+.opg-smiley.happy .mouth.up {
+    top: 14px;
+}
+.opg-smiley.sad .mouth.up {
+    top: 18px;
+}
+
+.opg-starHandle{
+    display: block;
+}
+
+.opg-starHandle li{
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+}
+
+.opg-star {
+    margin: 15px 5px 10px 5px;
+    position: relative;
+    display: block;
+    color: rgb(225, 225, 218);
+    width: 0px;
+    height: 0px;
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid rgb(225, 225, 218);
+    border-left: 15px solid transparent;
+    -moz-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    -ms-transform: rotate(35deg);
+    -o-transform: rotate(35deg);
+}
+
+.opg-star:before {
+    border-bottom: 13px solid rgb(225, 225, 218);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -9px;
+    left: -10px;
+    display: block;
+    content: '';
+    -webkit-transform: rotate(-35deg);
+    -moz-transform: rotate(-35deg);
+    -ms-transform: rotate(-35deg);
+    -o-transform: rotate(-35deg);
+}
+.opg-star:after {
+    position: absolute;
+    display: block;
+    color: rgb(225, 225, 218);
+    top: 0px;
+    left: -15px;
+    width: 0px;
+    height: 0px;
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid rgb(225, 225, 218);
+    border-left: 15px solid transparent;
+    -webkit-transform: rotate(-70deg);
+    -moz-transform: rotate(-70deg);
+    -ms-transform: rotate(-70deg);
+    -o-transform: rotate(-70deg);
+    content: '';
+}
+
+/************change this color for star active state**********************/
+li.active .opg-star, li.active .opg-star:before,li.active .opg-star:after{
+    border-bottom-color:#ffc928;
+}
+
+/****Styles for star rating ends******/
+
+/****table styles***/
+
+table th,
+table td{
+  text-align: left;
+}
+table.layout{
+  width: 100%;
+  border-collapse: collapse;
+}
+table.display{
+  margin: 1em 0;
+}
+table.display th,
+table.display td{
+  border: 1px solid #B3BFAA;
+  padding: .5em 1em;
+}
+
+table.display th{ background: #D5E0CC; }
+table.display td{ background: #fff; }
+
+table.responsive-table{
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 30em){
+
+    table, thead, tbody, th,td,tr {
+        display:block
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        position: relative;
+        }
+    td:before {
+        content: attr(data-title);
+    }
+    td:before {
+        content: attr(data-title);
+    }
+}
+
+/****table styles ends***/
+

@@ -1,0 +1,56 @@
+
+<ul class="pageHeader normalfont" id="settings_pageHeader">
+	<li attrPanel="Password" class="active"><span data-lang="Password"></span></li>
+	<li attrPanel="Version"><span data-lang="Version"></span></li>
+	<li attrPanel="Panel"><span data-lang="Panel"></span></li>
+</ul>
+
+<div class="body_content editPassword normalfont wrapper">
+	<div class="scroller">
+		<div class="heading largefont"><span data-lang="changePassword"></span></div>
+		<div class="message"></div>
+		<ul>
+			<li><input type="password" id="oldpwd" placeholder="Old Password"
+				required data-lang="oldpwdPH" />
+				<div class="validateImg">
+					<div class='invalid'>
+						<img src='images/wrong.png' />
+					</div>
+				</div></li>
+			<li><input type="password" id="newpwd" placeholder="New password"
+				required data-lang="newpwdPH" />
+				<div class="validateImg">
+					<div class='invalid'>
+						<img src='images/wrong.png' />
+					</div>
+				</div></li>
+			<li><input type="password" id="confirmpwd"
+				placeholder="Confirm Password" required data-lang="confirmpwdPH" />
+				<div class="validateImg">
+					<div class='invalid'>
+						<img src='images/wrong.png' />
+					</div>
+				</div></li>
+		</ul>
+		<div class="submitBtn button"><span data-lang="submit"></span></div>
+	</div>
+</div>
+
+<div class="body_content editVersion smallfont">
+	<div class="versionNum heading largefont" ><span data-lang="version"></span></div>
+	<div class="versionImg"><img src="images/versionicon.png" alt="version" height="auto" width="auto"></div>
+		<div class="versionDetails smallfont"><span class="normalfont" data-lang="MySurveysAppversion"></span><br><br><p>
+		<span data-lang="WelcometotheMySurveys"></span>
+		</p><br>
+		<!-- <div class="version button"><span data-lang="update"></span></div>  -->
+	</div>
+</div>	
+
+<div class="body_content editPanel choosePanelWrapo normalfont">
+	<div class="largefont"><span data-lang="selectPanel"></span></div><br/>	
+	<div class="message smallfont"></div>
+	<select id="panelList" data-lang="selectPanelDefault">
+		<option value="" default disabled selected></option>
+	</select>
+	<div class="editBtnwrapo"><div class="submitBtn button"><span data-lang="submit"></span></div></div>
+</div>

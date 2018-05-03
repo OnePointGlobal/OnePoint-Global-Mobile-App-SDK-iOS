@@ -1,0 +1,272 @@
+{
+    "Name": "StandardTexts",
+    "Type": "Block",
+    "Label": "StandardTexts",
+    "Properties": [
+        {
+            "Name": "Fields",
+            "Type": "Fields",
+            "Properties": [
+                {
+                    "Name": "Errors",
+                    "Type": "Block",
+                    "Label": "Errors",
+                    "Properties": [
+                        {
+                            "Name": "Fields",
+                            "Type": "Fields",
+                            "Properties": [
+                                {
+                                    "Name": "MissingAnswer",
+                                    "Type": "Info",
+                                    "Label": "Missing Answer(s)."
+                                },
+                                {
+                                    "Name": "NotNumeric",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' is not numeric."
+                                },
+                                {
+                                    "Name": "NotInteger",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' is not an integer value."
+                                },
+                                {
+                                    "Name": "NotDate",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' is not a valid Date/Time."
+                                },
+                                {
+                                    "Name": "NotInRange",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' is not in range '{RANGE}'."
+                                },
+                                {
+                                    "Name": "NotSingleAnswer",
+                                    "Type": "Info",
+                                    "Label": "Only one answer is allowed."
+                                },
+                                {
+                                    "Name": "TooFewAnswers",
+                                    "Type": "Info",
+                                    "Label": "There are too few answers, at least {MINANSWERS} are required."
+                                },
+                                {
+                                    "Name": "TooManyAnswers",
+                                    "Type": "Info",
+                                    "Label": "There are too many answers, only {MAXANSWERS} are allowed."
+                                },
+                                {
+                                    "Name": "CannotCombine",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' ({CATEGORY}) cannot be combined with other answers."
+                                },
+                                {
+                                    "Name": "OtherNotSelected",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' ({CATEGORY}) has a response but is not selected."
+                                },
+                                {
+                                    "Name": "InvalidText",
+                                    "Type": "Info",
+                                    "Label": "Answer '{ANSWER}' is not valid."
+                                },
+                                {
+                                    "Name": "TooLittleText",
+                                    "Type": "Info",
+                                    "Label": "The answer does not have enough text, current length is {LENGTH}, minimum is {MINLENGTH}."
+                                },
+                                {
+                                    "Name": "TooMuchText",
+                                    "Type": "Info",
+                                    "Label": "The answer has too much text, current length is {LENGTH}, maximum is {MAXLENGTH}."
+                                },
+                                {
+                                    "Name": "PlayerNavigationDisabled",
+                                    "Type": "Info",
+                                    "Label": "You have used the browser buttons, please use the Next/Previous buttons below."
+                                },
+                                {
+                                    "Name": "QuestionMissingAnswer",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Missing answer(s)."
+                                },
+                                {
+                                    "Name": "QuestionNotNumeric",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' is not numeric."
+                                },
+                                {
+                                    "Name": "QuestionNotInteger",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' is not an integer value."
+                                },
+                                {
+                                    "Name": "QuestionNotDate",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' is not a valid Date/Time."
+                                },
+                                {
+                                    "Name": "QuestionNotInRange",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' is not in range '{RANGE}'."
+                                },
+                                {
+                                    "Name": "QuestionNotSingleAnswer",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Only one answer is allowed."
+                                },
+                                {
+                                    "Name": "QuestionTooFewAnswers",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): There are too few answers, at least {MINANSWERS} are required."
+                                },
+                                {
+                                    "Name": "QuestionTooManyAnswers",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): There are too many answers, only {MAXANSWERS} are allowed."
+                                },
+                                {
+                                    "Name": "QuestionCannotCombine",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' ({CATEGORY}) cannot be combined with other answers."
+                                },
+                                {
+                                    "Name": "QuestionOtherNotSelected",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' ({CATEGORY}) has a response but it is not selected."
+                                },
+                                {
+                                    "Name": "QuestionInvalidText",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): Answer '{ANSWER}' is not valid."
+                                },
+                                {
+                                    "Name": "QuestionTooLittleText",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): The answer does not have enough text, current length is {LENGTH}, minimum is {MINLENGTH}."
+                                },
+                                {
+                                    "Name": "QuestionTooMuchText",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): The answer has too much text, current length is {LENGTH}, maximum is {MAXLENGTH}."
+                                },
+                                {
+                                    "Name": "ThousandsSeparator",
+                                    "Type": "Info",
+                                    "Label": "The thousands separator character is not allowed."
+                                },
+                                {
+                                    "Name": "QuestionThousandsSeparator",
+                                    "Type": "Info",
+                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): The thousands separator character is not allowed."
+                                },
+                                {
+                                    "Name": "TooManyDecimalPlaces",
+                                    "Type": "Info",
+                                    "Label": "The answer '{ANSWER}' has too many decimal places. The maximum is '{MAXLENGTH}'."
+                                },
+                                {
+                                    "Name": "TooManyDigits",
+                                    "Type": "Info",
+                                    "Label": "The answer '{ANSWER}' has too many digits. The maximum is '{MAXLENGTH}'."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Name": "Navigations",
+                    "Type": "Block",
+                    "Label": "Navigations",
+                    "Properties": [
+                        {
+                            "Name": "Fields",
+                            "Type": "Fields",
+                            "Properties": [
+                                {
+                                    "Name": "Next",
+                                    "Type": "Info",
+                                    "Label": "Next"
+                                },
+                                {
+                                    "Name": "Prev",
+                                    "Type": "Info",
+                                    "Label": "Previous"
+                                },
+                                {
+                                    "Name": "Stop",
+                                    "Type": "Info",
+                                    "Label": "Stop"
+                                },
+                                {
+                                    "Name": "First",
+                                    "Type": "Info",
+                                    "Label": "First"
+                                },
+                                {
+                                    "Name": "Last",
+                                    "Type": "Info",
+                                    "Label": "Last"
+                                },
+                                {
+                                    "Name": "GoTo",
+                                    "Type": "Info",
+                                    "Label": "Goto"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "Name": "EndOfInterview",
+                    "Type": "Info",
+                    "Label": "End of interview. Thank you for your participation."
+                },
+                {
+                    "Name": "InterviewStopped",
+                    "Type": "Info",
+                    "Label": "End of interview. Thank you for your participation."
+                },
+                {
+                    "Name": "AlreadyCompleted",
+                    "Type": "Info",
+                    "Label": "The interview is already completed."
+                },
+                {
+                    "Name": "Codes",
+                    "Type": "Block",
+                    "Label": "Codes",
+                    "Properties": [
+                        {
+                            "Name": "Fields",
+                            "Type": "Fields",
+                            "Properties": [
+                                {
+                                    "Name": "DK",
+                                    "Type": "Info",
+                                    "Label": "Don't know"
+                                },
+                                {
+                                    "Name": "NA",
+                                    "Type": "Info",
+                                    "Label": "No answer"
+                                },
+                                {
+                                    "Name": "REF",
+                                    "Type": "Info",
+                                    "Label": "Refused"
+                                },
+                                {
+                                    "Name": "Other",
+                                    "Type": "Info",
+                                    "Label": "Other"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

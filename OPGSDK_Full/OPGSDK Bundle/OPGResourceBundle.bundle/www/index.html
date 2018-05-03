@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Tell Me</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+
+<link rel="stylesheet" type="text/css" href="css/reset.css"></link>
+<link rel="stylesheet" type="text/css" href="css/index.css"></link>
+<link rel="stylesheet" type="text/css" href="css/theme.css"></link>
+<link rel="stylesheet" type="text/css" href="css/font.css"></link>
+
+<script src="js/library/jquery-2.1.0.min.js"></script>
+<script src="js/library/iscroll.js"></script>
+<script src="js/library/touche.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script> 
+<script type="text/javascript" src="js/commonScripts/platform_specific.js"></script>
+<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+<script src="js/commonScripts/languageScript.js"></script>
+<script src="js/commonScripts/utilityFunctions.js"></script>
+<script src="js/commonScripts/iosOnly.js"></script>
+<script src="js/commonScripts/app.js"></script>
+<script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="top_gradient"></div>
+	<div class="bodyWrapper">
+		<div class="spinner">
+		  <div class="dot1"></div>
+		  <div class="dot2"></div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="loginWrapper">
+			<div class="login_logo">
+				<img src="images/logo.png" height="auto" width="auto" />
+			</div>
+			<div class="login_header smallfont">
+				<p>
+					<span data-lang="welcometxt"></span>
+				</p>
+				<span data-lang="signintxt"></span>
+				<div class="appSite" data-attr="clickhere">
+					<span data-lang="clickhere"></span>
+				</div>
+
+			</div>
+			<div id="signin_form" class="largefont">
+				<div class="message smallfont"></div>
+                <input type="text" id="username"
+                data-lang="usernamePH" />
+                <input type="password"
+                id="password" data-lang="passwordPH" />
+
+                    <!--<input type="text" id="surveyURL"
+                    data-lang="surveyURL" />-->
+				<div id="signin_submit" class="button">
+					<span data-lang="signin"></span>
+				</div>
+			</div>
+		</div>
+		<div class="login_footer smallfont">
+			<div class="left">
+				<div class="appSite" data-attr="termsofuse">
+					<span data-lang="termsofuse"></span>
+				</div>
+				<div class="appSite" data-attr="privacy">
+					<span data-lang="privacy"></span>
+				</div>
+				<div class="extraLinks">
+					<div class="appSite" data-attr="Faqios">
+						<span data-lang="faq"></span>
+					</div>
+					<div class="appSite" data-attr="ContactUs">
+						<span data-lang="contact"></span>
+					</div>
+					<div class="appSite" data-attr="About">
+						<span data-lang="About"></span>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="rightItem smallFont">
+					<span data-lang="version">Version</span>
+				</div>
+				<div class="rightItem"><span data-lang="poweredBy"></span>&nbsp;<img
+					src="images/opglogo.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sitePage">
+		<div class="header">
+			<div class="btnWrapo">
+				<div class="backButton smallfont">
+					<span data-lang="back"></span>
+				</div>
+			</div>
+			<div class="clientLogo extrasmallfont">
+				<img src="images/header.png" class="largefont" />
+			</div>
+		</div>
+		<div class="linkContent"></div>
+	</div>
+</body>
+</html>

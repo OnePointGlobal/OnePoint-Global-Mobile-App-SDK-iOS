@@ -1,0 +1,37 @@
+.header {
+	z-index: 20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background: url('images/ipsoslogosmall.png') #006c6c no-repeat center;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.ui-page{
+	margin-top: 60px;
+}
+
+.ui-slider .ui-btn {
+    background-color: #009e9d;
+    background-image: linear-gradient(#009e9d,#009e9d);
+    border-color: #009e9d;
+}
+
+
+.ui-slider .ui-slider-input {
+    color: #009e9d;
+}
+
+.ui-slider .ui-btn:hover {
+    background-color: #2e4694;
+    background-image: linear-gradient(#009e9d,#009e9d);
+    border-color: #dedcdc;
+}
+
+.ui-slider .ui-btn-active {
+    background-color: #2e4694;
+    background-image: linear-gradient(#2e4694, #2e4694);
+    border-color: #dedcdc;
+}			
