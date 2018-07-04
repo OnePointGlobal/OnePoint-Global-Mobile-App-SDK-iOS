@@ -26,6 +26,8 @@
 #import "OPGReachability.h"
 #include <math.h>
 
+#define KEY_DATA @"HiYNZFOI1S1biFnoiFFWZcPwWBnhxqhkQ1Ipyh2yG7U="
+
 #define DevInterviewUrl @"http://apidev.1pt.mobi/i/interview"
 #define QCInterviewUrl @"http://apistaging.1pt.mobi/i/interview"
 #define LiveInterviewUrl @"https://api.1pt.mobi/i/interview"
@@ -179,7 +181,7 @@ static BOOL isResourceFound;
             //Username Password authentication
             NSString *username = [[NSUserDefaults standardUserDefaults] valueForKey:@"OPGPanelUsername"];
             NSString *password = [[NSUserDefaults standardUserDefaults] valueForKey:@"OPGPanelPassword"];
-            OPGAuthenticate *authResult = [self authenticate:username password:password error:&error];
+            OPGAuthenticate *authResult = [self authenticate:[username AES256DecryptWithKey:KEY_DATA] password:[password AES256DecryptWithKey:KEY_DATA] error:&error];
             return authResult.isSuccess.boolValue;
         }
         else if(authType.intValue == 1)
@@ -268,8 +270,8 @@ static BOOL isResourceFound;
     OPGAuthenticate *authResult = [parseManager parseAuthenticationResult:resultData];
     if (authResult.isSuccess.boolValue)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"OPGPanelUsername"];
-        [[NSUserDefaults standardUserDefaults] setObject:password forKey:@"OPGPanelPassword"];
+        [[NSUserDefaults standardUserDefaults] setObject:[username AES256EncryptWithKey:KEY_DATA] forKey:@"OPGPanelUsername"];
+        [[NSUserDefaults standardUserDefaults] setObject:[password AES256EncryptWithKey:KEY_DATA] forKey:@"OPGPanelPassword"];
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"OPGAuthType"];
     }
     return authResult;
@@ -712,7 +714,7 @@ static BOOL isResourceFound;
         changePassObj = [parseManager parseChangePassword:responseData];
         if (changePassObj.isSuccess) {
             //if password successfully changed, update the password in defaults for refreshing session
-            [[NSUserDefaults standardUserDefaults] setObject:newPassword forKey:@"OPGPanelPassword"];
+            [[NSUserDefaults standardUserDefaults] setObject:[newPassword AES256EncryptWithKey:KEY_DATA] forKey:@"OPGPanelPassword"];
         }
         return changePassObj;
     }
