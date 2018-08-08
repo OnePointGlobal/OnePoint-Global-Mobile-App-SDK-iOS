@@ -27,6 +27,17 @@
     return dateString;
 }
 
+-(NSString*) getLocale {
+    NSString *localeStr = [[NSLocale preferredLanguages] firstObject];
+    if (localeStr.length > 2) {
+        NSString *locale = [localeStr substringToIndex:2];
+        return locale;
+    }
+
+    NSLog(@"The language is %@", localeStr);
+    return localeStr;
+}
+
 #pragma mark - Entity Methods
 - (NSMutableDictionary*) getAuthEntity : (NSString*)userName password:(NSString*) password AppVersion:(NSString*) appVersion
 {
@@ -78,18 +89,22 @@
 
 - (NSMutableDictionary*) getForgotPasswordEntity : (NSString*)mailId AppVersion:(NSString*) AppVersion
 {
+    NSString *locale = [self getLocale];
     NSMutableDictionary *forgotPasswordValues = [[NSMutableDictionary alloc] init];
     [forgotPasswordValues setObject:mailId forKey:@"emailID"];
+    [forgotPasswordValues setObject:locale forKey:@"Language"];
     [forgotPasswordValues setObject:AppVersion forKey:@"AppVersion"];
     return forgotPasswordValues;
 }
 
 -(NSMutableDictionary*) getChangePasswordEntity : (NSString*)uniqueId currentPassword:(NSString*)currentPassword newPassword:(NSString*)newPassword
 {
+    NSString *locale = [self getLocale];
     NSMutableDictionary *changePasswordValues = [[NSMutableDictionary alloc] init];
     [changePasswordValues setObject:uniqueId forKey:@"SessionID"];
     [changePasswordValues setObject:[currentPassword MD5] forKey:@"CurrentPassword"];
     [changePasswordValues setObject:[newPassword MD5]  forKey:@"NewPassword"];
+    [changePasswordValues setObject:locale forKey:@"Language"];
     return changePasswordValues;
 }
 

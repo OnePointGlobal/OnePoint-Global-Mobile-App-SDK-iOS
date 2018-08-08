@@ -477,6 +477,16 @@ self.surveyList = [sdk getCountries:&error];
 -(BOOL)isOnline;
 
 /*!
+ @brief It checks whether the offline survey result is uploaded or not.
+ @discussion This checks whether the offline survey result is uploaded or not.
+ @code
+ BOOL isResultPresent = [sdk isSurveyResultsPresent];
+ @endcode
+ @return Boolean.
+ */
+-(BOOL)isSurveyResultsPresent;
+
+/*!
  @brief It logs out of the application.
  @discussion This method terminates the session.
  This method can be written in an Utility class.

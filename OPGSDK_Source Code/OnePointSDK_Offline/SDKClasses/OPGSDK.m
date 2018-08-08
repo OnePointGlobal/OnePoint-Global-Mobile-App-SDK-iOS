@@ -61,9 +61,9 @@ static BOOL isResourceFound;
 {
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:LiveInterviewUrl forKey:@"OPGInterviewUrl"];
-    [defaults setObject:LiveApiURL forKey:@"OPGApiUrl"];
-    [defaults setObject:LiveDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
+    [defaults setObject:QCInterviewUrl forKey:@"OPGInterviewUrl"];
+    [defaults setObject:QCApiURL forKey:@"OPGApiUrl"];
+    [defaults setObject:QCDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
 
     isResourceFound = [self isResourceBundleAvailable];
     if (!isResourceFound) {
@@ -170,7 +170,23 @@ static BOOL isResourceFound;
     else{
         return FALSE;
     }
-    
+}
+
+-(BOOL)isSurveyResultsPresent {
+    NSArray *contents = [[NSArray alloc] init];
+    NSString *panellistID = [[NSUserDefaults standardUserDefaults] valueForKey:@"PanelListID"];
+    NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *completedPath = [libraryPath stringByAppendingString:@"/Caches/OPG_SurveyCache_Completed/"];
+    NSString *resultsPath = [completedPath stringByAppendingString:panellistID];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:resultsPath]) {
+        contents = [fileManager contentsOfDirectoryAtPath:resultsPath error:nil];
+        if ([contents count] > 0) {
+            return true;
+        }
+        return false;
+    }
+    return false;
 }
 
 +(void)setUniqueId:(NSString*)uniqueID
@@ -192,7 +208,6 @@ static BOOL isResourceFound;
     if (![[NSFileManager defaultManager] fileExistsAtPath:bundlePath]) {
         return FALSE;
     }
-    
     return TRUE;
 }
 
