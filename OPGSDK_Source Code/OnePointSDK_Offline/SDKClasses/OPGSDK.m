@@ -59,11 +59,10 @@ static BOOL isResourceFound;
 #pragma mark - Init Method
 +(void)initializeWithUserName:(NSString *)userName withSDKKey:(NSString *)key
 {
-    
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:QCInterviewUrl forKey:@"OPGInterviewUrl"];
-    [defaults setObject:QCApiURL forKey:@"OPGApiUrl"];
-    [defaults setObject:QCDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
+    [defaults setObject:LiveInterviewUrl forKey:@"OPGInterviewUrl"];
+    [defaults setObject:LiveApiURL forKey:@"OPGApiUrl"];
+    [defaults setObject:LiveDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
 
     isResourceFound = [self isResourceBundleAvailable];
     if (!isResourceFound) {

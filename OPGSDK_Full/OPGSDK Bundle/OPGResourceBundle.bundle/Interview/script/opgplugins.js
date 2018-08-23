@@ -22,7 +22,7 @@
             var $popUp = $('<div/>')
             .attr('data-role', 'popup')
             .css({
-                'min-width': '200px',
+                'min-width': '240px',
                 'max-width': '480px'
             });
 

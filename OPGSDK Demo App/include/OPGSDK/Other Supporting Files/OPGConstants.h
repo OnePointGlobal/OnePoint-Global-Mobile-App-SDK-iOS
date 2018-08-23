@@ -14,11 +14,11 @@
 #define ErrorDomain @"com.OnePointSDK.ErrorDomain"
 
 /*--------------- SDK Versions ------------------------------- */
-#define LiteSDKVersion @"OnePointSDKv1.5"
-#define FullSDKVersion @"OnePointSDKv1.0"
+#define LiteSDKVersion @"OPGFeedbackSDKLite"
+#define FullSDKVersion @"OPGFeedbackSDK"
 
 /*--------------- SDK Error Descriptions ------------------------------- */
-#define NoSurveyMessage @"No Surveys available for Information provided"
+#define NoSurveyMessage @"No surveys available for Information provided"
 #define AuthenticationFailedMessage @"Authentication Failed"
 #define UsernamePasswordMessage @"Username/Password cannot be empty"
 #define UsernameSharedKeyMessage @"Username/Shared Key cannot be empty"

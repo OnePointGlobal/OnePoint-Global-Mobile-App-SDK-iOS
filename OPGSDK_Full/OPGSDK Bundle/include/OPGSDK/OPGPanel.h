@@ -30,7 +30,7 @@
  */
 @property(nonatomic,strong) NSString *panelDescription;
 /*!
- * @brief panelType : 1 indicates Normal and 2 indicates
+ * @brief panelType : 1 indicates Normal and 2 indicates CAPI
  */
 @property(nonatomic,strong) NSNumber *panelType;
 /*!

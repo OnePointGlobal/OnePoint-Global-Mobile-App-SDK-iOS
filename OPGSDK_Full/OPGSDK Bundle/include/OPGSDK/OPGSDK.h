@@ -386,11 +386,11 @@ self.surveyList = [sdk getCountries:&error];
  @param  panelistId Panelist ID
  @param  error An NSError object encapsulates information about an error condition in an extendable, object-oriented manner..
  @code
- OPGUploadResult *result = [sdk uploadResults:@"SURVEY_ID" panelistId:@"PANELIST_ID" error:&error]; 
+ OPGUploadResult *result = [sdk uploadResults:@"SURVEY_ID" panelistId:@"PANELIST_ID" error:&error];
  @endcode
  @return OPGUploadResult.
  */
--(OPGUploadResult *)uploadResults:(NSString *)surveyReference
+-(OPGUploadResult *)uploadResults:(NSString *)surveyId
                        panelistId:(NSString *)panelistId
                             error:(NSError **)error;
 
@@ -408,7 +408,7 @@ self.surveyList = [sdk getCountries:&error];
  @endcode
  @return OPGUploadResult.
  */
--(OPGUploadResult *)uploadOfflineResultFile:(NSString *)surveyReference
+-(OPGUploadResult *)uploadOfflineResultFile:(NSString *)surveyId
                                  panelistId:(NSString *)panelistId
                                    fileName:(NSString *)fileName
                                    filePath:(NSString *)filePath
@@ -475,6 +475,16 @@ self.surveyList = [sdk getCountries:&error];
  @return Boolean.
  */
 -(BOOL)isOnline;
+
+/*!
+ @brief It checks whether the offline survey result is uploaded or not.
+ @discussion This checks whether the offline survey result is uploaded or not.
+ @code
+ BOOL isResultPresent = [sdk isSurveyResultsPresent];
+ @endcode
+ @return Boolean.
+ */
+-(BOOL)isSurveyResultsPresent;
 
 /*!
  @brief It logs out of the application.

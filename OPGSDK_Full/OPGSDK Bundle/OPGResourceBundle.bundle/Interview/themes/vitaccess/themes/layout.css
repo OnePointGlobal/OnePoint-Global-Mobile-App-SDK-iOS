@@ -5,12 +5,12 @@
 	left: 0;
 	right: 0;
 	height: 60px;
-	background: url('images/vitaccesslogosmall.png') #eff1f1 no-repeat center;
+    background: url('images/vitaccesslogosmall.png') #fff no-repeat center;
 	border-bottom: 1px solid #eaeaea;
 }
 
 .ui-page{
-	margin-top: 60px;
+	padding-top: 60px;
 }
 
 .ui-slider .ui-btn {

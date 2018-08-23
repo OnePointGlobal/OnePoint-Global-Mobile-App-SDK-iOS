@@ -35,4 +35,11 @@
 @property(nonatomic, strong) NSNumber* distance;
 /*! @brief range : Range is the radius for the geofenced zone. */
 @property(nonatomic, strong) NSNumber* range;
+
+/*! @brief isEnter : bool value of true indicates entry event and false indicates not an entry event into the region.. */
+@property(nonatomic, strong) NSNumber* isEnter;
+/*! @brief isExit : bool value of true indicates exit event and false indicates not an exit event into the region.. */
+@property(nonatomic, strong) NSNumber* isExit;
+/*! @brief timeInterval : Duration of stay inside the region in minutes. */
+@property(nonatomic, strong) NSNumber* timeInterval;
 @end

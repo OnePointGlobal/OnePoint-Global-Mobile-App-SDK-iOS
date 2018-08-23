@@ -41,6 +41,18 @@
         <param name="ios-package" value="OPGMediaPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SignaturePlugin">
+        <param name="ios-package" value="SignaturePlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CurrencyPlugin">
+        <param name="ios-package" value="CurrencyPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="OCRPlugin">
+        <param name="ios-package" value="OCRPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="RuntimePlugin">
         <param name="ios-package" value="OPGRuntimePlugin" />
         <param name="onload" value="true" />

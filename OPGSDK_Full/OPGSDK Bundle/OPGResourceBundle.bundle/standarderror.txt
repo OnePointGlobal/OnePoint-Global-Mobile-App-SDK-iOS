@@ -144,12 +144,12 @@
                                 {
                                     "Name": "QuestionTooLittleText",
                                     "Type": "Info",
-                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): The answer does not have enough text, current length is {LENGTH}, minimum is {MINLENGTH}."
+                                    "Label": "The answer does not have enough text, current length is {LENGTH}, minimum is {MINLENGTH}."
                                 },
                                 {
                                     "Name": "QuestionTooMuchText",
                                     "Type": "Info",
-                                    "Label": "Question '{QUESTION}' ({QUESTION_NUMBER}): The answer has too much text, current length is {LENGTH}, maximum is {MAXLENGTH}."
+                                    "Label": "The answer has too much text, current length is {LENGTH}, maximum is {MAXLENGTH}."
                                 },
                                 {
                                     "Name": "ThousandsSeparator",

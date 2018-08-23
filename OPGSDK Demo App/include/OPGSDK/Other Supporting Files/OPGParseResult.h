@@ -27,6 +27,7 @@
  This method does parsing of json response obtained from getSurveys api.
  */
 -(NSMutableArray *)parseSurveys:(NSArray *)responseList
+                          isLiteSDK:(BOOL)isLiteSDK
                           error:(NSError **)error;
 /*!
  This method does parsing of json response obtained from authenticate api.

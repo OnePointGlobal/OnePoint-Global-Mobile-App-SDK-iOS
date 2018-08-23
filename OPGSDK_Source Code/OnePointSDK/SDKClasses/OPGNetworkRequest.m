@@ -13,8 +13,8 @@
 #import "NSString+OPGMD5.h"
 #import "OPGConstants.h"
 
-#define MySurveysSDKUsername @"Username"
-#define MySurveysSDKSharedkey @"SharedKey"
+#define MySurveysSDKUsername @"OnePointDevelopers"
+#define MySurveysSDKSharedkey @"opg-ind-blr-OnePointGlobalApp"
 
 @implementation OPGNetworkRequest
 

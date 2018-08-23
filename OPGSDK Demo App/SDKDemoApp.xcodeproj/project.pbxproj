@@ -54,10 +54,10 @@
 		7859F9E51DA4CAAF0041E447 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AF775C1D9E372300048689 /* libz.tbd */; };
 		7859F9E81DA4CACE0041E447 /* OPGResourceBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7859F9E71DA4CACE0041E447 /* OPGResourceBundle.bundle */; };
 		786AB6151E7A57C000D895DE /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 786AB6141E7A57C000D895DE /* libxml2.2.tbd */; };
-		787A9CFB1F61580A00CC3F6A /* libOPGSDKv1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C1E3D31E8282020091F289 /* libOPGSDKv1.0.a */; };
-		787A9CFC1F61581700CC3F6A /* libOPGSDKv1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C1E3D31E8282020091F289 /* libOPGSDKv1.0.a */; };
 		787B10161DF005F100B6DFC4 /* AuthenticationWithSocialMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 787B10151DF005F100B6DFC4 /* AuthenticationWithSocialMediaViewController.m */; };
 		787B10181DF0259100B6DFC4 /* AuthenticationWithSocialMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787B10171DF0259100B6DFC4 /* AuthenticationWithSocialMediaViewController.swift */; };
+		7899597A212E8C93000EB8A3 /* libOPGSDKv1.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78995979212E8C93000EB8A3 /* libOPGSDKv1.5.a */; };
+		7899597B212E8CA1000EB8A3 /* libOPGSDKv1.5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78995979212E8C93000EB8A3 /* libOPGSDKv1.5.a */; };
 		789E99F61EF13B68003BECED /* GeofencingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789E99F51EF13B68003BECED /* GeofencingViewController.swift */; };
 		78B0D5BB1DEEEA9400B74628 /* CountriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B0D5BA1DEEEA9400B74628 /* CountriesTableViewController.m */; };
 		78B0D5BD1DEEF0CE00B74628 /* CountryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B0D5BC1DEEF0CE00B74628 /* CountryTableViewController.swift */; };
@@ -134,6 +134,7 @@
 		787B10141DF005F100B6DFC4 /* AuthenticationWithSocialMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationWithSocialMediaViewController.h; sourceTree = "<group>"; };
 		787B10151DF005F100B6DFC4 /* AuthenticationWithSocialMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationWithSocialMediaViewController.m; sourceTree = "<group>"; };
 		787B10171DF0259100B6DFC4 /* AuthenticationWithSocialMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationWithSocialMediaViewController.swift; sourceTree = "<group>"; };
+		78995979212E8C93000EB8A3 /* libOPGSDKv1.5.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOPGSDKv1.5.a; path = lib/libOPGSDKv1.5.a; sourceTree = "<group>"; };
 		789E99F51EF13B68003BECED /* GeofencingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeofencingViewController.swift; sourceTree = "<group>"; };
 		78AF775C1D9E372300048689 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		78AF775E1D9E372A00048689 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -165,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				787A9CFB1F61580A00CC3F6A /* libOPGSDKv1.0.a in Frameworks */,
+				7899597B212E8CA1000EB8A3 /* libOPGSDKv1.5.a in Frameworks */,
 				786AB6151E7A57C000D895DE /* libxml2.2.tbd in Frameworks */,
 				138ED3AF1DA3CBE500424A8D /* libc++.tbd in Frameworks */,
 				138ED3B01DA3CBE500424A8D /* libsqlite3.tbd in Frameworks */,
@@ -178,7 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				787A9CFC1F61581700CC3F6A /* libOPGSDKv1.0.a in Frameworks */,
+				7899597A212E8C93000EB8A3 /* libOPGSDKv1.5.a in Frameworks */,
 				78EFAAA21E7A657E0017790C /* libxml2.2.tbd in Frameworks */,
 				7859F9E51DA4CAAF0041E447 /* libz.tbd in Frameworks */,
 				7859F9E41DA4CAAA0041E447 /* libiconv.tbd in Frameworks */,
@@ -317,6 +318,7 @@
 		78AF775B1D9E372300048689 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78995979212E8C93000EB8A3 /* libOPGSDKv1.5.a */,
 				787A9CF81F6157A400CC3F6A /* libOPGSDKv1.5_Lite.a */,
 				78C1E3D31E8282020091F289 /* libOPGSDKv1.0.a */,
 				786AB6141E7A57C000D895DE /* libxml2.2.tbd */,

@@ -122,6 +122,9 @@ blink {
 nobr { 
  white-space: normal; 
  }
+ .ui-title{
+  margin:0 !important;
+ }
 
 /*---------Disable mobile orange blue sticky color effects----------*/
 

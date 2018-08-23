@@ -56,4 +56,5 @@
  This delegate property of type OPGGeoFenceSurveyDelegate.
  */
 @property(assign, nonatomic) id<OPGGeoFenceSurveyDelegate> fencingDelegate;
+@property(nonatomic,retain) NSDate *locatonTimestamp;
 @end
