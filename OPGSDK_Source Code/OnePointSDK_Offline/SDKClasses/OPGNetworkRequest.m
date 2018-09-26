@@ -39,6 +39,13 @@
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"OPGUniqueID"];
 }
 
+#pragma mark - Private Methods
+-(NSString*) removeNewLineAndSpaces: (NSString*)originalString {
+    NSArray *split = [originalString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    split = [split filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    NSString *result = [split componentsJoinedByString:@""];
+    return result;
+}
 
 
 #pragma mark - Networking Operations
@@ -58,7 +65,7 @@
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:POST];
@@ -89,7 +96,7 @@
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:POST];

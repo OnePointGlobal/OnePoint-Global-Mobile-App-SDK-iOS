@@ -39,7 +39,13 @@
     return [[NSUserDefaults standardUserDefaults] valueForKey:@"OPGUniqueID"];
 }
 
-
+#pragma mark - Private Methods
+-(NSString*) removeNewLineAndSpaces: (NSString*) originalString {
+    NSArray *split = [originalString componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    split = [split filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+    NSString *result = [split componentsJoinedByString:@""];
+    return result;
+}
 
 #pragma mark - Networking Operations
 -(NSMutableURLRequest *)createRequest:(NSMutableDictionary*)values forApi:(NSString*)apiName
@@ -58,7 +64,7 @@
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:POST];
@@ -86,10 +92,15 @@
     
     if (!([[self getSDKUsername] isEqualToString:MySurveysSDKUsername] && [[self getSDKSharedKey] isEqualToString:MySurveysSDKSharedkey]))
     {
+        NSLog(@"%@", [self getSDKUsername]);
+        NSLog(@"%@", [self getSDKSharedKey]);
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-        [request setValue:authValue forHTTPHeaderField:@"Authorization"];
+
+        NSLog(@"Auth Value is %@", [self removeNewLineAndSpaces:authValue] );
+
+        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     }
     
     [request setHTTPMethod:POST];
@@ -102,6 +113,7 @@
     id responseList;
     @try {
         urlData =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+
         if (!urlData) {
             int errorCode = 4;
             NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
@@ -117,6 +129,8 @@
         
         responseList = [NSJSONSerialization JSONObjectWithData:urlData options:kNilOptions
                                                          error:&error];
+
+        NSLog(@"Server Response is %@",responseList);
         
         if ([response statusCode] >=200 && [response statusCode] <300)
         {
