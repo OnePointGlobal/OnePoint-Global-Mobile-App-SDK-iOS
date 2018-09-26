@@ -61,7 +61,7 @@ class GetPanellistProfileViewController: UIViewController, UITextFieldDelegate
         
         // get a sub-string with a ClosedRange
         let range = start...end
-        self.panelDOB.text = obj.dob[range]
+        self.panelDOB.text = String(obj.dob[range])
         self.panelGender.text = obj.gender.stringValue
         self.panelPostalCode.text = obj.postalCode
     }

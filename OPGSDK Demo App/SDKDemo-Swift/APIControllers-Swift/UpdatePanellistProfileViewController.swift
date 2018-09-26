@@ -50,8 +50,8 @@ class UpdatePanellistProfileViewController: UIViewController, UITextFieldDelegat
     {
         if textField.isEqual(txtPostalCode) || textField.isEqual(txtGender) || textField.isEqual(txtDOB) || textField.isEqual(txtAddr2) || textField.isEqual(txtAddr1)
         {
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-            NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector:  #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         }
         
         if textField.isEqual(txtDOB)
@@ -68,13 +68,13 @@ class UpdatePanellistProfileViewController: UIViewController, UITextFieldDelegat
         }
     }
     
-    func keyboardWillShow(notification: NSNotification)
+    @objc func keyboardWillShow(notification: NSNotification)
     {
         self.viewHeight.constant = -170                    //iPhone 5S
         self.view.updateConstraints()
     }
     
-    func keyboardWillHide(notification: NSNotification)
+    @objc func keyboardWillHide(notification: NSNotification)
     {
         self.viewHeight.constant = 20                       //iPhone 5S
         self.view.updateConstraints()
@@ -146,7 +146,7 @@ class UpdatePanellistProfileViewController: UIViewController, UITextFieldDelegat
         let rect = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216)
         self.datePicker = UIDatePicker(frame:rect)
         self.datePicker.backgroundColor = UIColor.white
-        self.datePicker.datePickerMode = UIDatePickerMode.date
+        self.datePicker.datePickerMode = UIDatePicker.Mode.date
         textField.inputView = self.datePicker
         
         // ToolBar
@@ -167,7 +167,7 @@ class UpdatePanellistProfileViewController: UIViewController, UITextFieldDelegat
     }
 
     
-    func doneClick()
+    @objc func doneClick()
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -175,7 +175,7 @@ class UpdatePanellistProfileViewController: UIViewController, UITextFieldDelegat
         txtDOB.resignFirstResponder()
     }
     
-    func cancelClick()
+    @objc func cancelClick()
     {
         txtDOB.resignFirstResponder()
     }

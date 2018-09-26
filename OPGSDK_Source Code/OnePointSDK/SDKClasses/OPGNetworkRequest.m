@@ -129,8 +129,6 @@
         
         responseList = [NSJSONSerialization JSONObjectWithData:urlData options:kNilOptions
                                                          error:&error];
-
-        NSLog(@"Server Response is %@",responseList);
         
         if ([response statusCode] >=200 && [response statusCode] <300)
         {
