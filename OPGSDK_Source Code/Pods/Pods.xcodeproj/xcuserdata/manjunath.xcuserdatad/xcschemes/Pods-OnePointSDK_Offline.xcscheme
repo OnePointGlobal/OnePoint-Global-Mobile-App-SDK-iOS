@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BC07B73FC4396FACE6039FB0D0AEF6D3"
+               BlueprintIdentifier = "5C8D82BBF5860D09AA8271A2990460BD"
                BuildableName = "Pods_OnePointSDK_Offline.framework"
                BlueprintName = "Pods-OnePointSDK_Offline"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BC07B73FC4396FACE6039FB0D0AEF6D3"
+            BlueprintIdentifier = "5C8D82BBF5860D09AA8271A2990460BD"
             BuildableName = "Pods_OnePointSDK_Offline.framework"
             BlueprintName = "Pods-OnePointSDK_Offline"
             ReferencedContainer = "container:Pods.xcodeproj">

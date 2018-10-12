@@ -60,4 +60,7 @@
 
 /*! @brief std : STD Code of the country. */
 @property (nonatomic,strong) NSString *std;
+
+/*! @brief additionalParams : additionalParams used by Runtime for question navigation. */
+@property (nonatomic,strong) NSString *additionalParams;
 @end

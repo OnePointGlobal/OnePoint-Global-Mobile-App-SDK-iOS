@@ -14,8 +14,8 @@
 
 @interface Property : NSObject < IProperty > {
  @public
-  NSString *__Name_;
-  id __Value_;
+  NSString *_name;
+  id _value;
 }
 
 - (id)initWithNSString:(NSString *)name

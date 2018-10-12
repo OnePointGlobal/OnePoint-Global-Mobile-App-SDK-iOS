@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>OPGRuntime.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-OnePointSDK_Offline.xcscheme</key>
 		<dict>
 			<key>isShown</key>

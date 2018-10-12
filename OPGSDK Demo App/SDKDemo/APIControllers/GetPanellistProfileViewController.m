@@ -52,6 +52,11 @@
     OPGSDK* sdk = [OPGSDK new];                   // Creating OPGSDK instance
     NSError *error;
     OPGPanellistProfile *profile = [sdk getPanellistProfile:&error];
+    //NSLog(@"The additional Field String is %@", profile.additionalParams);
+    //NSDictionary *dict = [self parseAdditionalFields:profile.additionalParams panelID:@"51599"];
+    //NSLog(@"The additional Field Dictionary is %@", [dict allValues]);
+    NSDictionary *profileDict = [self convertProfileToDictionary:profile panelID:@"51599"];
+    NSLog(@"Final Panellist Profile is %@", profileDict);
     [self setProfile:profile];
 }
 
@@ -70,5 +75,48 @@
 }
 
 
+-(NSDictionary*) parseAdditionalFields: (NSString*) additionalFieldStr panelID:(NSString*) panelID {
+    NSMutableDictionary *additionalFieldsDict = [NSMutableDictionary new];
+    NSArray *additionalFieldArray = [additionalFieldStr componentsSeparatedByString:@","];
+    NSString* panelIDToRemove = [panelID stringByAppendingString:@"-"];
+    for (NSString* field in additionalFieldArray) {
+        if ([field containsString:panelIDToRemove]) {
+            NSString* keyValuePair = [field stringByReplacingOccurrencesOfString:panelIDToRemove withString:@""];
+            NSArray *keyValueArray = [keyValuePair componentsSeparatedByString:@":"];
+            if([keyValueArray count]==2) {
+                [additionalFieldsDict setObject:keyValueArray[1] forKey:keyValueArray[0]];
+            }
+        }
+    }
+    return additionalFieldsDict;
+}
+
+
+-(NSDictionary*) convertProfileToDictionary: (OPGPanellistProfile*) profile panelID:(NSString*) panelID{
+    // WORK IN PROGRESS
+    NSMutableDictionary *profileDict = [NSMutableDictionary new];
+    if (profile == nil) {
+        // empty dictionary
+        return profileDict;
+    }
+
+    [profileDict setValue:profile.title forKey:@"Title"];
+    [profileDict setValue:profile.address1 forKey:@"Address1"];
+    [profileDict setValue:profile.address2 forKey:@"Address2"];
+    [profileDict setValue:profile.DOB forKey:@"DOB"];
+    [profileDict setValue:profile.email forKey:@"Email"];
+    [profileDict setValue:profile.mobileNumber forKey:@"MobileNumber"];
+    [profileDict setValue:profile.firstName forKey:@"FirstName"];
+    [profileDict setValue:profile.lastName forKey:@"LastName"];
+    [profileDict setValue:[profile.gender stringValue] forKey:@"Gender"];
+    [profileDict setValue:profile.postalCode forKey:@"PostalCode"];
+    [profileDict setValue:profile.mediaID forKey:@"MediaID"];
+
+    // ADD ADDITIONAL FIELDS TO THE DICTIONARY
+    NSString *additionalFieldString = profile.additionalParams;
+    NSDictionary *additionalFieldsDict = [self parseAdditionalFields:additionalFieldString panelID:panelID];
+    [profileDict addEntriesFromDictionary:additionalFieldsDict];
+    return profileDict;
+}
 
 @end

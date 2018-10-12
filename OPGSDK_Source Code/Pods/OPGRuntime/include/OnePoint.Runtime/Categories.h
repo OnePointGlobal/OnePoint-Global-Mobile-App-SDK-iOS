@@ -39,6 +39,8 @@
 - (void)set___idx:(int)index withICategory:(id<ICategory>)value;
 - (id)get___idxWithNSString:(NSString *)searchKey;
 - (void)set___idxWithNSString:(NSString *)searchKey withICategory:(id<ICategory>)value;
+-(id<ICategory>)get___idxwithid:(id)searchKey;
+-(void)set___idxwithid:(id)searchKey withValue:(id<ICategory>)value;
 - (id)initWithNSString:(NSString *)order;
 - (int)getCountWithoutOthers;
 - (void)setCountWithoutOthers:(int)value;

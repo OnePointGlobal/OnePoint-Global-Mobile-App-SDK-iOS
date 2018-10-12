@@ -9,7 +9,7 @@
 #import "OPGPanellistProfile.h"
 
 @implementation OPGPanellistProfile
-@synthesize title, firstName,lastName,email,mobileNumber,address1,address2,DOB,gender,postalCode, mediaID, countryName, std;
+@synthesize title, firstName,lastName,email,mobileNumber,address1,address2,DOB,gender,postalCode, mediaID, countryName, std, additionalParams;
 
 -(NSString *)description{
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
@@ -105,6 +105,14 @@
         [dict setObject:@"" forKey:@"std"];
         
     }
+
+    if (additionalParams !=nil) {
+        [dict setObject:additionalParams forKey:@"additionalParams"];
+    }
+    else{
+        [dict setObject:@"" forKey:@"additionalParams"];
+
+    }
     return [dict description];
 }
 
@@ -123,6 +131,7 @@
     [encoder encodeObject:self.mediaID forKey:@"mediaID"];
     [encoder encodeObject:self.countryName forKey:@"countryName"];
     [encoder encodeObject:self.std forKey:@"std"];
+    [encoder encodeObject:self.additionalParams forKey:@"additionalParams"];
 }
 
 -(id)initWithCoder:(NSCoder *)decoder {
@@ -141,6 +150,7 @@
         self.mediaID = [decoder decodeObjectForKey:@"mediaID"];
         self.countryName = [decoder decodeObjectForKey:@"countryName"];
         self.std = [decoder decodeObjectForKey:@"std"];
+        self.additionalParams = [decoder decodeObjectForKey:@"additionalParams"];
     }
     return self;
 }

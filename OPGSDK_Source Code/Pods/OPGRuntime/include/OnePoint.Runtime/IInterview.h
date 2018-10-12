@@ -63,8 +63,8 @@
 - (void)setGridTemplate:(NSString *)value;
 - (NSString *)getLabelType;
 - (void)setLabelType:(NSString *)value;
-- (NSString *)getLanguage;
-- (void)setLanguage:(NSString *)value;
+- (NSString *)getlanguage;
+- (void)setlanguage:(NSString *)value;
 - (NSString *)getLayoutTemplate;
 - (void)setLayoutTemplate:(NSString *)value;
 - (long long int)getLocale;

@@ -21,11 +21,13 @@
   int bufPos_;
   NSInputStream *stream_;
   NSFileHandle *file;
+    BOOL isUserStream_;
 }
 
 + (int)getEOF;
-- (id)initWithJavaIoInputStream:(NSInputStream *)s withData:(NSData*)byteData;
-- (id)initWithNSString:(NSString *)fileName;
+//- (id)initWithJavaIoInputStream:(NSInputStream *)s withData:(NSData*)byteData;
+- (id)initWithJavaIoInputStream:(NSInputStream *)s withData:(NSData*)byteData withBool:(BOOL)isUserStream;
+- (id)initWithNSString:(NSString *)fileName withBool:(BOOL)isUserStream;
 - (id)initWithBuffer:(Buffer *)b;
 - (void)dealloc;
 - (void)Close;

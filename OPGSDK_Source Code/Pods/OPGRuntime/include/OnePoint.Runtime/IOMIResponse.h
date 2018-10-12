@@ -30,7 +30,7 @@
 - (void)setInitial:(id)value;
 - (NSNumber *)getIsDirty;
 - (void)setIsDirty:(NSNumber *)value;
-- (id)getValue;
+- (id)getvalue;
 - (void)setValue:(id)value;
 - (void) setvalue:(id)value;
 - (id<IValue>)getValueObj;

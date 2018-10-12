@@ -111,8 +111,8 @@
 - (void)setInterviewStatus:(InterviewStatus)value;
 - (NSString *)getLabelType;
 - (void)setLabelType:(NSString *)value;
-- (NSString *)getLanguage;
-- (void)setLanguage:(NSString *)value;
+- (NSString *)getlanguage;
+- (void)setlanguage:(NSString *)value;
 - (NSString *)getLayoutTemplate;
 - (void)setLayoutTemplate:(NSString *)value;
 - (long long int)getLocale;
@@ -163,6 +163,7 @@
 - (void) setstatus:(InterviewStatus) status;
 - (void)terminate:(NSNumber *)signal_ :(BOOL)writeData :(TerminateStatusEnm)status;
 - (void)initialize__WithId:(id)json;
+- (void)complete;
 - (void)suspend;
 - (void)log:(NSString *)message withId:(id)level;
 - (void)snapForward;

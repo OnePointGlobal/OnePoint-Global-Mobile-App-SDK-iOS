@@ -323,6 +323,7 @@
     profileObj.gender = [[panelistProfile valueForKey:@"Gender"] intValue] == 0 ? [NSNumber numberWithBool:FALSE] : [NSNumber numberWithBool:TRUE];
     profileObj.postalCode = [panelistProfile valueForKey:@"PostalCode"];
     profileObj.mediaID = [panelistProfile valueForKey:@"MediaID"];
+    profileObj.additionalParams = [panelistProfile valueForKey:@"Remark"];    // We get in Remarks from the API but showing as additional fields
     
     country = [self parseCountry:[panelistProfile valueForKey:@"Country"]];
     profileObj.countryName = country.name;

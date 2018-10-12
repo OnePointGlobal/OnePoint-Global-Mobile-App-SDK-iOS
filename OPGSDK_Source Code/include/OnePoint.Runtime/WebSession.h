@@ -36,7 +36,7 @@
     
 }
 //-(InterviewSession*)createSession:(HttpContext*)context;
--(InterviewSession*)createSession:(NSString*)surveyName withIplayer:(id<IPlayer>)player withType:(int)renderType values:(NSDictionary *)values;
+-(InterviewSession*)createSession:(NSString*)surveyName withIplayer:(id<IPlayer>)player withType:(int)renderType values:(NSDictionary *)values additionalValues: (NSDictionary *)additionalValues;
 -(InterviewSession*)createSession:(NSString*)surveyName withNSData:(NSData*)classFile withNSData:(NSData*)stringFile withIplayer:(id<IPlayer>)player;
 -(InterviewSession*)createSession:(NSString*)surveyName withIplayer:(id<IPlayer>)player withType:(int)renderType loadStream:(Byte *)byteStream withLength:(int)length withLongStingByteArray:(Byte *)longByte withLongStrLength:(int)longStrLength;
 - (id)init;
@@ -45,6 +45,7 @@
 -(void)setInterviewSession:(InterviewSession*)value;
 -(InterviewSession*)getSession;
 -(Interview*)buildInterview:(NSString*)name withSID:(NSString *)sid;
+-(Interview*)buildInterview:(NSString*)name withSID:(NSString *)sid additionalValues: (NSDictionary *)additionalValues;
 -(InterviewSampleRecord*) buildSampleRecord;
 -(id<IInterviewInfo>)buildInfoRecord:(HttpContext*)context;
 -(id<IProperties>) buildBrowserProperties:(HttpContext*)context;

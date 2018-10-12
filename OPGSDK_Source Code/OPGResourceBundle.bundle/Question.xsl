@@ -1438,6 +1438,10 @@
             <xsl:attribute name="value">
                 <xsl:value-of select="@Value"/>
             </xsl:attribute>
+	    <!--- Hidden -->
+      	    <xsl:if test="Style/@Hidden = 'true'">
+        	<xsl:attribute name="hidden">true</xsl:attribute>
+	    </xsl:if>
         </xsl:element>
     </xsl:template>
     
@@ -1954,6 +1958,37 @@
                     <xsl:attribute name="style">
                         <xsl:call-template name="ControlStyle"/>
                     </xsl:attribute>
+	<!--- Initial Option -->
+          <xsl:element name="option">
+            <!--- Set Option Style -->
+            <xsl:for-each select="Label">
+              <xsl:attribute name="style">
+                <xsl:call-template name="LabelStyle"/>
+              </xsl:attribute>
+            </xsl:for-each>
+            <!--- Set Option Class -->
+            <xsl:attribute name="class">mrMultiple</xsl:attribute>
+            <!--- Check if selected -->
+            <xsl:if test="@Checked = 'true'">
+              <xsl:attribute name="selected"/>
+            </xsl:if>
+            <xsl:choose>
+              <xsl:when test="@IsHeading">
+                <!--- Option value -->
+                <xsl:attribute name="value">
+                  <xsl:value-of select="''"/>
+                </xsl:attribute>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:attribute name="value">
+                  <xsl:value-of select="@Name"/>
+                </xsl:attribute>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:for-each select="Label">
+              <xsl:call-template name="LabelText"/>
+            </xsl:for-each>
+          </xsl:element>
                     <!--- Drop list categories -->
                     <xsl:for-each select="Category">
                         <xsl:choose>

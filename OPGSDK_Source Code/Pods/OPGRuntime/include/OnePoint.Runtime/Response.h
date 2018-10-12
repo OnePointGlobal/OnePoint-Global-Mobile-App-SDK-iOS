@@ -37,6 +37,7 @@
     id<IValue> _responseivalue;
     Interview *_interview;
 }
+@property(nonatomic,retain)id _value;
 
 - (id)init;
 - (id)initWithIQuestion:(id<IQuestion>)question_ withInterview:(Interview *)interview;
@@ -57,7 +58,7 @@
 - (void)setName:(NSString *)value;
 - (id<IResponses>)getOther;
 - (void)setOther:(id<IResponses>)value;
-- (id)getValue;
+- (id)getvalue;
 - (void)setValue:(id)value;
 - (id<IValue>)getValueObj;
 - (void)setValueObj:(id<IValue>)value;

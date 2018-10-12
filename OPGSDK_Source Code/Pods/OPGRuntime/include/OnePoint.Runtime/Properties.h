@@ -14,7 +14,9 @@
 #import "CollectionObject.h"
 @interface  Properties :CollectionObject <IProperties> {
     NSString* _name;
+    int _count;
 }
+@property(nonatomic,assign)int _count;
 
 - (id)init;
 - (id)initWithNSString:(NSString *)name;

@@ -6,11 +6,11 @@
 //  Copyright © 2016 OnePointGlobal. All rights reserved.
 //
 
-#define UserNameSuccess @""
+#define UserNameSuccess @"OnePointDevelopers"
+#define SharedKeySuccess @"opg-ind-blr-OnePointGlobalApp"
 #define UserNameFailed @"knm"
 #define GeoUserNameSuccess @""
 #define GeoSharedKeySuccess @""
-#define SharedKeySuccess @""
 #define SharedKeyFailed @"0a4d8e5d-cea2674f33a"
 #define UniqueIdSuccess @""
 #define WrongUniqueId @"IDENTITY1231212"
@@ -22,8 +22,8 @@
 #define CurrPassword @"abcd12345"
 #define CurrPasswordFailed @"abcd"
 #define NewPassword @"12345"
-#define AuthUserNameSuccess @""
-#define AuthPasswordSuccess @""
+#define AuthUserNameSuccess @"m.ramesh"
+#define AuthPasswordSuccess @"mramesh"
 #define GeoAuthUserNameSuccess @""
 #define GeoAuthPasswordSuccess @""
 #define AuthUserNameFailed @"kavm"

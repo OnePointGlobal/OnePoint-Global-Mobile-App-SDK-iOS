@@ -19,6 +19,7 @@
 
 #import <objc/message.h>
 #import "OPG.h"
+#import "OPGPanellistProfile.h"
 #import "OPGCommandDelegateImpl.h"
 #import "OPGConfigParser.h"
 #import "OPGUserAgentUtil.h"
@@ -238,9 +239,22 @@
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     dispatch_async(myQueue, ^{
         NSNumber *num = [self checkFileExists];
-        NSLog(@"checkFileExists %d",num);
+        NSLog(@"checkFileExists %@",num);
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self start:scriptPath surveyName:surveyName surveyID:surveyID panelID:panelID panellistID:panellistID];
+            [self start:scriptPath surveyName:surveyName surveyID:surveyID panelID:panelID panellistID:panellistID panellistProfile:nil];
+        });
+     });
+}
+
+-(void)loadOfflineSurvey:(NSString *)scriptPath surveyName:(NSString *)surveyName surveyID:(NSNumber *)surveyID panelID:(NSNumber *)panelID panellistID:(NSNumber *)panellistID panellistProfile:(OPGPanellistProfile*)panellistProfile {
+    // Overloaded loadOfflineSurvey for passing Additional Sample Record
+    [self initWebView];
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        NSNumber *num = [self checkFileExists];
+        NSLog(@"checkFileExists %@",num);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self start:scriptPath surveyName:surveyName surveyID:surveyID panelID:panelID panellistID:panellistID panellistProfile:panellistProfile];
         });
      });
 }
@@ -742,7 +756,7 @@
 }
 
 
-- (void)start:(NSString*)scriptPath surveyName:(NSString*)surveyName surveyID:(NSNumber*)surveyID panelID:(NSNumber*)panelID panellistID:(NSNumber*)panellistID
+- (void)start:(NSString*)scriptPath surveyName:(NSString*)surveyName surveyID:(NSNumber*)surveyID panelID:(NSNumber*)panelID panellistID:(NSNumber*)panellistID panellistProfile:(OPGPanellistProfile*)panellistProfile
 {
     
     //NSLog(@"startRuntimePlugin");
@@ -760,17 +774,26 @@
 
             if ([[NSFileManager defaultManager] fileExistsAtPath:scriptPath])
             {
-                cont = [[Controller alloc]initWithSurveyId:[values valueForKey:@"surveyID"]];
-                [OPGRuntimePlugin setController:cont];
-                player = [[WebPlayer alloc]initWithInteractor:self];
+                self->cont = [[Controller alloc]initWithSurveyId:[values valueForKey:@"surveyID"]];
+                [OPGRuntimePlugin setController:self->cont];
+                self->player = [[WebPlayer alloc]initWithInteractor:self];
 
                 WebSession *lSession=[[WebSession alloc]init];
-                [player setWebSession:lSession];
-                [OPGRuntimePlugin setWebPlayer:player];
-                session = [lSession createSession:surveyName withIplayer:player withType:0 values:values];
-                [OPGRuntimePlugin setInterviewSession:session];
+                [self->player setWebSession:lSession];
+                [OPGRuntimePlugin setWebPlayer:self->player];
 
-                [session execute];
+                if (panellistProfile == nil) {
+                    // Normal offline survey
+                    self->session = [lSession createSession:surveyName withIplayer:self->player withType:0 values:values];
+                }
+                else {
+                    // Offline survey with Additional Params in Sample Record
+                    NSDictionary *panellistProfileValues = [self convertProfileToDictionary:panellistProfile panelID:[panelID stringValue]];
+                    NSLog(@"Values in Start Method is %@", panellistProfileValues);
+                    self->session = [lSession createSession:surveyName withIplayer:self->player withType:0 values:values additionalValues:panellistProfileValues];
+                }
+                [OPGRuntimePlugin setInterviewSession:self->session];
+                [self->session execute];
                 isScriptAvailable=TRUE;
 
             }
@@ -794,6 +817,49 @@
       });
     
     });
+}
+
+-(NSDictionary*) convertProfileToDictionary: (OPGPanellistProfile*) profile panelID:(NSString*) panelID{
+    // WORK IN PROGRESS
+    NSMutableDictionary *profileDict = [NSMutableDictionary new];
+    if (profile == nil) {
+        // empty dictionary
+        return profileDict;
+    }
+
+    [profileDict setValue:profile.title forKey:@"Title"];
+    [profileDict setValue:profile.address1 forKey:@"Address1"];
+    [profileDict setValue:profile.address2 forKey:@"Address2"];
+    [profileDict setValue:profile.DOB forKey:@"DOB"];
+    [profileDict setValue:profile.email forKey:@"Email"];
+    [profileDict setValue:profile.mobileNumber forKey:@"MobileNumber"];
+    [profileDict setValue:profile.firstName forKey:@"FirstName"];
+    [profileDict setValue:profile.lastName forKey:@"LastName"];
+    [profileDict setValue:[profile.gender stringValue] forKey:@"Gender"];
+    [profileDict setValue:profile.postalCode forKey:@"PostalCode"];
+    [profileDict setValue:profile.mediaID forKey:@"MediaID"];
+
+    // ADD ADDITIONAL FIELDS TO THE DICTIONARY
+    NSString *additionalFieldString = profile.additionalParams;
+    NSDictionary *additionalFieldsDict = [self parseAdditionalFields:additionalFieldString panelID:panelID];
+    [profileDict addEntriesFromDictionary:additionalFieldsDict];
+    return profileDict;
+}
+
+-(NSDictionary*) parseAdditionalFields: (NSString*) additionalFieldStr panelID:(NSString*) panelID {
+    NSMutableDictionary *additionalFieldsDict = [NSMutableDictionary new];
+    NSArray *additionalFieldArray = [additionalFieldStr componentsSeparatedByString:@","];
+    NSString* panelIDToRemove = [panelID stringByAppendingString:@"-"];
+    for (NSString* field in additionalFieldArray) {
+        if ([field containsString:panelIDToRemove]) {
+            NSString* keyValuePair = [field stringByReplacingOccurrencesOfString:panelIDToRemove withString:@""];
+            NSArray *keyValueArray = [keyValuePair componentsSeparatedByString:@":"];
+            if([keyValueArray count]==2) {
+                [additionalFieldsDict setObject:keyValueArray[1] forKey:keyValueArray[0]];
+            }
+        }
+    }
+    return additionalFieldsDict;
 }
 
 
@@ -847,7 +913,7 @@
         NSURL* appURL = [[NSURL alloc] initWithString:appUrl];
         
         [OPGUserAgentUtil acquireLock:^(NSInteger lockToken) {
-            _userAgentLockToken = lockToken;
+            self->_userAgentLockToken = lockToken;
             [OPGUserAgentUtil setUserAgent:self.userAgent lockToken:lockToken];
             if (appURL) {
                 NSURLRequest* appReq = [NSURLRequest requestWithURL:appURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];

@@ -32,6 +32,7 @@
 #import "WebPlayer.h"
 #import "Controller.h"
 #import "WebSession.h"
+#import "OPGPanellistProfile.h"
 
 
 @interface OPGBaseController : UIViewController <UIWebViewDelegate, OPGScreenOrientationDelegate, IosRuntimeInteractor>
@@ -126,4 +127,11 @@
                 surveyID:(NSNumber *)surveyID
                  panelID:(NSNumber *)panelID
              panellistID:(NSNumber *)panellistID;
+
+-(void)loadOfflineSurvey:(NSString *)scriptPath
+              surveyName:(NSString *)surveyName
+                surveyID:(NSNumber *)surveyID
+                 panelID:(NSNumber *)panelID
+             panellistID:(NSNumber *)panellistID
+             panellistProfile:(OPGPanellistProfile*)panellistProfile;
 @end

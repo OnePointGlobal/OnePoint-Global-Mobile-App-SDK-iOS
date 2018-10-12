@@ -47,6 +47,11 @@
 -(NSArray*)getList;
 -(void)sortList;
 -(void) setList:(NSMutableArray*)value;
+-(int)getCount;
+
+//public int getCount() throws Exception {
+//    return this.list.size();
+//}
 @end
 
 // _CollectionObject_H_

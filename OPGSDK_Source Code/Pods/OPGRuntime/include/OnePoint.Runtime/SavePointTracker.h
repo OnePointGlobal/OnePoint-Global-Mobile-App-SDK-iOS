@@ -17,17 +17,22 @@
     int current;
     int previous;
     Interview *_interview;
+    NSString *__TargetSavePoint;
 }
+
+
 -(id)initWithSavePoints:(Interview *)savePoints;
 -(id<ISavePoint>)getCurrent;
 -(id<ISavePoints>)getSavePoints;
 -(void)setSavePoints:(id<ISavePoints>)value;
-
+-(NSString *)getTargetSavePoint;
+-(void)setTargetSavePoint:(NSString *)value;
 -(id<ISavePoints>)getGoto;
 -(id<ISavePoint>)getNext;
 -(id<ISavePoints>)getFirst;
 -(id<ISavePoints>)getLast;
 -(id<ISavePoint>)getPrevious;
+-(id<ISavePoint>)restore:(NSString *)savePointName;
 -(void)add:(id<ISavePoint>)savePoint;
 -(id<ISavePoint>)moveBack;
 -(id<ISavePoint>)moveFirst;

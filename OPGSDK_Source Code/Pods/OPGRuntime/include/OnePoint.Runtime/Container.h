@@ -42,6 +42,7 @@
 -(ScriptWriter *)getFile:(NSString *)fileName;
 -(NSString *)getFileFromCache:(NSString *)fileName;
 - (NSArray *)getKeys;
+-(NSString *) getFilePath:(NSString *)file;
 
 
 @end

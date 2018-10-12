@@ -57,12 +57,18 @@
     XCTAssertTrue(status);
 }
 
+
+
+
 -(void)testGetPanelistProfileSuccess
 {
     NSError *error;
     [OPGSDK initializeWithUserName:UserNameSuccess withSDKKey:SharedKeySuccess];
     OPGAuthenticate *AuthObj = [self.sdk authenticate:AuthUserNameSuccess password:AuthPasswordSuccess error:&error];
     OPGPanellistProfile *obj = [self.sdk getPanellistProfile:&error];
+    NSLog(@"The Authentication Field is %@", AuthObj.statusMessage);
+    NSLog(@"The Additional Field is %@", obj.additionalParams);
+    NSLog(@"The First name Field is %@", obj.firstName);
     XCTAssertTrue(obj !=nil && [error description] == nil);
 }
 
@@ -70,7 +76,7 @@
 {
     NSError *error;
     [OPGSDK initializeWithUserName:UserNameSuccess withSDKKey:SharedKeyFailed];
-    [OPGSDK setUniqueId:UniqueIdSuccess];
+    [OPGSDK setAppVersion:@"123"];
     OPGPanellistProfile *obj = [self.sdk getPanellistProfile:&error];
     XCTAssertFalse(obj !=nil && [error description] == nil);
 }

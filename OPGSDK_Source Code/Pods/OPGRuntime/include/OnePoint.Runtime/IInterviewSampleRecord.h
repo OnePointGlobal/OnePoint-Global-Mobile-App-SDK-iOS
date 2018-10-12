@@ -23,8 +23,8 @@
 - (void)clear;
 - (BOOL)containsKey:(NSString *)key;
 - (BOOL)containsValue:(id<IInterviewSampleField>)value;
-- (id<IInterviewSampleField>)get___idxWithNSString:(NSString *)key;
-- (void)set___idxWithNSString:(NSString *)key withIInterviewSampleField:(id<IInterviewSampleField>)value;
+- (id<IInterviewSampleField>)get___idx:(NSString *)key;
+- (void)set___idx:(NSString *)key :(id<IInterviewSampleField>)value;
 @end
 
 // _IInterviewSampleRecord_H_

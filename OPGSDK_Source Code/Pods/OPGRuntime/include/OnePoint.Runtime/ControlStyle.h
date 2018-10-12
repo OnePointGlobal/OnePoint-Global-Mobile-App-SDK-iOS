@@ -15,6 +15,8 @@
   BOOL readOnly_;
   ControlTypes type_;
   BOOL __IsEmpty_;
+  NSString *_typename;
+
 }
 
 - (id)init;

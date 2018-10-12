@@ -12,6 +12,7 @@
 #import "NavigationTypes.h"
 #import "INavigations.h"
 #import "INavigation.h"
+#import "IQuestion.h"
 
 @interface Navigations:NSObject<INavigation,INavigations> {
     
@@ -19,10 +20,12 @@
     NavigationTypesEnum _default;
     NavigationTypesEnum _lastselected;
     NSMutableArray *_navigationsarray;
+    Interview *_interview;
 }
 @property(nonatomic,strong)NSMutableArray *_navigationsarray;
 - (id)init;
-- (id)initWithIQuestion:(id<IQuestion>)navList;
+- (id)initWithInterview:(Interview *)interview;
+- (id)initWithInterview:(Interview *)interview withIQuestion:(id<IQuestion>)navList;
 - (id<INavigation>)get___idxWithNavigationTypes:(NavigationTypesEnum)navType;
 - (void)set___idxWithNavigationTypes:(NavigationTypesEnum)navType withINavigation:(id<INavigation>)value;
 - (id<INavigation>)get___idxwithnsstring:(NSString *)value;
@@ -31,5 +34,6 @@
 - (void)buildInitialButtons;
 - (void)addDefaultButton:(id<IQuestion>)field;
 - (id<INavigation>)get___idxwithnavigations:(NSNumber *)navType;
+- (void)modify:(id<IQuestion>)newList;
 
 @end

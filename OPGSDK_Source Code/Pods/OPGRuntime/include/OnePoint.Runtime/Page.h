@@ -41,7 +41,7 @@
 }
 
 
-- (id)initWithWebApplication:(id<IApplication>)application;
+- (id)initWithWebApplication:(id<IApplication>)application withContainerResources:(Container *) resources;
 - (id<IControl>)getTemplateControl;
 - (void)setTemplateControl:(id<IControl>)value;
 - (id<IControl>)getBody;

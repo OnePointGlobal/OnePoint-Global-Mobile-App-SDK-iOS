@@ -43,6 +43,7 @@
 + (NSMutableDictionary *)literals;
 - (id)initWithNSString:(NSString *)fileName;
 - (id)initWithInputStream:(NSInputStream *)s withData:(NSData*)byteData;
+- (id)initWithInputStream:(NSInputStream *)s withData:(NSData*)byteData withBool:(bool)utf8;
 - (void)Init;
 - (void)NextCh;
 - (void)AddCh;

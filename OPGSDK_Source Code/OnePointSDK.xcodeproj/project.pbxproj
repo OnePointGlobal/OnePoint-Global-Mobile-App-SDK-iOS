@@ -1668,7 +1668,6 @@
 				78C059EE1E39F8E7007DC79D /* Frameworks */,
 				78C05A011E39F8E7007DC79D /* CopyFiles */,
 				78C05A021E39F8E7007DC79D /* Headers */,
-				1859E9671A78D45F1C2EFC96 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1764,21 +1763,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1859E9671A78D45F1C2EFC96 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnePointSDK_Offline/Pods-OnePointSDK_Offline-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AA0F9FA90AEE3F70ABCE1B4D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

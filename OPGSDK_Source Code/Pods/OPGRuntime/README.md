@@ -22,7 +22,7 @@ pod 'OPGRuntime'
 
 ## Author
 
-manjunath.ramesh@onepointglobal.com, manjunath.ramesh@onepointglobal.com
+chinthan.m@onepointglobal.com, manjunath.ramesh@onepointglobal.com
 
 ## License
 

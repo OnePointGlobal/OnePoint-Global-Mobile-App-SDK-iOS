@@ -20,6 +20,8 @@
 - (BOOL)getIsEmpty;
 - (ControlTypes)getType;
 - (void)setType:(ControlTypes)value;
+- (NSString *)gettypename;
+- (void)settypename:(NSString *)value;
 
 @end
 

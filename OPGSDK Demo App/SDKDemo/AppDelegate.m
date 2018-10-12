@@ -17,8 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   [OPGSDK initializeWithUserName:@"YOUR_ADMIN_NAME" withSDKKey:@"YOUR_ADMIN_KEY"];
-   [OPGSDK setAppVersion:@"YOUR_APP_VERSION"];
+   [OPGSDK initializeWithUserName:@"OnePointDevelopers" withSDKKey:@"opg-ind-blr-OnePointGlobalApp"];
+   [OPGSDK setAppVersion:@"123"];
    return YES;
 }
 

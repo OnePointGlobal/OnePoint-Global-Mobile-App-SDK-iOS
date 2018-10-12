@@ -52,7 +52,6 @@
     id<ISliderStyle> _slider;
     NSString *_mask;
     NSString *_placeholder;
-    
 
 }
 
@@ -66,8 +65,8 @@
 - (void)setAudio:(id<IAudioStyle>)value;
 - (NSString *)getBgcolor;
 - (void)setBgcolor:(NSString *)value;
-- (id)getCell;
-- (void)setCell:(id)value;
+- (id<ICellStyle>)getCell;
+- (void)setCell:(id<ICellStyle>)value;
 - (NSString *)getColor;
 - (void)setColor:(NSString *)value;
 - (long long int)getColumns;

@@ -52,7 +52,6 @@
     id<ISliderStyle> _slider;
     NSString *_mask;
     NSString *_placeholder;
-    
 
 }
 

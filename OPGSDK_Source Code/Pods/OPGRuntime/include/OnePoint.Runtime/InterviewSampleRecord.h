@@ -17,8 +17,8 @@
     
 }
 
-- (id<IInterviewSampleField>)get___idxWithNSString:(NSString *)searchKey;
-- (void)set___idxWithNSString:(NSString *)searchKey withIInterviewSampleField:(id<IInterviewSampleField>)value;
+- (id<IInterviewSampleField>)get___idx:(NSString *)searchKey;
+- (void)set___idx:(NSString *)searchKey :(id<IInterviewSampleField>)value;
 - (id)init;
 -(SortOrder) getOrder;
 @end

@@ -27,6 +27,7 @@
 #import "OPGScreenOrientationDelegate.h"
 #import "OPGPlugin.h"
 #import "OPGSurvey.h"
+#import "OPGPanellistProfile.h"
 #import <OnePoint.Runtime/IosRuntimeInteractor.h>
 #import <OnePoint.Runtime/WebPlayer.h>
 #import <OnePoint.Runtime/Controller.h>
@@ -126,4 +127,11 @@
                 surveyID:(NSNumber *)surveyID
                  panelID:(NSNumber *)panelID
              panellistID:(NSNumber *)panellistID;
+
+-(void)loadOfflineSurvey:(NSString *)scriptPath
+              surveyName:(NSString *)surveyName
+                surveyID:(NSNumber *)surveyID
+                 panelID:(NSNumber *)panelID
+             panellistID:(NSNumber *)panellistID
+             panellistProfile:(OPGPanellistProfile*)panellistProfile;
 @end

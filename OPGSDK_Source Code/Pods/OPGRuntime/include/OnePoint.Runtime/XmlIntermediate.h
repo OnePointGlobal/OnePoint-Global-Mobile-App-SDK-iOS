@@ -16,6 +16,7 @@
 #import "GDataXMLNode.h"
 #import "NavButtonType.h"
 #import "XmlInterPage.h"
+#import "Container.h"
 @interface XmlIntermediate : NSObject {
  @public
   XmlIntermediateLabel *__Label_;
@@ -36,6 +37,7 @@
     id<IApplication> _application;
 }
 
+-(id)initWithContainerResources:(Container *) resources;
 - (id)initWithIApplication:(id<IApplication>)application
                                   withQuestion:(id<IQuestion>)question;
 - (void)setXmlIntermediateLabel:(XmlIntermediateLabel *)value;

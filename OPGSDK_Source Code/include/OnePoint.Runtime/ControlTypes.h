@@ -30,6 +30,8 @@ typedef enum {
     ControlTypes_ctStar,
     ControlTypes_ctEmail,
     ControlTypes_ctButtonList,
+    ControlTypes_ctCustom,
+
    
 } ControlTypes;
 
