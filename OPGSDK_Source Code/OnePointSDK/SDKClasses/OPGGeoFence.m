@@ -238,16 +238,22 @@ static OPGGeoFence *_sharedMySingleton = nil;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-    self.locatonTimestamp = nil;
-    self.currentRegion = nil;       // denotify when user comes out of region
+//    self.locatonTimestamp = nil;
+//    self.currentRegion = nil;
+    self.locatonTimestamp = [NSDate new];
+    self.currentRegion = region;    // denotify when user comes out of region
 
     OPGGeofenceSurvey *geoSurvey = [self runThroughAddress:region.identifier];
-    if (geoSurvey.timeInterval == 0) {
+    if ([geoSurvey.timeInterval intValue] == 0) {
         [self.fencingDelegate didExitSurveyRegion:[self runThroughAddress:region.identifier]];
+        self.locatonTimestamp = nil;
+        self.currentRegion = nil;
     }
-    else if (geoSurvey.timeInterval > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isExit intValue] == 1) {
+    else if ([geoSurvey.timeInterval intValue] > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isExit intValue] == 1) {
         // check if the user has stayed for enough time in the area
         self.didPassTimeIntervalInTheRegion = NO;
+        self.locatonTimestamp = nil;
+        self.currentRegion = nil;
         [self.fencingDelegate didExitSurveyRegion:[self runThroughAddress:region.identifier]];
     }
     //[self.locationManager stopMonitoringForRegion:region];
@@ -279,6 +285,7 @@ static OPGGeoFence *_sharedMySingleton = nil;
     @synchronized ([self class]) {
        // [self.locationManager performSelector:@selector(requestStateForRegion:) withObject:region afterDelay:5];
         region.notifyOnEntry = TRUE;
+        region.notifyOnExit = TRUE;
     }
 }
 
@@ -302,17 +309,26 @@ static OPGGeoFence *_sharedMySingleton = nil;
                 geoSurvey.isEnter = [NSNumber numberWithInt:1];
             }
 
-            if (geoSurvey.timeInterval==0) {
+            if ([geoSurvey.timeInterval intValue] == 0) {
                 // It is just an entry event so trigger delegate immediately
                 [self.fencingDelegate didEnterSurveyRegion:geoSurvey];
             }
-            else if (geoSurvey.timeInterval > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isEnter intValue] == 1) {
+            else if ([geoSurvey.timeInterval intValue] > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isEnter intValue] == 1) {
                 // It is time based geofencing
                 [self.fencingDelegate didEnterSurveyRegion:geoSurvey];
                 // reset value so that the delegate didEnterSurveyRegion is not called repetitively
                 self.didPassTimeIntervalInTheRegion = NO;
                 self.locatonTimestamp = nil;
                 self.currentRegion = nil;
+            }
+        }
+        else if (state == CLRegionStateOutside) {
+            if ([geoSurvey.timeInterval intValue] > 0 && self.didPassTimeIntervalInTheRegion && [geoSurvey.isExit intValue] == 1) {
+                // check if the user has stayed for enough time in the area
+                self.didPassTimeIntervalInTheRegion = NO;
+                self.locatonTimestamp = nil;
+                self.currentRegion = nil;
+                [self.fencingDelegate didExitSurveyRegion:[self runThroughAddress:region.identifier]];
             }
         }
     }

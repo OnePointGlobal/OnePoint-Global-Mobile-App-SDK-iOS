@@ -60,9 +60,9 @@ static BOOL isResourceFound;
 +(void)initializeWithUserName:(NSString *)userName withSDKKey:(NSString *)key
 {
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:DevInterviewUrl forKey:@"OPGInterviewUrl"];
-    [defaults setObject:DevApiURL forKey:@"OPGApiUrl"];
-    [defaults setObject:DevDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
+    [defaults setObject:LiveInterviewUrl forKey:@"OPGInterviewUrl"];
+    [defaults setObject:LiveApiURL forKey:@"OPGApiUrl"];
+    [defaults setObject:LiveDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
 
     isResourceFound = [self isResourceBundleAvailable];
     if (!isResourceFound) {
