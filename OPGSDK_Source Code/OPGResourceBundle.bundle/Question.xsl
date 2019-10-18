@@ -1063,6 +1063,18 @@
             <xsl:when test="@Type = 'GeoCode'">
                 <xsl:call-template name="GeoCodeControl"/>
             </xsl:when>
+            <xsl:when test="@Type = 'signature'">
+              <xsl:call-template name="SignatureControl"/>
+            </xsl:when>
+            <xsl:when test="@Type = 'ocr'">
+              <xsl:call-template name="OCRControl"/>
+            </xsl:when>
+            <xsl:when test="@Type = 'numbermasking'">
+              <xsl:call-template name="NumberMaskedControl"/>
+            </xsl:when>
+            <xsl:when test="@Type = 'currencycontrol'">
+              <xsl:call-template name="CurrencyControl"/>
+            </xsl:when>
             <xsl:when test="@Type = 'BarCode'">
                 <xsl:call-template name="BarCodeControl"/>
             </xsl:when>

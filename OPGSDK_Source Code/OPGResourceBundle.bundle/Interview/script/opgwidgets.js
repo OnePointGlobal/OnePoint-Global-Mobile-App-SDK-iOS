@@ -1,4 +1,5 @@
 (function(e) {
+   var deviceOrientation = "";
     e.widget("opg.geocode", {
         initSelector: "input[data-role=geocode]",
         width: "100%",
@@ -13,8 +14,9 @@
             }).addClass("getLocation").appendTo(n).button().buttonMarkup({
                 inline: true
             });
+                console.log(this);
             this.changer.parent().addClass("geolocator");
-            this.positionElm = e("<div>").css("padding", "0").appendTo(n);
+            this.positionElm = e("<div>").css({'padding': '10px 0','word-wrap' : 'break-word'}).appendTo(n);
             this.mapHolder = e("<div id='geoLocation'></div>").css({
                 height: this.height,
                 width: this.width
@@ -29,32 +31,32 @@
             i.type = "text/javascript";
             i.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&" + "callback=initialize";
             i.setAttribute("async", true);
-			document.body.appendChild(i);
-			var co_ords = this.element[0].value.split(",");
-			var thisElem  = this;
-			if(this.element[0].value){
-				$("#geoLocation").show();
-				var n = "Your location is : " + co_ords[0] + ", " + co_ords[1];
+            document.body.appendChild(i);
+            var co_ords = this.element[0].value.split(",");
+            var thisElem  = this;
+            if(this.element[0].value){
+                $("#geoLocation").show();
+                var n = "Your location is : " + co_ords[0] + ", " + co_ords[1];
                 this.positionElm.html(n);
-				setTimeout(function(){
-					var myLatlng = new google.maps.LatLng(co_ords[0], co_ords[1]);
-					var mapOptions = {
-						zoom: 15,
-						center: myLatlng,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-				};
-					var map = new google.maps.Map(document.getElementById("geoLocation"),
-					mapOptions);
-					var i = thisElem.mapHolder[0];
-					var s = new google.maps.Map(i, mapOptions);
-					var o = new google.maps.Marker({
-								position: myLatlng,
-								map: s,
-								title: "You are here!"
-							});					
-				},1000);
-				   
-			}
+                setTimeout(function(){
+                    var myLatlng = new google.maps.LatLng(co_ords[0], co_ords[1]);
+                    var mapOptions = {
+                        zoom: 15,
+                        center: myLatlng,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                    var map = new google.maps.Map(document.getElementById("geoLocation"),
+                    mapOptions);
+                    var i = thisElem.mapHolder[0];
+                    var s = new google.maps.Map(i, mapOptions);
+                    var o = new google.maps.Marker({
+                                position: myLatlng,
+                                map: s,
+                                title: "You are here!"
+                            });
+                },1000);
+
+            }
         },
         _refresh: function() {
             this.changer.click()
@@ -64,29 +66,66 @@
         },
         _getLocation: function(t, n) {
             $("#geoLocation").show();
-            var r = {
-                enableHighAccuracy: false,
-                timeout: 10000000,
-                maximumAge: 30000000
-            };
             var i = this;
             try {
+                         if(tMobile.Android() && tMobile.isCordova() )
+                        {
+                          cordova.exec(function(eve) {
+                                                   i.element.attr("value", eve.latitude + "," + eve.longitude);
+                                                   var n = "Your location is : " + eve.latitude + ", " + eve.longitude;
+                                               i.positionElm.html(n);
+                                                 i.changer.parent().addClass("updatedgeoLocator");
+                                                 i.changer.val("Click to update location").button("refresh")
+                                                 e.proxy(i._showPosition(eve), this);
+                                        }, function(eve) {
+                                                    console.log("error in custom geo plugin");
+                                                  e.alertOpg(eve,"Alert");
+                                            }, "EnableGPSPlugin", "enableGPS",[]);
+                         }
+                         else
+                         {
+                         var geolocationOptions = { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+                             if (navigator.geolocation)
+                                {
+                                   navigator.geolocation.getCurrentPosition(e.proxy(this._showPosition, this), e.proxy(this._showError, this), geolocationOptions)
+                                }
+                                else
+                                 {
+                                 e.alertOpg("Geolocation is not supported by this browser.")
+                                 }
+                               this.changer.parent().addClass("updatedgeoLocator");
+                          }
 
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(e.proxy(this._showPosition, this), e.proxy(this._showError, this), r)
-                } else {
-                    e.alertOpg("Geolocation is not supported by this browser.","My Surveys")
-                }
-                this.changer.parent().addClass("updatedgeoLocator");
+                         /*  cordova.exec(function(eve) {
+                                              if (navigator.geolocation) {
+                                                     navigator.geolocation.getCurrentPosition(e.proxy(this._showPosition, this), e.proxy(this._showError, this), r)
+                                                 } else {
+                                                     e.alertOpg("Geolocation is not supported by this browser.")
+                                                 }
+                                                 this.changer.parent().addClass("updatedgeoLocator");
+                                         }, function(eve) {
+                                                     console.log("error in custom geo plugin");
+                                                  e.alertOpg(eve.message);
+                                            }, "EnableGPSPlugin", "enableGPS",[])
+                                         */
+
             } catch (s) {
-                e.alertOpg("Geolocation error.","My Surveys")
+                e.alertOpg("Geolocation error.","Alert")
             }
         },
         _showPosition: function(t) {
 
-            try {
-                lat = t.coords.latitude;
-                lon = t.coords.longitude;
+             try {
+                 if(tMobile.Android() && tMobile.isCordova())
+                 {
+                 lat = t.latitude;
+                 lon = t.longitude;
+                 }
+                 else
+                 {
+                 lat = t.coords.latitude;
+                 lon = t.coords.longitude;
+                 }
                 var n = "Your location is : " + lat + ", " + lon;
                 this.element.attr("value", lat + "," + lon);
                 this.positionElm.html(n);
@@ -109,7 +148,7 @@
                 });
                 this.changer.val("Click to update location").button("refresh")
             } catch (u) {
-                e.alertOpg("An error occured in displaying geolocation.","My Surveys")
+                e.alertOpg("An error occured in displaying geolocation.","Alert")
             }
         },
         _showError: function(t) {
@@ -127,18 +166,18 @@
                 case t.UNKNOWN_ERROR:
                     n = "An unknown error occurred.";
                     break;
-               default : n = "Please switch on your location services.";
-                        break;
-             
+                default : n = "Please switch on your location services.";
+                    break;
             }
             this.element.attr("value", "");
-            e.alertOpg(n,"My Surveys")
+            e.alertOpg(n,"Alert")
         }
     });
+
     e.widget("opg.barcode", {
         initSelector: "input[data-role=barcode]",
         _create: function() {
-	        var t = document.createElement("div");
+            var t = document.createElement("div");
             var n = e(t);
             this.changer = e("<input>", {
                 value: "Click to Get Barcode",
@@ -151,10 +190,10 @@
             var r = this.element.parent(".ui-input-text");
             if (r) r.before(n).hide();
             else this.element.before(n).hide();
-			if(this.element[0].value != ""){
-				var n = "Barcode Entered is : " + this.element[0].value;
-				this.barcodeElm.html(n);	
-			}
+            if(this.element[0].value != ""){
+                var n = (this.element[0].value)?"Barcode Entered is : " + this.element[0].value:"No Barcode Entered";
+                this.barcodeElm.html(n);
+            }
             this._on(this.changer, {
                 click: "_getBarcode"
             });
@@ -168,20 +207,30 @@
         _getBarcode: function() {
             var t = this;
             try {
+           if(tMobile.Android()){
+             cordova.exec(function(eve) {
+                   console.log(eve);
+                   deviceOrientation = eve;
+                }, function(eve) {
+                    console.log("error in checing is tablet");
+                    //e.alertOpg(eve,"Alert");
+                }, "GetDeviceOrientation", "getDeviceOrientation",[]);
+               }
                 cordova.plugins.barcodeScanner.scan(function(n) {
-	                  e.proxy(t._writeBarcode(n), this);
-					  if(tMobile.Android()){
-					      $(".ui-popup-container").css({"left":"55px","top":"183px"});
-					  }
-	                 
+                      e.proxy(t._writeBarcode(n), this);
+                      if(tMobile.Android()){
+                          $(".ui-popup-container").css({"left":"55px","top":"183px"});
+                      }
+
                 }, function(n) {
-			          e.proxy(t._writeBarcode(), this);
+                      e.proxy(t._writeBarcode(), this);
                 });
             } catch (n) {
-	              e.proxy(t._writeBarcode(), this);
+                  e.proxy(t._writeBarcode(), this);
             }
         },
         _writeBarcode: function(t) {
+
             var n = "",
                 r;
             var i = function(e, t) {
@@ -192,12 +241,228 @@
             };
             if (!t || t.cancelled) {
                 var s = this;
-                e.promptOpg("Please enter the barcode", "", "My Surveys", function(e) {
-                    i(e, s)
+                e.promptOpg("Please enter the barcode", "", "Alert", function(e) {
+                  i(e, s)
                 });
+                if(tMobile.Android() && deviceOrientation.length > 0){
+                 if(deviceOrientation == "tablet-portrait"){
+                     $(".ui-popup-container").css({"left":"34%","top":"35%"});
+                 }else if(deviceOrientation == "tablet-land"){
+                     $(".ui-popup-container").css({"left":"38%","top":"35%"});
+                 }else if(deviceOrientation == "mobile-land"){
+                     $(".ui-popup-container").css({"left":"30%","top":"65%"});
+                 }else{
+                     $(".ui-popup-container").css({"left":"14%","top":"35%"});
+                 }
+                 }
             } else if (!t.cancelled) i(t.text, this)
         }
     });
+
+e.widget("opg.ocr", {
+        initSelector: "input[data-role=ocr]",
+        _create: function() {
+            var t = document.createElement("div");
+            var n = e(t);
+            this.changer = e("<input>", {
+                value: "Click to Scan Text",
+                type: "button",
+                "data-inline": "true"
+            }).appendTo(n).button().buttonMarkup({
+                inline: true
+            });
+            this.ocrElm = e("<div>").css({'padding': '10px 0','word-wrap' : 'break-word','white-space' : 'pre-line'}).appendTo(n);
+            var r = this.element.parent(".ui-input-text");
+            if (r) r.before(n).hide();
+            else this.element.before(n).hide();
+            if(this.element[0].value != ""){
+                var n = (this.element[0].value)? + this.element[0].value:"No text is scanned";
+                this.ocrElm.html(n);
+            }
+            this._on(this.changer, {
+                click: "_getText"
+            });
+        },
+        _refresh: function() {
+            this.changer.click();
+        },
+        _destroy: function() {
+            this.changer.remove();
+        },
+        _getText: function() {
+            var t = this;
+            try {
+                cordova.exec(function(n) {
+                    var nObj = jQuery.parseJSON(n);
+                    e.proxy(t._writeText(nObj.text), this);
+                }, function(n) {
+                  e.proxy(t._writeText(), this);
+                }, "OCRPlugin", "getOCR", []);
+             } catch (n) {
+                  e.proxy(t._writeText(), this);
+                  console.log("Exception : "+ n)
+            }
+        },
+        _writeText: function(txt) {
+        try{
+             var n = "";
+             var e = txt;
+                n = e ? "Scanned text is : " +"\n  "+ e : "No text is scanned";
+                this.ocrElm.text(n);
+                var val = e?e:"";
+                this.element.attr("value", val);
+             }
+        catch(n)
+        {
+            console.log("Exception in _writeBarcode : ")
+        }
+
+        }
+    });
+
+    e.widget("opg.signature", {
+        initSelector: "input[data-role=signature]",
+         width: "100%",
+         height: window.innerHeight / 3,
+        _create: function() {
+            this.fileURI = null;
+
+            if(this.element[0].value != ""){
+                var img = e('<img/>').attr({'src':'OPG_Surveys_Media/'+this.element[0].value,'alt':'uploaded image'});
+                e('<div class=customuploadedSignature></div>').html(img).appendTo(r);
+             }
+
+            var t = document.createElement("div");
+            var n = e(t);
+            t.className = "signaturecontainer";
+
+            this.changer = e("<input>", {
+                value: "Draw Signature",
+                type: "button",
+                "data-inline": "true"
+            }).addClass("signature").appendTo(n).button().buttonMarkup({
+                inline: true
+            });
+
+            this.positionElm = e("<div>").css("padding", "0").appendTo(n);
+            this.mapHolder = e("<div id='signature'></div>").css({
+                                     height: this.height,
+                                     width: this.width
+                                     }).appendTo(n).hide();
+
+            this.uploadBtn = e("<input>", {
+                value: "Upload",
+                type: "button"}).appendTo(n).button().buttonMarkup({
+                inline: true
+            });
+
+            var r = this.element.parent(".ui-input-text");
+            if (r) r.before(n).hide();
+            else this.element.before(n).hide();
+
+            this._on(this.changer, {
+                click: "_signatureCall"
+            });
+            this._on(this.uploadBtn, {
+                click: "_uploadImage"
+            });
+
+            var co_ords = this.element[0].value.split(",");
+               var thisElem  = this;
+               if(this.element[0].value){
+               $("#signature").show();
+             }
+        },
+        _signatureCall: function() {
+            var t = this;
+            t.uploadBtn.val("Upload").button("refresh");
+            try {
+                cordova.exec(function(e) {
+                    var n = jQuery.parseJSON(e);
+                    t._writeImage(true, n)
+                }, function(e) {
+                    t._writeImage(false, e)
+                }, "SignaturePlugin", "callsignature", [])
+            } catch (n) {
+                e.proxy(this._writeImage(false, n), this)
+            }
+        },
+        _writeImage: function(t, n) {
+             if (!t) {
+               // e.alertOpg("Get picture failed because: " + n,"Alert");
+             }
+            else if (t) {
+                this.fileURI = n.path
+            }
+        },
+        _uploadImage: function(t, n) {
+            if (!this.fileURI) {
+                e.alertOpg("No signature selected","Alert");
+                return
+            }
+            var r = this;
+            this.uploadBtn.val("Uploading").button("refresh");
+            try {
+                var i = {
+                    mediaPath: this.fileURI,
+                    comments: "Uploading"
+                };
+                cordovaFunction.uploadImage(i, function(e) {
+                    if (!e.Percent) {
+                        r.uploadBtn.val("Uploaded").button("refresh");
+                        var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        console.log(fileUrl);
+                        r.element.attr("value", e.MediaID);
+                        if($(".customuploadedSignature").find("img").length != 0){
+                             $("img").attr('src',fileUrl);
+                            /*$("img").remove();
+                            var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
+                            $('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));*/
+                        }else{
+                            var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded Signature'});
+                            $('<div class=customuploadedSignature></div>').html(img).appendTo($(".signaturecontainer"));
+                        }
+                    }
+                }, function(t) {
+                    e.alertOpg("Signature upload failed : " + t,"Alert")
+                })
+            } catch (s) {
+                r.uploadBtn.val("Upload").button("refresh");
+                e.alertOpg("Signature upload failed : " + s,"Alert")
+            }
+        }
+    });
+
+    e.widget("opg.currencyinput", {
+            initSelector: "input[type='currencyinput']",
+            _create: function() {
+                this._on(this.element, {
+                    click: "_getCurrency"
+                });
+            },
+            _getCurrency: function() {
+               this.element.blur();
+                var t = this;
+                var tValue = this.element.val();
+                var currentRef = this.element;
+                try {
+                      cordova.exec(function(n) {
+                      console.log(n);
+                      var jsonObj = jQuery.parseJSON(n);
+                      currentRef.val(jsonObj.value);
+                      //this.element.attr("value", jsonObj.path);
+                    }, function(n) {
+                           console.log(tValue);
+                    }, "CurrencyPlugin", "callcurrency",[tValue]);
+                } catch (n) {
+                    console.log(n);
+                }
+            },
+            _destroy: function() {
+                domHandle.remove()
+            }
+        });
+    
     e.widget("opg.Ranking", {
         initSelector: "ul[data-role=rank]",
         _create: function() {
@@ -270,10 +535,10 @@
             for (var i= 0 ; (i < selected && selected != 0); i++) {
               r.find("li:eq("+i+")").addClass("active");
             }
-			 if(tMobile.anyMobile() != null || navigator.userAgent.match(/X11; Linux x86_64/i)){
-				  this._on(r.find("li"), {
-						touchstart:function(t) {
-							var n = e(t.target);
+             if(tMobile.anyMobile() != null || navigator.userAgent.match(/X11; Linux x86_64/i)){
+                  this._on(r.find("li"), {
+                        touchstart:function(t) {
+                            var n = e(t.target);
                             n = n.is("li") ? n : n.parent();
                             if(r.find("li:eq("+n.index()+")").hasClass("active") == false){
                                  r.find("li:eq("+n.index()+")").addClass("active");
@@ -290,50 +555,50 @@
                                  }
 
                              }
-						},
-					 })
-			}else{
-				 this._on(r.find("li"), {
-				 click: function(t) {
-						//console.log("click");
-						var n = e(t.target);
-						n = n.is("li") ? n : n.parent();
-						if(r.find("li:eq("+n.index()+")").hasClass("active") == false){
-							 r.find("li:eq("+n.index()+")").addClass("active");
-							 n.prevAll().andSelf().addClass("active");
-							 u.val(n.index() + 1).attr("value", n.index() + 1);
-						 }else{
-							 r.find("li:eq("+n.index()+")").removeClass("active");
-							 if((n.index()+1) < u.val()){
-									r.find("li:gt("+n.index()+")").removeClass("active");
-									u.val(n.index()+1).attr("value", n.index()+1);
-							 }else{
-								   u.val(n.index()).attr("value", n.index());
-							 }
+                        },
+                     })
+            }else{
+                 this._on(r.find("li"), {
+                 click: function(t) {
+                        //console.log("click");
+                        var n = e(t.target);
+                        n = n.is("li") ? n : n.parent();
+                        if(r.find("li:eq("+n.index()+")").hasClass("active") == false){
+                             r.find("li:eq("+n.index()+")").addClass("active");
+                             n.prevAll().andSelf().addClass("active");
+                             u.val(n.index() + 1).attr("value", n.index() + 1);
+                         }else{
+                             r.find("li:eq("+n.index()+")").removeClass("active");
+                             if((n.index()+1) < u.val()){
+                                    r.find("li:gt("+n.index()+")").removeClass("active");
+                                    u.val(n.index()+1).attr("value", n.index()+1);
+                             }else{
+                                   u.val(n.index()).attr("value", n.index());
+                             }
 
-						 }
-					},
-					mouseover: function(t) {
-						r.find("li").removeClass("hover");
-						var n = e(t.target);
-						n = n.is("li") ? n : n.parent();
-						if((n.index()+1) < u.val()){
-								r.find("li:gt("+n.index()+")").removeClass("active").removeClass("hover");
-						 }
-						n.prevAll().andSelf().addClass("hover");
-					},
-				   mouseout: function(ev) {
-						r.find("li").removeClass("hover");
-						var t = u.val() ;
-						var n = e(ev.target);
-						if (t > 0) {
-							var n = r.find("li").eq((t-1));
-							n.prevAll().andSelf().addClass("active")
-						}
-					},
+                         }
+                    },
+                    mouseover: function(t) {
+                        r.find("li").removeClass("hover");
+                        var n = e(t.target);
+                        n = n.is("li") ? n : n.parent();
+                        if((n.index()+1) < u.val()){
+                                r.find("li:gt("+n.index()+")").removeClass("active").removeClass("hover");
+                         }
+                        n.prevAll().andSelf().addClass("hover");
+                    },
+                   mouseout: function(ev) {
+                        r.find("li").removeClass("hover");
+                        var t = u.val() ;
+                        var n = e(ev.target);
+                        if (t > 0) {
+                            var n = r.find("li").eq((t-1));
+                            n.prevAll().andSelf().addClass("active")
+                        }
+                    },
 
-				})
-			}
+                })
+            }
           },
         _destroy: function() {
             domHandle.remove()
@@ -849,7 +1114,7 @@
                 upload: t.indexOf("AllowUpload") == -1 ? false : true
             };
             var n = document.createElement("div");
-			n.className = "imagecontainer";
+            n.className = "imagecontainer";
             var r = e(n);
             var i = e('<div class="ui-block-a">');
             var s = e('<div class="ui-block-b">');
@@ -896,10 +1161,10 @@
             this._on(this.uploadBtn, {
                 click: "_uploadImage"
             });
-			if(this.element[0].value != ""){
-				var img = e('<img/>').attr({'src':'OPG_Surveys_Media/'+this.element[0].value,'alt':'uploaded image'});
-				e('<div class=customuploadedImage></div>').html(img).appendTo(r);
-			}
+            if(this.element[0].value != ""){
+                var img = e('<img/>').attr({'src':"OPG_Surveys_Media/"+this.element[0].value,'alt':'uploaded image'});
+                e('<div class=customuploadedImage></div>').html(img).appendTo(r);
+            }
         },
         _refresh: function() {
             this._create()
@@ -943,7 +1208,7 @@
         },
         _previewImage: function() {
             if (!this.fileURI) {
-                e.alertOpg("No Image selected","My Surveys");
+                e.alertOpg("No Image selected","Alert");
                 return
             }
             var t = {
@@ -962,7 +1227,7 @@
         },
         _writeImage: function(t, n) {
              if (!t) {
-               // e.alertOpg("Get picture failed because: " + n);
+               // e.alertOpg("Get picture failed because: " + n,"Alert");
              }
             else if (t) {
                 this.fileURI = n.path
@@ -970,7 +1235,7 @@
         },
         _uploadImage: function(t, n) {
             if (!this.fileURI) {
-                e.alertOpg("No Image selected","My Surveys");
+                e.alertOpg("No Image selected","Alert");
                 return
             }
             var r = this;
@@ -984,21 +1249,25 @@
                 cordovaFunction.uploadImage(i, function(e) {
                     if (!e.Percent) {
                         r.uploadBtn.val("Uploaded").button("refresh");
-						var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        var fileUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        console.log(fileUrl);
                         r.element.attr("value", e.MediaID);
-						if($(".customuploadedImage").find("img").length != 0){
-							$("img").attr('src',fileUrl);				
-						}else{
-							var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
-						$('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));
-						}
-							
+                        if($(".customuploadedImage").find("img").length != 0){
+                            $("img").remove();
+                            var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
+                            $('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));
+                        }else{
+                            var img = $('<img/>').attr({'src':fileUrl,'alt':'uploaded image'});
+                            $('<div class=customuploadedImage></div>').html(img).appendTo($(".imagecontainer"));
+                        }
+                         r.uploadBtn.val("Uploaded").button("refresh");
                     }
                 }, function(t) {
-                                            });
+                    e.alertOpg("Image upload failed : " + t,"Alert")
+                })
             } catch (s) {
                 r.uploadBtn.val("Upload").button("refresh");
-                e.alertOpg("Image upload failed : " + s,"My Surveys")
+                e.alertOpg("Image upload failed : " + s,"Alert")
             }
         }
     });
@@ -1018,7 +1287,7 @@
             };
             if (tMobile.iOS()) this.controls.gallery = false;
             var r = document.createElement("div");
-			r.className = "audiocontainer";
+            r.className = "audiocontainer";
             var i = e(r);
             var s = e('<div class="ui-block-a">');
             var o = e('<div class="ui-block-b">');
@@ -1065,10 +1334,10 @@
             this._on(this.uploadBtn, {
                 click: "_uploadAudio"
             });
-			if(this.element[0].value != ""){
-			var audioUrl = 'OPG_Surveys_Media/'+this.element[0].value;
-				$('<audio controls><source id=customUploadedAudio   src='+audioUrl+'></audio>').appendTo(r);
-			}
+            if(this.element[0].value != ""){
+            var audioUrl = this.element[0].value;
+                $('<audio controls><source id=customUploadedAudio   src=OPG_Surveys_Media/'+audioUrl+'></audio>').appendTo(r);
+            }
         },
         _refresh: function() {
             this._create()
@@ -1082,7 +1351,7 @@
                 n.captureBtn.val("Stop Recording").button("refresh");
                 try {
                     cordova.exec(function(e) {}, function(t) {
-                        e.alertOpg("Error while recording audio. Please try again.", "My Surveys")
+                        e.alertOpg("Error while recording audio. Please try again.", "Alert")
                     }, "MediaPickerAndPreviewPlugin", "startRecordingAudio", [])
                 } catch (r) {
                     n._storeFile(false, r)
@@ -1096,7 +1365,7 @@
                         var r = jQuery.parseJSON(t);
                         e.proxy(n._storeFile(true, r), this)
                     }, function(t) {
-                        e.alertOpg("Couldn't stop recording audio. Please try again.", "My Surveys")
+                        e.alertOpg("Couldn't stop recording audio. Please try again.", "Alert")
                     }, "MediaPickerAndPreviewPlugin", "stopRecordingAudio", [])
                 } catch (r) {
                     n._storeFile(false, r)
@@ -1105,7 +1374,7 @@
         },
         _playAudio: function() {
             if (!this.file) {
-                e.alertOpg("No Audio selected","My Surveys");
+                e.alertOpg("No Audio selected","Alert");
                 return
             }
             var t = this;
@@ -1119,8 +1388,8 @@
                     cordova.exec(function(e) {
                         t.playBtn.val("Play Audio").button("refresh")
                     }, function(e) {
-                       //  console.log("play displayError : " + e);
-                         t.playBtn.val("Play Audio").button("refresh");
+                        console.log("play displayError : " + e);
+                        t.playBtn.val("Stop Playing").button("refresh");
                     }, "MediaPickerAndPreviewPlugin", "startPlayingRecordedAudio", [n])
                 } catch (r) {
                     t._storeFile(false, r)
@@ -1157,14 +1426,14 @@
         },
         _storeFile: function(t, n) {
            // console.log("_storeAudio " + n);
-            if (!t) e.alertOpg("Capture Audio failed because: " + n,"My Surveys");
+            if (!t) e.alertOpg("Capture Audio failed because: " + n,"Alert");
             else if (t) {
                 this.file = n.path
             }
         },
         _uploadAudio: function() {
             if (!this.file) {
-                e.alertOpg("No Audio selected","My Surveys");
+                e.alertOpg("No Audio selected","Alert");
                 return
             }
             var t = this;
@@ -1177,21 +1446,24 @@
                 cordovaFunction.uploadImage(n, function(e) {
                     if (!e.Percent) {
                         t.uploadBtn.val("Uploaded").button("refresh");
-						var audioUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        var audioUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        console.log(audioUrl);
                         t.element.val(e.MediaID);
-						t.element.attr("value", e.MediaID);
-						if($("audio").length != 0){
-							$("audio").remove();
-							$('<audio controls><source id=customUploadedAudio   src='+audioUrl+'></audio>').appendTo($(".audiocontainer"));
-						}else{
-							$('<audio controls><source src='+audioUrl+'></audio>').appendTo($(".audiocontainer"));
-						}				
+                        t.element.attr("value", e.MediaID);
+                        if($("audio").length != 0){
+                            $("audio").remove();
+                            $('<audio controls><source id=customUploadedAudio   src='+audioUrl+'></audio>').appendTo($(".audiocontainer"));
+                        }else{
+                            $('<audio controls><source src='+audioUrl+'></audio>').appendTo($(".audiocontainer"));
+                        }
                     }
                 }, function(t) {
-                    e.alertOpg("Audio upload failed : " + t,"My Surveys")
-                                            });
+                    this.uploadBtn.val("Upload").button("refresh");
+                    e.alertOpg("Audio upload failed : " + t,"Alert")
+                })
             } catch (r) {
-                e.alertOpg("Audio upload failed : " + r,"My Surveys")
+                this.uploadBtn.val("Upload").button("refresh");
+                e.alertOpg("Audio upload failed : " + r,"Alert")
             }
         }
     });
@@ -1208,7 +1480,7 @@
                 upload: t.indexOf("AllowUpload") == -1 ? false : true
             };
             var n = document.createElement("div");
-			n.className = "videocontainer";
+            n.className = "videocontainer";
             var r = e(n);
             var i = e('<div class="ui-block-a">');
             var s = e('<div class="ui-block-b">');
@@ -1255,10 +1527,10 @@
             this._on(this.uploadBtn, {
                 click: "_uploadVideo"
             });
-			var videoUrl = 'OPG_Surveys_Media/'+this.element[0].value;
-			if(this.element[0].value != ""){
-					$('<video controls><source id=customUploadedVideo   src='+videoUrl+'></video>').appendTo(r);
-			}
+            var videoUrl = this.element[0].value;
+            if(this.element[0].value != ""){
+                    $('<video controls><source id=customUploadedVideo   src=OPG_Surveys_Media/'+videoUrl+'></video>').appendTo(r);
+            }
         },
         _refresh: function() {
             this._create()
@@ -1275,11 +1547,11 @@
                     n._storeFile(t.path)
                 }, function(t) {
                     //console.log("Error in capture video : " + JSON.stringify(t));
-                   // e.alertOpg("Capture Video failed. Please try again.")
+                    e.alertOpg("Capture Video failed. Please try again.","Alert")
                 }, "MediaPickerAndPreviewPlugin", "pickVideoFromCamera", [])
             } catch (r) {
                 //console.log("Exception in capture video : " + r);
-                e.alertOpg("Capture Video failed. Please try again.","My Surveys")
+                e.alertOpg("Capture Video failed. Please try again.","Alert")
             }
         },
         _getVideo: function() {
@@ -1298,11 +1570,11 @@
                     t._storeFile(n.path)
                 }, function(t) {
                     //console.log("Error in pick video : " + JSON.stringify(t));
-                    //e.alertOpg("Pick Video failed. Please try again.")
+                    //e.alertOpg("Pick Video failed. Please try again.","Vitaccess")
                 }, "MediaPickerAndPreviewPlugin", "pickVideoFromGallery", [s])
             } catch (o) {
                // console.log("Exception in pick video : " + o);
-                e.alertOpg("Pick Video failed. Please try again.","My Surveys")
+                e.alertOpg("Pick Video failed. Please try again.","Alert")
             }
         },
         _storeFile: function(e) {
@@ -1311,7 +1583,7 @@
         },
         _previewVideo: function() {
             if (!this.fileURI) {
-                e.alertOpg("No Video selected","My Surveys");
+                e.alertOpg("No Video selected","Alert");
                 return
             }
             var t = {
@@ -1330,7 +1602,7 @@
         },
         _uploadVideo: function(t, n) {
             if (!this.fileURI) {
-                e.alertOpg("No Video selected" ,"My Surveys");
+                e.alertOpg("No Video selected" ,"Alert");
                 return
             }
             var r = this;
@@ -1343,22 +1615,22 @@
                 cordovaFunction.uploadImage(i, function(e) {
                     if (!e.Percent) {
                         r.uploadBtn.val("Uploaded").button("refresh");
-						var videoUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        var videoUrl = 'OPG_Surveys_Media/'+e.MediaID;
+                        console.log(videoUrl);
                         r.element.val(e.MediaID);
-						if($("video").length != 0){
-							$("video").remove();
-								$('<video controls><source id=customUploadedVideo   src='+videoUrl+'></video>').appendTo($(".videocontainer"));
-						}else{
-                                            $('<video controls><source id=customUploadedVideo   src='+videoUrl+'></video>').appendTo($(".videocontainer"));
-		
-						}
-						
+                        if($("video").length != 0){
+                            $("video").remove();
+                                $('<video controls><source id=customUploadedVideo   src='+videoUrl+'></video>').appendTo($(".videocontainer"));
+                        }else{
+                            $('<video controls><source id=customUploadedVideo   src='+videoUrl+'></video>').appendTo($(".videocontainer"));
+                        }
+                        
                     }
                 }, function(t) {
-                    e.alertOpg("Video upload failed : " + t,"My Surveys")
+                    e.alertOpg("Video upload failed : " + t,"Alert")
                 })
             } catch (s) {
-                e.alertOpg("Video upload failed : " + s,"My Surveys");
+                e.alertOpg("Video upload failed : " + s,"Alert");
                 this.uploadBtn.val("Upload").button("refresh")
             }
         }
@@ -1385,7 +1657,8 @@
                 positionTo: "window",
                 theme: "a",
                 transition: "none"
-            }
+            },
+            timer:-1
         },
         _picker: e([]),
         destroy: function() {
@@ -1460,24 +1733,24 @@
                     var r = t[o[u]];
                     var i = -1;var count = 0;
                     n.find(u).off().on("mousedown touchstart", e.proxy(function() {
-                       	if( i == -1){
-                       	  i = setInterval(function() {
-                        	 ++count;
-                        	 if(count > (i%10)){
-                        		 clearInterval(i);
-                        		 i=-1;count = 0;
-                        	 }else{
-                        		t._handleDate(r)
-                        	 }
-                          },300);  
-                        }                 
+                           if( i == -1){
+                             i = setInterval(function() {
+                             ++count;
+                             if(count > (i%10)){
+                                 clearInterval(i);
+                                 i=-1;count = 0;
+                             }else{
+                                t._handleDate(r)
+                             }
+                          },300);
+                        }
                     }, t)).on("mouseup mouseout touchend", e.proxy(function() {
-                    	if( i != -1){
-                       	  clearInterval(i);
-                       	  count = 0;i=-1;
-	                    }
+                        if( i != -1){
+                             clearInterval(i);
+                             count = 0;i=-1;
+                        }
                     }, t)).on("click",e.proxy(function(){
-                    	return t._handleDate(r)
+                        return t._handleDate(r)
                     },t));
                 })()
             }
@@ -1486,9 +1759,10 @@
             this._hideView()
         },
         _handleDate: function(e) {
-            this._setOption("currentDate", this._getDate());
+               this._setOption("currentDate", this._getDate());
             this._setOption("date", this._fitDate(e.apply(this)));
             return false
+
         },
         _confirmDate: function() {
             var e = true,
@@ -2116,9 +2390,24 @@
 
 
        var tMobile = {
+         isCordova : function()
+       {
+           if(typeof device !== "undefined")
+           {
+               return !(!device.cordova || 0 === device.cordova.length)
+           }
+           else
+           {
+               return false;
+           }
+       },
+
         Android: function() {
             return navigator.userAgent.match(/Android/i)
         },
+       /* Tablet: function(){
+           return navigator.userAgent.match(/Tablet/i)
+        },*/
         BlackBerry: function() {
             return navigator.userAgent.match(/BlackBerry/i)
         },
@@ -2156,3 +2445,4 @@
         }
     }
 })(jQuery)
+
