@@ -68,7 +68,15 @@
         [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     }
     
-    [request setHTTPMethod:POST];
+     if ([apiName isEqualToString:@"PushNotification/Delete"])
+       {
+            [request setHTTPMethod:DELETE];
+       }
+       else
+       {
+            [request setHTTPMethod:POST];
+       }
+    
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     if ([apiName isEqualToString:@"Media/ProfileMedia"])
     {

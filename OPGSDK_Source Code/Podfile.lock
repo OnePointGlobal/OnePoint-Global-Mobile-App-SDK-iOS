@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OPGRuntime:
-    :commit: 8bd076be8924aaf89678be779f9575aa812b2c83
+    :commit: 410499b069e3b7d61c141c92aa037b6b6755c837
     :git: https://github.com/OnePointGlobal/OPGRuntime.git
 
 SPEC CHECKSUMS:
@@ -18,4 +18,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 81d86d41267efc36cd338baf5b3d57ec53f7ecbe
 
-COCOAPODS: 1.6.0.beta.1
+COCOAPODS: 1.7.0
