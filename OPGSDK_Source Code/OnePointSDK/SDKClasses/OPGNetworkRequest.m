@@ -91,7 +91,7 @@
 
 -(NSMutableURLRequest *)createRequestForMediaForApi:(NSString*)apiName{
     NSMutableURLRequest *request;
-    if ([self getUniqueId] == nil) {
+     if ([self getUniqueId] == nil || [self getUniqueId].length == 0) {
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[self getApiUrl],apiName]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
     } else {
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@?Data=%@",[self getApiUrl],apiName,[self getUniqueId]]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
