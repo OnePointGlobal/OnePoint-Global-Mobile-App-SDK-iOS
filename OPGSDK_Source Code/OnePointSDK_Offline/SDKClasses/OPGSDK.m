@@ -490,19 +490,23 @@ static BOOL isResourceFound;
         [self populateErrorObject:UsernameSharedKeyMessage withError:error];
         return nil;
     }
-    OPGRequest *entityManager = [OPGRequest new];
+//    OPGRequest *entityManager = [OPGRequest new];
+//    OPGNetworkRequest *networkManager = [OPGNetworkRequest new];
+//    OPGParseResult *parseManager = [OPGParseResult new];
+//    NSMutableDictionary *surveyEntity = [entityManager getSurveyEntity:[self getUniqueId] panelId:panelId];
+//    NSMutableURLRequest *request = [networkManager createRequest:surveyEntity forApi:GetSurveys];
+    
     OPGNetworkRequest *networkManager = [OPGNetworkRequest new];
     OPGParseResult *parseManager = [OPGParseResult new];
-    NSMutableDictionary *surveyEntity = [entityManager getSurveyEntity:[self getUniqueId] panelId:panelId];
-    NSMutableURLRequest *request = [networkManager createRequest:surveyEntity forApi:GetSurveys];
+    NSMutableURLRequest * request = [networkManager createGetRequestforApi:GetSurveys];
     id responseList = [networkManager performRequest:request withError:error];
     if([self isSessionExpired:responseList])            //check if Unique ID doesn't exist in response
     {
         if([self refreshSession])
         {
             //rebuild entity, request with fresh session ID
-            surveyEntity = [entityManager getSurveyEntity:[self getUniqueId] panelId:panelId];
-            request = [networkManager createRequest:surveyEntity forApi:GetSurveys];
+           // surveyEntity = [entityManager getSurveyEntity:[self getUniqueId] panelId:panelId];
+            request = [networkManager createGetRequestforApi:GetSurveys];
             responseList = [networkManager performRequest:request withError:error];
         }
     }
@@ -1067,20 +1071,17 @@ static BOOL isResourceFound;
         [self populateErrorObject:UniqueIDMessage withError:error];
         return nil;
     }
-    OPGRequest *entityManager = [OPGRequest new];
     OPGNetworkRequest *networkManager = [OPGNetworkRequest new];
     OPGParseResult *parseManager = [OPGParseResult new];
-    NSMutableDictionary *PanProfileEntity = [entityManager getPanelistProfileEntity:[self getUniqueId]];
-    NSMutableURLRequest *request = [networkManager createRequest:PanProfileEntity forApi:GetPanelistProfile];
+    NSMutableURLRequest * request = [networkManager createGetRequestforApi:GetPanelistProfile];
     NSDictionary *profileData = [networkManager performRequest:request withError:error];
     if([self isSessionExpired:profileData])            //check if Unique ID doesn't exist in response
     {
         if([self refreshSession])
         {
             //rebuild entity, request with fresh session ID
-            PanProfileEntity = [entityManager getPanelistProfileEntity:[self getUniqueId]];
-            request = [networkManager createRequest:PanProfileEntity forApi:GetPanelistProfile];
-            profileData = [networkManager performRequest:request withError:error];
+           request = [networkManager createGetRequestforApi:GetPanelistProfile];
+           profileData = [networkManager performRequest:request withError:error];
         }
     }
     OPGPanellistProfile *panProfile = [parseManager parsePanelistProfile:profileData];
@@ -1219,18 +1220,19 @@ static BOOL isResourceFound;
 
 -(NSDictionary*) callPanelistPanelApi :(NSError **)error
 {
-    OPGRequest *entityManager = [OPGRequest new];
+   // OPGRequest *entityManager = [OPGRequest new];
     OPGNetworkRequest *networkManager = [OPGNetworkRequest new];
-    NSMutableDictionary *panelistPanelEntity = [entityManager getPanelistPanelEntity:[self getUniqueId]];
-    NSMutableURLRequest *request = [networkManager createRequest:panelistPanelEntity forApi:PanelPanelist];
+   // NSMutableDictionary *panelistPanelEntity = [entityManager getPanelistPanelEntity:[self getUniqueId]];
+   // NSMutableURLRequest *request = [networkManager createRequest:panelistPanelEntity forApi:PanelPanelist];
+    NSMutableURLRequest * request = [networkManager createGetRequestforApi:PanelPanelist];
     NSDictionary *panelistPanelData = [networkManager performRequest:request withError:error];
     if([self isSessionExpired:panelistPanelData])            //check if Unique ID doesn't exist in response
     {
         if([self refreshSession])
         {
             //rebuild entity, request with fresh session ID
-            panelistPanelEntity = [entityManager getPanelistPanelEntity:[self getUniqueId]];
-            request = [networkManager createRequest:panelistPanelEntity forApi:PanelPanelist];
+            //panelistPanelEntity = [entityManager getPanelistPanelEntity:[self getUniqueId]];
+            request = [networkManager createGetRequestforApi:PanelPanelist];
             panelistPanelData = [networkManager performRequest:request withError:error];
         }
     }
@@ -1249,18 +1251,18 @@ static BOOL isResourceFound;
         [self populateErrorObject:UsernameSharedKeyMessage withError:error];
         return nil;
     }
-    OPGRequest *entityManager = [OPGRequest new];
+    //OPGRequest *entityManager = [OPGRequest new];
     OPGNetworkRequest *networkManager = [OPGNetworkRequest new];
     OPGParseResult *parseManager = [OPGParseResult new];
-    NSMutableDictionary *surveyEntity = [entityManager getCountryEntity:[self getUniqueId]];
-    NSMutableURLRequest *request = [networkManager createRequest:surveyEntity forApi:GetCountries];
+   // NSMutableDictionary *surveyEntity = [entityManager getCountryEntity:[self getUniqueId]];
+     NSMutableURLRequest *request = [networkManager createGetRequestforApi:GetCountries];
     id responseList = [networkManager performRequest:request withError:error];
     if([self isSessionExpired:responseList])            //check if Unique ID doesn't exist in response
     {
         if([self refreshSession])
         {
-            surveyEntity = [entityManager getCountryEntity:[self getUniqueId]];
-            request = [networkManager createRequest:surveyEntity forApi:GetCountries];
+            //surveyEntity = [entityManager getCountryEntity:[self getUniqueId]];
+            request = [networkManager createGetRequestforApi:GetCountries];
             responseList = [networkManager performRequest:request withError:error];
         }
     }

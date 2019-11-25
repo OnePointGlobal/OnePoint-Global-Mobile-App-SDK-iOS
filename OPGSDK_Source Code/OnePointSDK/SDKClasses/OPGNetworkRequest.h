@@ -27,6 +27,9 @@
  */
 -(id)performRequest:(NSMutableURLRequest *)request
           withError:(NSError **)errorDomain;
-
+/*!
+This method creates a NSMutableRequest GET to access the server api.
+*/
+-(NSMutableURLRequest *) createGetRequestforApi:(NSString*)apiName;
 
 @end

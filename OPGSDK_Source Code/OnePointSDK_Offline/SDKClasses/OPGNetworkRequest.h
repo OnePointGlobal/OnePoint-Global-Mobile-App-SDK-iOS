@@ -33,5 +33,9 @@
                 filePath:(NSString *)filePath
                 fileName:(NSString *)fileName
                 withError:(NSError **)errorDomain;
+/*!
+This method creates a NSMutableRequest GET to access the server api.
+*/
+-(NSMutableURLRequest *) createGetRequestforApi:(NSString*)apiName;
 
 @end

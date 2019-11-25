@@ -13,8 +13,8 @@
 #import "NSString+OPGMD5.h"
 #import "OPGConstants.h"
 
-#define MySurveysSDKUsername @"OnePointDevelopers"
-#define MySurveysSDKSharedkey @"opg-ind-blr-OnePointGlobalApp"
+#define MySurveysSDKUsername @"MySurveys2.0"
+#define MySurveysSDKSharedkey @"5ed49012-5321-411c-951e-ffca8e4f1f61"
 
 @implementation OPGNetworkRequest
 
@@ -58,15 +58,20 @@
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[self getApiUrl],apiName]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
+  
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
+    [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     
     
-    if (!([[self getSDKUsername] isEqualToString:MySurveysSDKUsername] && [[self getSDKSharedKey] isEqualToString:MySurveysSDKSharedkey]))
-    {
-        NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
-        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
-    }
+//    if (!([[self getSDKUsername] isEqualToString:MySurveysSDKUsername] && [[self getSDKSharedKey] isEqualToString:MySurveysSDKSharedkey]))
+//    {
+//        NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
+//        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+//        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
+//        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
+//    }
     
      if ([apiName isEqualToString:@"PushNotification/Delete"])
        {
@@ -173,6 +178,22 @@
     }
     
     return nil;
+}
+
+-(NSMutableURLRequest *) createGetRequestforApi:(NSString*)apiName {
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[self getApiUrl],apiName]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
+    [request setHTTPMethod:@"GET"];
+     NSString *uniqueIdStr = [NSString stringWithFormat:@"%@", [self getUniqueId]];
+    [request setValue:uniqueIdStr forHTTPHeaderField:@"SessionID"];
+
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
+    [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
+   
+   return request;
+   
 }
 
 -(BOOL) performUploadFile:(NSMutableURLRequest *)request  filePath:(NSString*)filePath  fileName:(NSString*)fileName withError:(NSError **)errorDomain
