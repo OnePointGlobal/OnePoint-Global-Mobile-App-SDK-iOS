@@ -96,26 +96,32 @@
 
 -(NSMutableURLRequest *)createRequestForMediaForApi:(NSString*)apiName{
     NSMutableURLRequest *request;
+     NSString *uniqueIdStr = [NSString stringWithFormat:@"%@", [self getUniqueId]];
      if ([self getUniqueId] == nil || [self getUniqueId].length == 0) {
         request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[self getApiUrl],apiName]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
     } else {
-        request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@?Data=%@",[self getApiUrl],apiName,[self getUniqueId]]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
+        //request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@?Data=%@",[self getApiUrl],apiName,[self getUniqueId]]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
+        request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",[self getApiUrl],apiName]] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:360];
+        [request setValue:uniqueIdStr forHTTPHeaderField:@"SessionID"];
     }
     
+    NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
+    NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
+    [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
     
-    if (!([[self getSDKUsername] isEqualToString:MySurveysSDKUsername] && [[self getSDKSharedKey] isEqualToString:MySurveysSDKSharedkey]))
-    {
-        NSLog(@"%@", [self getSDKUsername]);
-        NSLog(@"%@", [self getSDKSharedKey]);
-        NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
-        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
-
-        NSLog(@"Auth Value is %@", [self removeNewLineAndSpaces:authValue] );
-
-        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
-    }
-    
+//    if (!([[self getSDKUsername] isEqualToString:MySurveysSDKUsername] && [[self getSDKSharedKey] isEqualToString:MySurveysSDKSharedkey]))
+//    {
+//        NSLog(@"%@", [self getSDKUsername]);
+//        NSLog(@"%@", [self getSDKSharedKey]);
+//        NSString *authStr = [NSString stringWithFormat:@"%@:%@", [self getSDKUsername], [self getSDKSharedKey]];
+//        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+//        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
+//
+//        NSLog(@"Auth Value is %@", [self removeNewLineAndSpaces:authValue] );
+//
+//        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
+//    }
     [request setHTTPMethod:POST];
     return request;
 }
