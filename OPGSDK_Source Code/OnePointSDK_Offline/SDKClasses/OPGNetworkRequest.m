@@ -72,20 +72,38 @@
 //        NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]];
 //        [request setValue:[self removeNewLineAndSpaces:authValue] forHTTPHeaderField:@"Authorization"];
 //    }
-    
-     if ([apiName isEqualToString:@"PushNotification/Delete"])
-       {
-            [request setHTTPMethod:DELETE];
-       }
-       else
-       {
-            [request setHTTPMethod:POST];
-       }
+   NSString *uniqueIdStr = [NSString stringWithFormat:@"%@", [self getUniqueId]];
+     
+    if ([apiName isEqualToString:@"PushNotification/Delete"])
+    {
+         [request setHTTPMethod:DELETE];
+         [request setValue:uniqueIdStr forHTTPHeaderField:@"SessionID"];
+    }
+    else if ([apiName isEqualToString:@"Authentication"])
+    {
+        [request setHTTPMethod:POST];
+        
+    }
+    else if ([apiName isEqualToString:@"SocialLogin/GoogleLogin"])
+    {
+        [request setHTTPMethod:POST];
+        
+    }
+    else if ([apiName isEqualToString:@"SocialLogin/FacebookLogin"])
+    {
+        [request setHTTPMethod:POST];
+        
+    }
+    else
+    {
+        [request setHTTPMethod:POST];
+        [request setValue:uniqueIdStr forHTTPHeaderField:@"SessionID"];
+    }
     
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     if ([apiName isEqualToString:@"Media/ProfileMedia"])
     {
-        [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+         [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     }
     else
     {
