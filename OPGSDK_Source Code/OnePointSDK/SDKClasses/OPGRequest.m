@@ -71,7 +71,6 @@
 - (NSMutableDictionary*) getSurveyEntity : (NSString*)uniqueId panelId:(NSString*)panelId
 {
     NSMutableDictionary *surveyValues = [[NSMutableDictionary alloc] init];
-   // [surveyValues setObject:uniqueId forKey:@"SessionID"];
     if(panelId)
     {
         [surveyValues setObject:panelId forKey:@"PanelID"];
@@ -82,7 +81,6 @@
 - (NSMutableDictionary*) getScriptEntity : (NSString*)uniqueId surveyRef:(NSString*)surveyRef
 {
     NSMutableDictionary *scriptValues = [[NSMutableDictionary alloc] init];
-    //[scriptValues setObject:uniqueId forKey:@"SessionID"];
     [scriptValues setObject:surveyRef forKey:@"SurveyRef"];
     return scriptValues;
 }
@@ -101,7 +99,6 @@
 {
     NSString *locale = [self getLocale];
     NSMutableDictionary *changePasswordValues = [[NSMutableDictionary alloc] init];
-   // [changePasswordValues setObject:uniqueId forKey:@"SessionID"];
     [changePasswordValues setObject:[currentPassword MD5] forKey:@"CurrentPassword"];
     [changePasswordValues setObject:[newPassword MD5]  forKey:@"NewPassword"];
     [changePasswordValues setObject:locale forKey:@"Language"];
@@ -145,7 +142,6 @@
 -(NSMutableDictionary*) getNotificationEntity : (NSString*)uniqueId deviceToken:(NSString*)deviceToken appVersion:(NSString*)appVersion
 {
     NSMutableDictionary *notificationValues = [[NSMutableDictionary alloc] init];
-   // [notificationValues setObject:uniqueId forKey:@"SessionID"];
     [notificationValues setObject:deviceToken forKey:@"DeviceTokenID"];
     [notificationValues setObject:iOSPlatform forKey:@"Platform"];
     [notificationValues setObject:appVersion forKey:@"Version"];
@@ -157,7 +153,6 @@
 -(NSMutableDictionary*) getGeoFencingEntity:(NSString*)uniqueID withLatitude:(NSString*)Latitude withLongitude:(NSString*)Longitude
 {
     NSMutableDictionary *geoFencingValues = [[NSMutableDictionary alloc]init];
-   // [geoFencingValues setValue:uniqueID forKey:@"sessionID"];
     [geoFencingValues setValue:Latitude forKey:@"latitude"];
     [geoFencingValues setValue:Longitude forKey:@"longitude"];
     return geoFencingValues;
@@ -165,8 +160,8 @@
     
 -(NSMutableDictionary*) getCountryEntity : (NSString*)uniqueId
 {
-        NSMutableDictionary *countryValues = [[NSMutableDictionary alloc] init];
-        [countryValues setObject:uniqueId forKey:@"SessionID"];
-        return countryValues;
+    NSMutableDictionary *countryValues = [[NSMutableDictionary alloc] init];
+    [countryValues setObject:uniqueId forKey:@"SessionID"];
+    return countryValues;
 }
 @end
