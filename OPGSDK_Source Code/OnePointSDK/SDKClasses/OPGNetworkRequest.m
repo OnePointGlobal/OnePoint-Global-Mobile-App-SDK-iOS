@@ -85,6 +85,11 @@
         [request setHTTPMethod:POST];
         
     }
+    else if ([apiName isEqualToString:@"ForgotPassword"])
+    {
+        [request setHTTPMethod:POST];
+        
+    }
     else
     {
         [request setHTTPMethod:POST];
