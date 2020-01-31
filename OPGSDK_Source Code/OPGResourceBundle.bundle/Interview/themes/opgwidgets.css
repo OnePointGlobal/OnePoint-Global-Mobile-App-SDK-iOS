@@ -289,3 +289,144 @@ audio{
     margin:10px auto;
     display:table-cell;
 }
+
+
+
+
+
+
+
+
+
+div#maxdiff td, div#maxdiff th {
+    border: 0;
+    padding: 25px;
+}
+th{
+    border-bottom: 1px solid #ccc;
+}
+th:empty {
+    border: 0;
+}
+div#maxdiff>.ui-radio>input {
+    position: absolute;
+    left: 0 !important;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    margin: 0 !important;
+    outline: 0!important;
+    z-index: 1;
+    -ms-transform: scale(1.5); / IE 9 /
+    -webkit-transform: scale(1.5); / Chrome, Safari, Opera /
+    transform: scale(1.5);
+}
+div#maxdiff>.ui-radio {
+    margin: .5em -10px !important;
+    position: relative;
+}
+#maxdiff input[type="radio"]{
+     -ms-transform: scale(1.5) !important; / IE 9 /
+    -webkit-transform: scale(1.5) !important; / Chrome, Safari, Opera /
+    transform: scale(1.5) !important;
+}
+table th,
+table td{
+  text-align: center;
+}
+ul[data-role="maxdiff"]{
+    display: none !important;
+}
+#imagemap{
+       max-width: 500px !important;
+       max-height: 500px !important;
+       position: relative;
+       border: 0.5px solid #ccc;
+}
+.tag {
+   float: left;
+   display: inline;
+   position: absolute;
+   left: 0px;
+   top: 0px;
+   z-index: 1000;
+   color: #FFFFFF;
+   opacity: 0.7;
+   font-size: 0;
+}
+.imagemap{
+    max-width: 500px !important;
+    max-height: 500px !important;
+    display: none !important;
+    width: auto;
+    height: auto;
+}
+.newImage{
+    max-width: 500px !important;
+    max-height: 500px !important;
+    width: auto;
+    height: auto;
+}
+.trackPixel{
+    position:relative;
+    display:inline-block;
+    cursor: pointer;
+}
+.trackPixel:hover{
+    background-color: grey;
+}
+.likeMe{
+    background-color: green;
+}
+.dislikeMe{
+    background-color: red;
+}
+.neutralMe{
+    background-color: grey;
+}
+
+.trackPixel.tooltip .tooltiptext {
+  visibility: hidden;
+    width: 120px;
+    height: 15px;
+    display: block;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 9999;
+    top: -26px;
+    left: 59%;
+    font-size: 12px;
+    margin-left: -60px;
+    opacity: 0;
+    border-bottom: 1px solid #fff;
+    transition: opacity 1s;
+    float: left;
+    clear: both;
+}
+
+.trackPixel.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  cursor: pointer;
+}
+.trackPixel.tooltip .tooltiptext:hover {
+  visibility: visible;
+  opacity: 1;
+  color: black;
+  border: 1px solid black;
+  background-color: #fff;
+  font-weight: bold;
+  font-weight: bold;
+}
+.like{
+    top: -78px !important;
+}
+.dislike{
+    top: -52px !important;
+}
+table[data-role="imagemap"]{
+    display: none !important;
+}

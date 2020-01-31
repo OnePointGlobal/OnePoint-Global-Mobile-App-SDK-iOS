@@ -2044,7 +2044,363 @@ e.widget("opg.ocr", {
             domHandle.remove()
         }
     });
+                                             
+                                             e.widget("opg.Bucket", {
+                                                 initSelector: "table[data-role='bucket']",
+                                                 _create: function() {
+                                                      // *Note : Images should have ids with the count starting from 0 and so on. Buckets are counted with the length of table columns.
+                                                      $(function($) {
+                                                         var table = $(this).find("table[data-role='bucket']");
+                                                         table = table.length;
+                                                         if(table >= 1){
+                                                             var buckets = $(this).find("input[id*='_Q']");
+                                                             var images = $(this).find("img");
+                                                             if(buckets.length && images.length){
+                                                                 $('bucket').append("<div class='container addImages'></div>");
+                                                                 $.each(images, function (key, val) {
+                                                                     $('.addImages').append(images[key].outerHTML);
+                                                                 });
+                                                                 var colCount = -1;
+                                                                 $('tr:nth-child(3) td').each(function () {
+                                                                     colCount++;
+                                                                     console.log(colCount);
+                                                                 });
+                                                                 colCount = new Array(colCount);
+                                                                 $.each(colCount, function (key, val) {
+                                                                     $('.addImages').append("<div id='bucket"+(key+1)+"' class='drop'><p>Bucket "+(key+1)+"</p></div>");
+                                                                 });
 
+                                                                 if($(this).find("input[id*='_Q']").val()){
+                                                                     var allInputs = $(this).find("input[id*='_Q']");
+                                                                     $.each(allInputs, function (key, val) {
+                                                                         if(val.value != '0'){
+                                                                             console.log(val);
+                                                                             var imageCount = new Array(Number(val.value));
+                                                                             var bucketId, imageId;
+                                                                             bucketId = val.id.split('_Q');
+                                                                             console.log(bucketId);
+                                                                             imageId = "#"+bucketId[2];
+                                                                             bucketId = '#bucket'+ (Number(bucketId[3]) + 1);
+                                                                             $.each(imageCount, function(){
+                                                                                 $(imageId).clone().attr('class', 'dragdrop draggable dragaware dragging dropped').appendTo(bucketId).draggable('destroy');
+                                                                             });
+                                                                         }
+                                                                     });
+                                                                 }else{
+                                                                     $(this).find("input[id*='_Q']").val(0);
+                                                                 }
+                                                             }
+                                                             var questionNumber = $('tr:nth-child(3) td input');
+                                                             questionNumber = questionNumber[0].id.split("_");
+                                                             questionNumber = questionNumber[1];
+                                                             $('.dragdrop').draggable({
+                                                               revert: true,
+                                                               placeholder: true,
+                                                               droptarget: '.drop',
+                                                               drop: function(evt, droptarget) {
+                                                                 $(this).clone().addClass('dropped').appendTo(droptarget).draggable('destroy');
+                                                                 var getIdSplice = droptarget.id.replace("bucket", "");
+                                                                 getIdSplice = (0 + getIdSplice) - 1;
+                                                                 var addHere = 'input[id~="_'+questionNumber+'_Q'+this.attr("id")+'_Q'+ getIdSplice +'"';
+                                                                 var finalAns = Number($(addHere).val()) + 1;
+                                                                 $(addHere).val(finalAns);
+                                                               }
+                                                             });
+
+                                                             $(document).on('click','img', function(event){
+                                                                 if(event.target.className == "dragdrop draggable dragaware dragging dropped"){
+                                                                     var droptarget = event.target.parentNode;
+                                                                     var getIdSplice = droptarget.id.replace("bucket", "");
+                                                                     getIdSplice = (0 + getIdSplice) - 1;
+                                                                     var addHere = 'input[id~="_'+questionNumber+'_Q'+event.target.id+'_Q'+ getIdSplice +'"';
+                                                                     var finalAns = Number($(addHere).val()) - 1;
+                                                                     $(addHere).val(finalAns);
+                                                                     event.target.remove();
+                                                                 }
+                                                             });
+                                                         }
+
+                                                     });
+                                                 },
+                                                 _destroy: function() {
+                                                     domHandle.remove()
+                                                 }
+                                             });
+                                             
+                                             
+ var createCount = 0;
+ e.widget("opg.imagemap",{
+     initSelector: "input[type='text']",
+     _create: function() {
+         $(function($) {
+             var imagemap = $(this).find("table[data-role='imagemap']");
+             imagemap = imagemap.length;
+             if(imagemap >= 1){
+                 if(createCount == 0){
+                     createCount++;
+                     console.log("imagemap created");
+                     var inputFields = $(this).find("input[id*='_Q']");
+                     var images = $(this).find("img");
+                     $('img').load(function(){
+                         if(inputFields.length && images.length){
+                             $('imagemap').append("<br><br><br><br><div id='imagemap' class='container'></div><p class='imageMapError'></p>");
+                             $('.container').append(""+images[0].outerHTML+"<div class='tag'></div>");
+                             $('.container .imagemap').attr('class','newImage');
+                             var heightOfImage = $(".imagemap")[0].height;
+                             var widthOfImage = $(".imagemap")[0].width;
+                             var divWidth, divHeight = 0, numberOfCol, numberOfRows;
+                             numberOfRows = $('table[data-role="imagemap"] tr').length - 2;
+                             numberOfCol = $("table[data-role='imagemap'] tr:nth-child(3) td").length - 1;
+                             if(heightOfImage >= 500){
+                                 heightOfImage = 500;
+                                 divHeight = (heightOfImage/numberOfRows)+"px";
+                             }else{
+                                 divHeight = (heightOfImage/numberOfRows)+"px";
+                             }
+                             if(widthOfImage >= 500){
+                                 widthOfImage = 500;
+                                 divWidth = (widthOfImage/numberOfCol)+"px";
+                             }else{
+                                 divWidth = (widthOfImage/numberOfCol)+"px";
+                             }
+                             $('.container').css("height",heightOfImage);
+                             $('.container').css("width",widthOfImage);
+                             $('.tag').css("height",heightOfImage);
+                             $('.tag').css("width",widthOfImage);
+                             $('.newImage').css("height",heightOfImage);
+                             $('.newImage').css("width",widthOfImage);
+                             $('.container').css("max-height","500px");
+                             $('.container').css("max-width","500px");
+                             $('.tag').css("max-height","500px");
+                             $('.tag').css("max-width","500px");
+                             $('.newImage').css("max-height","500px");
+                             $('.newImage').css("max-width","500px");
+                             $.each(inputFields, function(key, val){
+                                 $('.tag').append("<span class='trackPixel tooltip' id='"+val.id+"'><span class='tooltiptext like'>Like</span><span class='tooltiptext dislike'>Dislike</span><span class='tooltiptext neutral'>Neutral</span></span>");
+                             });
+                             $('.trackPixel').css("height",divHeight);
+                             $('.trackPixel').css("width",divWidth);
+                             //console.log(inputFields);
+                             //console.log(images);
+                             //console.log(heightOfImage);
+                             //console.log(widthOfImage);
+                             if($("input[id*='_Q']").val() >= 0){
+                                 var allInputs = $("input[id*='_Q']");
+                                 $.each(allInputs, function (key, val) {
+                                     if(val.value > '0'){
+                                         if(val.value == 1){
+                                             $("span#"+val.id+"").addClass('dislikeMe');
+                                         }else if(val.value == 2){
+                                             $("span#"+val.id+"").addClass('likeMe');
+                                         }else{
+                                             $("span#"+val.id+"").addClass('neutralMe');
+                                         }
+
+                                     }else{
+                                         val.value = '0';
+                                     }
+                                 });
+                             }
+
+                             $('.like').click(function(event){
+                                 $('.imageMapError').text("");
+                                 $('#imagemap').css('border','0.5px solid #ccc');
+                                 $("span#"+event.target.parentNode.id+"").attr('class','trackPixel tooltip likeMe');
+                                 $("input#"+event.target.parentNode.id+"").val(2);
+                             });
+                             $('.dislike').click(function(event){
+                                 $('.imageMapError').text("");
+                                 $('#imagemap').css('border','0.5px solid #ccc');
+                                 $("span#"+event.target.parentNode.id+"").attr('class','trackPixel tooltip dislikeMe');
+                                 $("input#"+event.target.parentNode.id+"").val(1);
+                             });
+                             $('.neutral').click(function(event){
+                                 $('.imageMapError').text("");
+                                 $('#imagemap').css('border','0.5px solid #ccc');
+                                 $("span#"+event.target.parentNode.id+"").attr('class','trackPixel tooltip neutralMe');
+                                 $("input#"+event.target.parentNode.id+"").val(3);
+                             });
+
+                             var mandatory = $("mandatory");
+                             if(mandatory.length){
+                                 $.each(mandatory, function (key, val) {
+                                     mandatory = val.innerText;
+                                 });
+                                 if(mandatory == 'true'){
+                                     $('.mrNext, .mrPrev').click(function(event){
+                                         var formInput = 0;
+                                         var allInputs = $("input[id*='_Q']");
+                                         $.each(allInputs, function (key, val) {
+                                             if(val.value > '0'){
+                                                 formInput++;
+                                             }
+                                         });
+                                         if(formInput == 0){
+                                             console.log("came and applied return");
+                                             $('.imageMapError').text("Please map at least one section on the image.").css('color','red');
+                                             $('#imagemap').css('border','1px solid red');
+                                             event.preventDefault();
+                                         }
+                                     });
+                                 }
+                             }
+                             $('mandatory').css('display','none');
+                         }
+                     })
+                     .error(function(){
+                         alert('Image is not loaded!');
+                     });
+
+                 }
+             }
+         });
+     },
+     _refresh: function() {
+         this._create()
+     },
+     _destroy: function() {
+         this.domHandle.remove()
+     },
+ });
+      
+ e.widget("opg.MaxDiff",{
+     initSelector: "input[type='text']",
+     _create: function() {
+         $(function($) {
+             var maxDifference = $(this).find("ul[data-role='maxdiff']");
+             maxDifference = maxDifference.length;
+             if(maxDifference >= 1){
+                 console.log("max diff created");
+                 if(count == 0){
+                     count++;
+                     console.log($('ul[data-role="maxdiff"] li span input'));
+                     var firstQuesId = $('ul[data-role="maxdiff"] li span input')[0].id;
+                     firstQuesId = firstQuesId.split('_');
+                     firstQuesId = "_"+firstQuesId[1];
+                     var flavours = $('ul[data-role="maxdiff"] li span.mrQuestionText');
+                     var addTableData = "";
+                     $.each(flavours,function(key, val){
+                         var name = firstQuesId+"_Q"+key+"_Q0";
+                         if(!val.outerText) {
+                             val.outerText = val.textContent;
+                         }
+                         addTableData = addTableData + "<tr><td><input type='radio' name='"+name+"' data-col='1'></td><td>"+val.outerText+"</td><td><input type='radio' name='"+name+"' data-col='3'></td></tr>";
+                     });
+
+                     var max = $('max');
+                     var min = $('min');
+                     if(max.length >= 1){
+                       max = max[0].innerText;
+                       $('max').css('display','none');
+                     }else{
+                       max = "Most Important";
+                     }
+                     if(min.length >= 1){
+                       min = min[0].innerText;
+                       $('min').css('display','none');
+                     }else{
+                         min = "Least Important";
+                     }
+                     $('maxdiff').append("<div id='maxdiff'><table><tr><th>"+max+"</th><th></th><th>"+min+"</th></tr>"+addTableData+"</table></div><p class='maxDiffError'></p>");
+
+
+                     if($(this).find("input[id*='_Q']").val()){
+                         var allInputs = $(this).find("input[id*='_Q']");
+                         $.each(allInputs, function (key, val) {
+                             if(val.value != '0'){
+                                 if(val.value == '2'){
+                                     $('input[data-col="1"][name="'+val.id+'"]').prop("checked", true);
+                                 }else{
+                                     $('input[data-col="3"][name="'+val.id+'"]').prop("checked", true);
+                                 }
+                             }
+                         })
+                         var arrayOfChecked = $('input[type="radio"]:checked');
+                         $.each(arrayOfChecked, function(key, val){
+                             $('input[name='+val.name+']').prop("disabled", true);
+                         });
+                     }else{
+                         $(this).find("input[id*='_Q']").val(0);
+                     }
+                 }
+                 $('tr td input[data-col="1"]').click(function(){
+                     var arrayOfChecked = $('input[type="radio"]:checked');
+                     console.log(arrayOfChecked);
+                     $.each(arrayOfChecked, function(key, val){
+                         if((val.getAttribute('data-col') == 1)){
+                             console.log(val.name);
+                             $('ul[data-role="maxdiff"] li span input#'+val.name).val(0);
+                             /*if(($('ul[data-role="maxdiff"] li span input#'+val.name+'').val()) == 2){
+                                 $('ul[data-role="maxdiff"] li span input#'+val.name+'').val(0);
+                             }else{
+                                 $('ul[data-role="maxdiff"] li span input#'+val.name+'').val(2);
+                             }*/
+                         }
+                     });
+                     console.log("$(this)");
+                     console.log($(this)[0].name);
+                     $('ul[data-role="maxdiff"] li span input#'+$(this)[0].name+'').val(2);
+                     $('tr td input[data-col="3"]').prop("disabled", false);
+                     $('tr td input[data-col="1"]').prop("disabled", false);
+                     $('tr td input[data-col="1"]').prop("checked", false);
+                     $(this).prop("checked", true);
+                     //$('input[name='+$(this)[0].name+']').prop("disabled", true);
+                     var arrayOfChecked = $('input[type="radio"]:checked');
+                     $.each(arrayOfChecked, function(key, val){
+                         $('input[name='+val.name+']').prop("disabled", true);
+                     });
+
+                 });
+                 $('tr td input[data-col="3"]').click(function(){
+                     var arrayOfChecked = $('input[type="radio"]:checked');
+                     $.each(arrayOfChecked, function(key, val){
+                         if(val.getAttribute('data-col') == 3){
+                             $('ul[data-role="maxdiff"] li span input#'+val.name).val(0);
+                         }
+                     });
+                     $('ul[data-role="maxdiff"] li span input#'+$(this)[0].name+'').val(1);
+                     $('tr td input[data-col="1"]').prop("disabled", false);
+                     $('tr td input[data-col="3"]').prop("disabled", false);
+                     $('tr td input[data-col="3"]').prop("checked", false);
+                     $(this).prop("checked", true);
+                     var arrayOfChecked = $('input[type="radio"]:checked');
+                     $.each(arrayOfChecked, function(key, val){
+                         $('input[name='+val.name+']').prop("disabled", true);
+                     });
+                     //$('input[name='+$(this)[0].name+']').prop("disabled", true);
+                     //
+                 });
+
+
+                 var mandatory = $("mandatory");
+                 if(mandatory.length){
+                     $.each(mandatory, function (key, val) {
+                         mandatory = val.innerText;
+                     });
+                     if(mandatory == 'true'){
+                         $('.mrNext, .mrPrev').click(function(event){
+                             var formInput = 0;
+                             var allInputs = $("input[id*='_Q']");
+                             $.each(allInputs, function (key, val) {
+                                 if(val.value > '0'){
+                                     formInput++;
+                                 }
+                             });
+                             if(formInput == 0){
+                                 console.log("came and applied return");
+                                 $('.maxDiffError').text("Please select at least one value.").css('color','red');
+                                 $('#maxdiff>table').css('border','1px solid red');
+                                 event.preventDefault();
+                             }
+                         });
+                     }
+                 }
+                 $('mandatory').css('display','none');
+             }
+         });
+     }
+ });
+                                              
     e.widget("opg.slider", $.mobile.slider, {
     options: {
         vertical: false,
