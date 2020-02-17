@@ -14,11 +14,13 @@
 
 #import "SkeletonEnumerator.h"
 #import "CollectionObject.h"
+#import "OrderConstants.h"
 
 @interface Questions :CollectionObject<IQuestions> {
     NSMutableArray *filter;
     NSMutableArray *internalFilter;
     id<IQuestion> question;
+    OrderConstants order;
 }
 
 -(NSMutableArray *)getfilter;
@@ -42,3 +44,4 @@
 @end
 
 // _Questions_H_
+

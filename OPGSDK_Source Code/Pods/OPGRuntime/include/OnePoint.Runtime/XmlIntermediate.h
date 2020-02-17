@@ -87,6 +87,7 @@
 -(NSMutableArray*)getQuestionBanners:(int)index withNSString:(NSString*)name;
 -(NSMutableArray*)getQuestionBanners;
 -(NSString*)getQuestion:(NSArray*)questionArray;
+-(NSString*)getQuestionControl:(NSArray*)questionArray;
 -(NSString*)getError:(int)index;
 -(NSString*)getLabel:(int)index;
 //-(void)setUpQuestion:(id<IApplication>)application withIQuestion:(id<IQuestion>)question;

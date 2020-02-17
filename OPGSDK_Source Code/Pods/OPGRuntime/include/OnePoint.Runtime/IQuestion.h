@@ -82,6 +82,8 @@
 -(void)setVariableId:(long)value ;
 -(BOOL)getIsGrid;
 -(BOOL) getIsExpand;
+-(BOOL)getIsFixed;
+-(void)setIsFixed:(BOOL)value;
 -(MediaTypes)getMediaType ;
 -(void)setMediaType:(MediaTypes)value;
 -(BOOL) getNoCaseData;

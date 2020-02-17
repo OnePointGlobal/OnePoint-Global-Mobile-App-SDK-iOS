@@ -51,8 +51,10 @@
 -(void)setOrderConstants:(OrderConstants)value;
 -(OrderConstants)getOrderConstants;
 -(NSArray*)getInternalFilter;
+-(void)setInternalFilter:(NSMutableArray *)internalFilter;
 - (id)getdefaultproperty;
 - (void)setdefaultproperty:(id)value;
 @end
+
 
 

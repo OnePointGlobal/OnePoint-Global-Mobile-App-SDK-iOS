@@ -22,15 +22,18 @@ typedef enum {
   ControlTypes_ctDateTime = 13,
   ControlTypes_ctPassword = 14,
   ControlTypes_ctSlider,
+  ControlTypes_ctMaxDiff,
+  ControlTypes_ctImageMap,
+  ControlTypes_ctBucket,
   ControlTypes_ctBarCode ,
   ControlTypes_ctGeoCode,
   ControlTypes_ctMedia,
   ControlTypes_ctDragAndDrop,
-   ControlTypes_ctHotSpot,
-    ControlTypes_ctStar,
-    ControlTypes_ctEmail,
-    ControlTypes_ctButtonList,
-    ControlTypes_ctCustom,
+  ControlTypes_ctHotSpot,
+  ControlTypes_ctStar,
+  ControlTypes_ctEmail,
+  ControlTypes_ctButtonList,
+  ControlTypes_ctCustom,
 
    
 } ControlTypes;

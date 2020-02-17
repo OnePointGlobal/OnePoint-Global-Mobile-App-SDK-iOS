@@ -35,8 +35,9 @@
 -(void)setOrder:(SortOrder)value;
 -(SortOrder)getOrder;
 - (id)init;
--(void)set___idx:(id)index withId:(id)value;
+-(void)set___idx:(id)key withId:(id)value;
 -(void) set___idxWithId:(id)key value:(id)value;
+-(id)get___idxxx:(id) key;
 -(id)get___idxWithId:(id)key ;
 -(id)get___idxwithint:(NSNumber *)key ;
 -(void) set___idxWithInt:(int)key value:(id)value;
@@ -55,3 +56,4 @@
 @end
 
 // _CollectionObject_H_
+

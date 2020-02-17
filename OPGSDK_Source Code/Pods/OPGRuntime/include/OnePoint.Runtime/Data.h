@@ -16,11 +16,13 @@
 #import "Control.h"
 #import "QuestionLabel.h"
 #import "QuestionControl.h"
+#import "QuestionElementType.h"
 @interface Data :Control<NSObject> {
     id<IQuestion> __Question;
+      QuestionElementType QuestionElement;
     int __Index;
 }
-
+@property (nonatomic, assign) int myInt;
 - (id)initWithIControl:(id<IControl>)parent
       withQueryManager:(QueryManager *)arguments;
 -(id)initWithIControl:(id<IControl>)parent
@@ -37,6 +39,9 @@
 -(void) setIndex:(int)value;
 -(id<IQuestion>) getQuestion;
 -(void) setQuestion:(id<IQuestion>)value;
+-(QuestionElementType) getQuestionElement;
+-(void) setQuestionElement:(QuestionElementType)questionElement;
 @end
 
 //#endif // _OnePointPlayerWebWebControlsData_H_
+

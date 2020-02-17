@@ -12,14 +12,16 @@
 
 
 #import "Control.h"
+#import "QuestionElementType.h"
 
 @interface QuestionControl : Control {
     int index;
+     QuestionElementType questionElement;
 }
 
 - (id)initWithIControl:(id<IControl>)parent
       withQueryManager:(QueryManager *)arguments;
 - (id)initWithIControl:(id<IControl>)parent
-      withQueryManager:(QueryManager *)arguments withIndex:(int)index;
+      withQueryManager:(QueryManager *)arguments withIndex:(int)index withquestionElementType:(QuestionElementType)_questionElement;
 - (void)render:(id<IResponse>)response;
 @end

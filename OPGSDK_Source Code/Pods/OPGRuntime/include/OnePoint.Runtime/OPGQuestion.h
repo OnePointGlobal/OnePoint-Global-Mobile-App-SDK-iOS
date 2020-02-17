@@ -33,6 +33,7 @@
 @interface OPGQuestion : NSObject<IQuestion> {
  @public
   id<IQuestions> _temporaryquestions;
+  id<IQuestion> question;
   NSString *_json;
   NSString *_bannertemplate;
   id<ILabels> _banners;
@@ -73,6 +74,7 @@
     long _variableid;
     BOOL _isexpand;
     BOOL _nocasedata;
+    BOOL _isFixed;
     id<ILabel> _gotolabel;
     id _defaultproperty;
     id<ICategory> _parentcategory;
@@ -186,6 +188,7 @@
                             withBoolean:(BOOL)isOther withNSString:(NSString *)name;
 - (void)buildQuestion:(Interview *)interview withId:(id)json withNSString:(NSString *)label
           withBoolean:(BOOL)isOther;
+-(OrderConstants)checkSortType:(id)json;
 - (id)findProperty:(id)json withNSString:(NSString *)fieldName;
 - (void)processBlock:(Interview *)interview withId:(id)json;
 - (void)processFields:(Interview *)interview withId:(id)json withIQuestion:(id<IQuestion>)question;

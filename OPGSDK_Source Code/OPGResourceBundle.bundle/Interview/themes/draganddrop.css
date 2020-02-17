@@ -31,7 +31,7 @@ padding:0;
 list-style:none;
 }
 .jquery-script-center a {
-	text-decoration:none;
+    text-decoration:none;
 }
 .jquery-script-ads {
 width: 728px;
@@ -134,12 +134,13 @@ ul.inline li {
     background-color: #F6BF66;
 }
 .deleteMe{
-	border: 1px solid red;
-	display: inline-block;
+    border: 1px solid red;
+    display: inline-block;
 }
 img{
-	margin:2px;
+    margin:2px;
 }
 table[data-role='bucket']{
-	display: none !important;
+    display: none !important;
 }
+
