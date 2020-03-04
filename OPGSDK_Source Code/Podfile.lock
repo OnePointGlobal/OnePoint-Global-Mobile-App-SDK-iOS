@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   OPGRuntime:
-    :commit: b9fc39906a32ed5d45e9b00aa8f1732ff6e2802a
+    :commit: 0202fba25dc4ae35a248d7b12c7ee9f404254deb
     :git: https://github.com/OnePointGlobal/OPGRuntime.git
 
 SPEC CHECKSUMS:

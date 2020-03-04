@@ -12,6 +12,7 @@
 
 -(int)getCount;
 -(id)getcurrent;
+-(id)getcurrent:(id)index;
 -(id)get___idx:(int)index;
 -(void)set___idx:(int)index :(id)value;
 -(id)getByIndex:(int)index;

@@ -72,6 +72,8 @@
 - (void)setUseKeyCodes:(BOOL)value;
 - (BOOL)getUsePlayerNavigation;
 - (void)setUsePlayerNavigation:(BOOL)value;
+- (int)getCompleteCount;
+- (void)setCompleteCount:(int)value;
 - (NSString *)getUser1;
 - (void)setUser1:(NSString *)value;
 - (NSString *)getUser2;

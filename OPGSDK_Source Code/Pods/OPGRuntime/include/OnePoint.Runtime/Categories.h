@@ -18,8 +18,9 @@
 
 @interface Categories : CollectionObject<ICategories> {
  @public
-  int __CountWithoutOthers_;
-  OrderConstants _order1;
+    int __CountWithoutOthers_;
+    int  __SubCount;
+    OrderConstants _order1;
     SortOrder _order2;
     Variant *_filter;
     id<IQuestion> _question;
@@ -44,6 +45,8 @@
 - (id)initWithNSString:(NSString *)order;
 - (int)getCountWithoutOthers;
 - (void)setCountWithoutOthers:(int)value;
+- (int)getSubCount;
+- (void)setSubCount:(int)value;
 - (void)add:(NSString *)key withICategory:(id<ICategory>)value;
 - (void)copy:(id<ICategories>)value;
 - (NSString *)description;

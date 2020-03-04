@@ -28,6 +28,7 @@
   BOOL _isautoanswer;
   BOOL _isdebug;
   BOOL _isrestart;
+  BOOL _noCache;
   BOOL _isreview;
   NSString *_lastasked;
   NSDate *_lastaskedtime;
@@ -56,9 +57,10 @@
   NSString *_renderer;
   long long int _respondanttimezone;
   long  _serial;
+  int  _CompleteCount;
   BOOL _usekeycodes;
   BOOL _useplayernavigation;
-     BOOL _estimatedprogressset;
+  BOOL _estimatedprogressset;
   NSString *_user1;
   NSString *_user2;
   NSString *_user3;
@@ -68,7 +70,7 @@
   NSString *_user7;
   NSString *_user8;
   NSString *_user9;
-    NSString *_user10;
+  NSString *_user10;
 
 }
 
@@ -121,6 +123,8 @@ withIProperties:(id<IProperties>)browserCapabilities
 - (void)setIsRestart:(BOOL)value;
 - (BOOL)getIsReview;
 - (void)setIsReview:(BOOL)value;
+- (BOOL)getNoCache;
+- (void)setNoCache:(BOOL)value;
 - (NSString *)getLastAsked;
 - (void)setLastAsked:(NSString *)value;
 - (NSDate *)getLastAskedTime;
@@ -179,6 +183,8 @@ withIProperties:(id<IProperties>)browserCapabilities
 - (void)setUseKeyCodes:(BOOL)value;
 - (BOOL)getUsePlayerNavigation;
 - (void)setUsePlayerNavigation:(BOOL)value;
+- (int)getCompleteCount;
+- (void)setCompleteCount:(int)value;
 - (NSString *)getUser1;
 - (void)setUser1:(NSString *)value;
 - (NSString *)getUser2;

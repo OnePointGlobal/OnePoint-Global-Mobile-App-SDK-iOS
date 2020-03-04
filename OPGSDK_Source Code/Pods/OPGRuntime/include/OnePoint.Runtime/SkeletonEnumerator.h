@@ -17,4 +17,5 @@
 -(void)setCollection:(id)value;
 -(id)initWithISkeletonCollection:(id)aCollection;
 -(NSNumber *)movenext;
+-(id)movenext:(id)index;
 @end
