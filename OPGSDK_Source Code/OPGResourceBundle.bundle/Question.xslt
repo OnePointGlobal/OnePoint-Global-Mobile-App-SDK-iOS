@@ -1,16 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-IBM Confidential
-
-OCO Source Materials
-
-IBM SPSS Products: Data Collection
-
-(C) Copyright IBM Corp. 2001, 2011
-
-The source code for this program is not published or otherwise divested of its trade secrets, irrespective of what has been deposited with the U.S. Copyright Office.
--->
-
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
     <xsl:output method="xml" indent="yes"/>
     <xsl:param name="bIncludeCSSStyles" select="true()"/>
