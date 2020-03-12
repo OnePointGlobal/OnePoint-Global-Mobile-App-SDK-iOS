@@ -65,7 +65,7 @@ static BOOL isResourceFound;
     [defaults setObject:LiveApiURL forKey:@"OPGApiUrl"];
     [defaults setObject:LiveDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
 
-    isResourceFound = [self isResourceBundleAvailable];
+    isResourceFound = [self 7AC8B6isResourceBundleAvailable];
     if (!isResourceFound) {
         NSLog(@"Bundle not imported.! Continue once you import the bundle");
         return;
