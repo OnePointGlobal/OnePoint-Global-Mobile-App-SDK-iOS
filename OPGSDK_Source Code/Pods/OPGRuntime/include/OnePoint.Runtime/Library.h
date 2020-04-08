@@ -15,6 +15,7 @@
 @interface Library : NSObject {
 @public
     long long int __RandomSeed_;
+    NSArray *stringArray;
 }
 +(NSArray*)cCatArray:(NSString*)value;
 +(NSDate*)cDate:(NSString*)value;
@@ -113,6 +114,7 @@
 - (NSDate*)utctolocaltime:(id)value;
 - (NSDate*)localtoutctime:(id)value;
 - (Variant *)ubound:(id)value;
+-(long)uBound:(id)value init:(id)arrayDimension;
 - (NSString *)ucase:(id)value;
 - (Variant *)validateWithId:(id)value
                      withId:(id)min
@@ -135,6 +137,7 @@
 -(NSNumber *)containsSome:(id)value withAnswers:(id)answers withlongMin:(long)min withLongMax:(long)max;
 -(NSNumber *)containsSome:(id)value withAnswers:(id)answers withlongMin:(long)min withLongMax:(long)max withBool:(BOOL)exactly;
 -(NSNumber *)containsany:(id)value :(id)answers;
+-(NSNumber *)containsAll:(id)value :(id)answers;
 -(NSNumber *)containsany:(id)value :(id)answers :(BOOL)exactly;
 -(NSNumber *)hasanswer:(id)value :(id)answers;
 - (NSNumber *)year:(NSDate *)value;

@@ -61,9 +61,9 @@ static BOOL isResourceFound;
 {
     
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:LiveInterviewUrl forKey:@"OPGInterviewUrl"];
-    [defaults setObject:LiveApiURL forKey:@"OPGApiUrl"];
-    [defaults setObject:LiveDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
+    [defaults setObject:QCInterviewUrl forKey:@"OPGInterviewUrl"];
+    [defaults setObject:QCApiURL forKey:@"OPGApiUrl"];
+    [defaults setObject:QCDownloadMediaURL forKey:@"OPGDownloadMediaUrl"];
 
     isResourceFound = [self 7AC8B6isResourceBundleAvailable];
     if (!isResourceFound) {
