@@ -22,6 +22,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "OPGFile.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVKit/AVKit.h>
 enum OPGCaptureErrorNew {
     CAPTURE_INTERNAL_ERR = 0,
     CAPTURE_APPLICATION_BUSY = 1,
@@ -120,6 +121,7 @@ CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate>{
 @property (nonatomic, strong)UIImageView *imageView;
 @property (nonatomic, strong)UIButton *closeButton;
 @property (nonatomic, strong)UIView *imageBgView;
+@property (strong, nonatomic) AVPlayerViewController *playerViewController;
 @property BOOL inUse;
 
 - (void)takePicture:(OPGInvokedUrlCommand*)command sourceType:(NSString*)mediatype;

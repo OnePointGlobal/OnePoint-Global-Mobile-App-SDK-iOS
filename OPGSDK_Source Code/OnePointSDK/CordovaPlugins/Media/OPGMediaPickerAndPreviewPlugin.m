@@ -1352,18 +1352,40 @@ UIActivityIndicatorView *spinner;
 {
     NSString *mediaFilePath=[[[command.arguments objectAtIndex:0]valueForKey:@"path"]description];
     CallbackId=command.callbackId;
+    NSURL *vedioURL;
+    AVPlayerItem *playerItem;
+    AVPlayer *playVideo;
+    
     if ([[NSFileManager defaultManager]fileExistsAtPath:[mediaFilePath stringByReplacingOccurrencesOfString:@"file://" withString:@""]]) {
-    MPMoviePlayerViewController *moviePlayer;
-    if ([mediaFilePath hasPrefix:@"file://"]) {
-       moviePlayer = [[MPMoviePlayerViewController
-                       alloc]initWithContentURL:[NSURL URLWithString:mediaFilePath]];
+        if ([mediaFilePath hasPrefix:@"file://"]) {
+            vedioURL =[NSURL fileURLWithPath:mediaFilePath];
+            playerItem = [AVPlayerItem playerItemWithURL:vedioURL];
+            playVideo = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+            _playerViewController = [[AVPlayerViewController alloc] init];
+            _playerViewController.player = playVideo;
+        }
+        else{
+            vedioURL =[NSURL fileURLWithPath:mediaFilePath];
+            playerItem = [AVPlayerItem playerItemWithURL:vedioURL];
+            playVideo = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+            _playerViewController = [[AVPlayerViewController alloc] init];
+            _playerViewController.player = playVideo;
+        }
+        [self.viewController presentViewController:_playerViewController animated:NO completion:nil];
+        [playVideo play];
+        
+    }
+    else if (mediaFilePath != nil){
+        vedioURL =[NSURL fileURLWithPath:mediaFilePath];
+        playerItem = [AVPlayerItem playerItemWithURL:vedioURL];
+        playVideo = [[AVPlayer alloc] initWithPlayerItem:playerItem];
+        _playerViewController = [[AVPlayerViewController alloc] init];
+        _playerViewController.player = playVideo;
+        [self.viewController presentViewController:_playerViewController animated:NO completion:nil];
+        [playVideo play];
     }
     else{
-       moviePlayer = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL fileURLWithPath:mediaFilePath]];
-    }
-        [self.viewController presentViewController:moviePlayer animated:NO completion:nil];
-    }else{
-         [self errorCallBack:@"error occured while trying to play video" withcallbackId:command.callbackId];
+        [self errorCallBack:@"error occured while trying to play video" withcallbackId:command.callbackId];
     }
  
 }
